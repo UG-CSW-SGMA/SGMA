@@ -56,17 +56,18 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-             <!--Interface-->
-                           </div>
+                <!--Interface-->
+            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link " href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link " href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Taller</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!--<h6 class="collapse-header">Custom Components:</h6>  -->
                         <a class="collapse-item active" href="gestionODA.html">Gestión ODA</a>
@@ -83,10 +84,10 @@
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Servicios</span>
                 </a>
-                
+
             </li>
 
-           <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -94,7 +95,7 @@
                     <span>Inventario</span>
                 </a>
 
-                
+
             </li>
 
             <!-- Nav Item - Charts -->
@@ -119,7 +120,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-           
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -248,8 +249,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -260,8 +260,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -272,8 +271,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -305,8 +303,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Edgar Basurto</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -342,10 +339,11 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Orden de atención</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva ODA</a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                            data-toggle="modal" data-target="#newOrderModal"><i
+                                class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Orden de Atención</a>
                     </div>
-                    
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -353,7 +351,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%"
+                                    cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Nº ODA</th>
@@ -363,6 +362,7 @@
                                             <th>Teléfono</th>
                                             <th>Dirección</th>
                                             <th>Correo</th>
+                                            <th>-</th>
                                         </tr>
                                     </thead>
                                     <!--<tfoot>
@@ -376,18 +376,20 @@
                                         </tr>
                                     </tfoot> -->
                                     <tbody>
-                                        <tr>  
+                                        <tr>
                                             <td>2022ODA-0001</td>
                                             <td>2022/01/04</td>
                                             <td>0927304220</td>
                                             <td>Tiger Nixon</td>
-                                            <td>0994915345</td>   
+                                            <td>0994915345</td>
                                             <td>8va. y M. Angel Silva</td>
                                             <td>tiger@dominio.com</td>
-                                            <td><a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i
-                                                class="fas fa-edit fa-sm text-white-50"></i></a>
-                                                <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i
-                                                    class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                                            <td><a href="#"
+                                                    class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i
+                                                        class="fas fa-edit fa-sm text-white-50"></i></a>
+                                                <a href="#"
+                                                    class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i
+                                                        class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -398,12 +400,14 @@
                                             <td>0995637485</td>
                                             <td>Tokyo</td>
                                             <td>garrett@hotmail.com</td>
-                                            <td><a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i
-                                                class="fas fa-edit fa-sm text-white-50"></i></a>
-                                                <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i
-                                                    class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                                            <td><a href="#"
+                                                    class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i
+                                                        class="fas fa-edit fa-sm text-white-50"></i></a>
+                                                <a href="#"
+                                                    class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i
+                                                        class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                                             </td>
-                                            
+
                                         </tr>
                                         <tr>
                                             <td>2022ODA-0003</td>
@@ -413,13 +417,15 @@
                                             <td>0996578364</td>
                                             <td>San Francisco</td>
                                             <td>ashton@gmail.com</td>
-                                            <td><a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i
-                                                class="fas fa-edit fa-sm text-white-50"></i></a>
-                                                <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i
-                                                    class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                                            <td><a href="#"
+                                                    class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i
+                                                        class="fas fa-edit fa-sm text-white-50"></i></a>
+                                                <a href="#"
+                                                    class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i
+                                                        class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                                             </td>
                                         </tr>
-                                      <!--  <tr>
+                                        <!--  <tr>
                                             <td>22</td>
                                             <td>2012/03/29</td>
                                             <td>$433,060</td>
@@ -917,10 +923,163 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión
+                    actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New ODA Modal-->
+    <div class="modal fade" id="newOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> <b> Registro de nueva O.D.A. </b> - Nº 2022ODA-0004
+                    </h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user">
+                        <div class="form-group row">
+                            <div class="text-left" style="margin-left: 20px; align-self:center;">
+                                <label>Fecha/hora de ingreso</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="datetime-local" class="form-control form-control-user" id="fecha"
+                                    placeholder="fecha">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="form-group">
+                                    <h5 class="modal-title">Datos del cliente</h5>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Buscar por nombres o DNI..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" name="datosCliente" id="datosCliente" cols="50"
+                                        rows="4" placeholder="Datos del cliente..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <h5 class="modal-title">Datos del Vehículo</h5>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Buscar por placa..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" name="datosVehiculo" id="datosVehiculo" cols="50"
+                                        rows="4" placeholder="Datos del vehículo..."></textarea>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            
+
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <h5 class="modal-title">Atención</h5> <br>
+                                    <div class="form-group">
+                                        <div class="text-left" style="margin-left: 20px; align-self:center;">
+                                            <label>Estado: </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" name="estado" id="estado">
+                                                <option value="0" disabled selected>Seleccione una opcion...</option>
+                                                <option value="En espera">En espera</option>
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="En proceso">En proceso</option>
+                                                <option value="Atendido">Atendido</option>
+                                            </select>
+                                        </div>
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <div class="text-left" style="margin-left: 20px; align-self:center;">
+                                            <label>Mecánico disponible: </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" name="estado" id="estado">
+                                                <option value="0" disabled selected>Seleccione una opcion...</option>
+                                                <option value="En espera">En espera</option>
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="En proceso">En proceso</option>
+                                                <option value="Atendido">Atendido</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+    
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <h5 class="modal-title">Tipo de servicio</h5>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" name="tipoServicio" id="tipoServicio" cols="50" rows="4"
+                                            placeholder="Detalles del tipo de servicio solicitado..."></textarea>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            
+
+
+
+
+                            
+                    </form>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="submit" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" type="submit" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -943,7 +1102,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-    
+
 
 </body>
 
