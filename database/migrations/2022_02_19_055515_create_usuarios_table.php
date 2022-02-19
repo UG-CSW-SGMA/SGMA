@@ -22,6 +22,9 @@ return new class extends Migration
             $table->binary('PasswordSALT');
             $table->binary('PasswordHASH');
 
+            //Auditoria
+            $table->unsignedBigInteger('UsuarioCreacion');
+            $table->unsignedBigInteger('UsuarioActualizacion');
             $table->timestamps();
         });
     }
