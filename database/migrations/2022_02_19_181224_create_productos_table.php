@@ -15,7 +15,21 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('CategoriaId');
+            $table->string('Codigo', 20);
+            $table->string('Nombre', 40);
+            $table->string('Descripcion', 150)->nullable()->default('');
+            $table->string('NumeroParte', 15)->nullable()->default('');
+            $table->decimal('Precio', 18, 6)->default('0');
+            $table->decimal('Costo', 18, 6)->default('0');
+
+            //Auditoria
+            $table->unsignedBigInteger('UsuarioCreacion');
+            $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
             $table->timestamps();
+
+            //Foreign key
+            $table->foreign('CategoriaId')->references('Id')->on('categorias');
         });
     }
 

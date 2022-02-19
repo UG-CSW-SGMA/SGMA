@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
             $table->timestamps();
 
-            //Foreign
+            //Foreign key
             $table->foreign('TipoServicioId')->references('Id')->on('tipo_servicios');
         });
     }
