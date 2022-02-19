@@ -44,15 +44,7 @@ class CreateEmpresaTable extends Migration
 
             $table->index(["USUARIO_ID_CREACION"], 'fk_EMPRESA_USUARIOS1_idx');
 
-            $table->index(["USUARIO_ID_ACTUALIZACION"], 'fk_EMPRESA_USUARIOS2_idx');
-
-
             $table->foreign('USUARIO_ID_CREACION', 'fk_EMPRESA_USUARIOS1_idx')
-                ->references('USER_ID')->on('USUARIOS')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('USUARIO_ID_ACTUALIZACION', 'fk_EMPRESA_USUARIOS2_idx')
                 ->references('USER_ID')->on('USUARIOS')
                 ->onDelete('no action')
                 ->onUpdate('no action');
