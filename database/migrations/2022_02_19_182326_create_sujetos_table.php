@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sujetos', function (Blueprint $table) {
             $table->id();
-            $table->enum('TipoSujeto', ['1', '2'])->comment('Tipo_Sujeto(1=>Cliente, 2=>Proveedor)');
+            $table->enum('TipoSujeto', [1, 2])->comment('Tipo_Sujeto(1=>Cliente, 2=>Proveedor)');
             $table->string('DNI', 20)->comment('DNI/CEDULA/RUC/PASSAPORTE');
             $table->string('Nombre', 20)->comment('Nombres');
             $table->string('Apellido', 20)->nullable()->default(null)->comment('Apellidos');

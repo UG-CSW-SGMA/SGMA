@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->enum('TipoRol', ['1', '2', '3', '4'])->comment('Rol_Usuario (1=>Administrador, 2=>Gerente, 3=>Mecanico, 4=>Vendedor)');
+            $table->enum('TipoRol', [1, 2, 3, 4])->comment('Rol_Usuario (1=>Administrador, 2=>Gerente, 3=>Mecanico, 4=>Vendedor)');
             $table->string('NickName', 15);
             $table->string('Email', 25)->nullable()->default(null)->comment('Email_Usuario');
             $table->string('NombreCompleto', 30);
