@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ordenes_atencion', function (Blueprint $table) {
             $table->id();
-            $table->string('Numero', 15)->comment('Numero de ODA');
+            $table->string('NumeroTransaccion', 15)->comment('Numero de ODA');
             $table->unsignedBigInteger('TipoServicioId');
             $table->unsignedBigInteger('MecanicoId')->nullable();
             $table->unsignedBigInteger('VendedorId')->nullable();
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('DescripcionRecepcionVehiculo', 125)->nullable()->default('');
             $table->dateTime('FechaHoraInicioAtencion')->nullable()->default(null);
             $table->dateTime('FechaHoraCierreAtencion')->nullable()->default(null);
-            $table->enum('Estado', [1, 2, 3, 4])->comment('Estado(1=>Activo, 2=>En Atecion, 3=>Cerrado, 4=>No Atendido)');
+            $table->enum('EstadoODA', [1, 2, 3, 4])->comment('Estado(1=>Activo, 2=>En Atecion, 3=>Cerrado, 4=>No Atendido)');
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');
