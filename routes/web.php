@@ -14,5 +14,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('vistapadre');
+});
+
+
+Route::get('/usuarios', function () {
+    return view('usuarios');
+});
+
+Route::get('/gestionODA', function () {
+    return view('gestionODA');
+});
+
+Route::get('/vehiculos', function () {
+    return view('vehiculos');
+});
+
+Route::get('/inventarios', function () {
+    return view('inventarios');
+});
+
+Route::get('/clientes', function () {
+    return view('clientes');
 });
