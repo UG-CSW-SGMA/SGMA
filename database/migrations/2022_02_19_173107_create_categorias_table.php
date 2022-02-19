@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -14,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_servicios', function (Blueprint $table) {
+        Schema::create('categorias', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('TipoServicioId');
             $table->string('Nombre', 25);
             $table->string('Descripcion', 100)->Nullable()->default('');
 
@@ -23,6 +23,9 @@ return new class extends Migration
             $table->unsignedBigInteger('UsuarioCreacion');
             $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
             $table->timestamps();
+
+            //Foreign
+            $table->foreign('TipoServicioId')->references('Id')->on('tipo_servicios');
         });
     }
 
@@ -33,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_servicios');
+        Schema::dropIfExists('categorias');
     }
 };

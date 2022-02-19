@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Realiza el llamado de las siembras o inserciones en la base de datos.
      *
      * @return void
      */
@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(TipoServiciosTableSeeder::class);
+        $this->call(CategoriasTableSeeder::class);
     }
 }

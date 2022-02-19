@@ -19,7 +19,7 @@ class TipoServiciosTableSeeder extends Seeder
 
 
     /**
-     * Run the database seeds.
+     * Corre insert en la tabla
      *
      * @return void
      */
