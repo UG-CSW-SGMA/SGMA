@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('TipoContribuyente', 25)->nullable()->default('');
             $table->tinyInteger('ObligadoLlevarContabilidad')->nullable()->default('0');
             $table->tinyInteger('AgenteRetencion')->nullable()->default('0');
-            $table->string('Estado', 1)->default('A');
+            $table->boolean('Activo')->default(1);
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('NombreCompleto', 30);
             $table->binary('PasswordSALT');
             $table->binary('PasswordHASH');
+            $table->boolean('Activo')->default(1);
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');

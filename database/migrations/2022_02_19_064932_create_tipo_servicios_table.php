@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('Nombre', 25);
             $table->string('Descripcion', 100)->Nullable()->default('');
+            $table->boolean('Activo')->default(1);
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('NumeroParte', 15)->nullable()->default('');
             $table->decimal('Precio', 18, 6)->default('0');
             $table->decimal('Costo', 18, 6)->default('0');
+            $table->boolean('Activo')->default(1);
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Modelo', 25);
             $table->string('Marca', 25);
             $table->string('Descripcion', 125)->nullable()->default('');
+            $table->boolean('Activo')->default(1);
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');

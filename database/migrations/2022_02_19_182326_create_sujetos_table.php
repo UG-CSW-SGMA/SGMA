@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('Direccion', 125)->nullable()->default(null)->comment('Direccion');
             $table->string('Telefono', 25)->nullable()->default(null)->comment('Telefono');
             $table->string('Email', 25)->nullable()->default(null)->comment('Email');
+            $table->boolean('Activo')->default(1);
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');
