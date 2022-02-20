@@ -37,10 +37,6 @@ Route::get('/inventarios', function () {
     return view('inventario.inventarios');
 });
 
-Route::get('/clientes', function () {
-    return view('taller.clientes');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Controllers routes
@@ -48,3 +44,5 @@ Route::get('/clientes', function () {
 |
 */
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
+
+Route::resource('clientes', 'App\Http\Controllers\ClienteController');

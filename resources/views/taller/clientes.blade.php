@@ -1,5 +1,11 @@
 @extends('main.main')
 
+@section ('css')
+<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
+@endsection
+
+
 @section('contenido')
 
 <!-- Page Heading -->
@@ -15,14 +21,14 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" id="tbl_clientes" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Nº</th>
                         <th>DNI</th>
-                        <th>Nombres y apellidos</th>
-                        <th>Teléfono</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
                         <th>Dirección</th>
+                        <th>Teléfono</th>
                         <th>Correo</th>
                         <th>-</th>
                     </tr>
@@ -38,44 +44,55 @@
                                         </tr>
                                     </tfoot> -->
                 <tbody>
+                @foreach($clientes as $cliente)
                     <tr>
-                        <td>1</td>
-                        <td>0927304220</td>
-                        <td>Tiger Nixon</td>
-                        <td>0994915345</td>
-                        <td>8va. y M. Angel Silva</td>
-                        <td>tiger@dominio.com</td>
-                        <td><a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                        <td>{{$cliente->DNI}}</td>
+                        <td>{{$cliente->Nombre}}</td>
+                        <td>{{$cliente->Apellido}}</td>
+                        <td>{{$cliente->Direccion}}</td>
+                        <td>{{$cliente->Telefono}}</td>
+                        <td>{{$cliente->Email}}</td>
+                        <td>
+                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
                             <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1276839475</td>
-                        <td>Garrett Winters</td>
-                        <td>0995637485</td>
-                        <td>Tokyo</td>
-                        <td>garrett@hotmail.com</td>
-                        <td><a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>0378462785</td>
-                        <td>Ashton Cox</td>
-                        <td>0996578364</td>
-                        <td>San Francisco</td>
-                        <td>ashton@gmail.com</td>
-                        <td><a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
-                        </td>
-                    </tr>
+                        @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
+@endsection
+
+
+
+
+@section ('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var table = $('#tbl_clientes').DataTable({
+            lengthChange: false,
+            buttons: {
+                buttons: ['copy', 'csv', 'excel']
+            },
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+        });
+
+        table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+    });
+</script>
 @endsection
