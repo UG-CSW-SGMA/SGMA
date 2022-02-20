@@ -16,7 +16,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $articulos = Categoria::all();
-        return view('categorias.index')->with('articulos', $articulos);
+        return view('inventario.categorias.index')->with('articulos', $articulos);
     }
 
     /**
