@@ -22,23 +22,23 @@ Route::get('dashboard', function () {
 });
 
 Route::get('/usuarios', function () {
-    return view('usuarios');
+    return view('parametros.usuarios');
 });
 
 Route::get('/gestionODA', function () {
-    return view('gestionODA');
+    return view('taller.gestionODA');
 });
 
 Route::get('/vehiculos', function () {
-    return view('vehiculos');
+    return view('taller.vehiculos');
 });
 
 Route::get('/inventarios', function () {
-    return view('inventarios');
+    return view('inventario.inventarios');
 });
 
 Route::get('/clientes', function () {
-    return view('clientes');
+    return view('taller.clientes');
 });
 
 /*

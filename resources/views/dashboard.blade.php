@@ -1,4 +1,4 @@
-@extends('main/main')
+@extends('main.main')
 
 @section('contenido')
 <a class="sidebar-brand d-flex align-items-center justify-content-center">
