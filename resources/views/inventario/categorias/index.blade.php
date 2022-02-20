@@ -1,5 +1,8 @@
 @extends('main.main')
 
+@section ('css')
+<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@endsection
 @section('contenido')
 <!-- Page Heading -->
 <!-- DataTales Example -->
@@ -12,7 +15,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table id="categorias" class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
