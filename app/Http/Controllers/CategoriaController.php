@@ -17,13 +17,13 @@ class CategoriaController extends Controller
     public function index()
     {
 
-        $articulos = DB::table('categorias')
+        $categorias = DB::table('categorias')
             ->join('tipo_servicios', 'categorias.TipoServicioId', '=', 'tipo_servicios.Id')
             ->select('categorias.*', 'tipo_servicios.Nombre as TipoServicioNombre')
             ->where('categorias.Activo', '=', 1)
             ->get();
 
-        return view('inventario.categorias.index')->with('articulos', $articulos);
+        return view('inventario.categorias.index')->with('articulos', $categorias);
     }
 
     /**
@@ -33,7 +33,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventario.categorias.create');
     }
 
     /**
