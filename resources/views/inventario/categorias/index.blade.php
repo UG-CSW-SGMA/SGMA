@@ -81,7 +81,6 @@
     </div>
 </div>
 @endsection
-@yield('form_crear')
 @section ('js')
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

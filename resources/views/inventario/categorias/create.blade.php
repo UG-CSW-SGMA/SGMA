@@ -1,5 +1,5 @@
-@extends('main.templateLayoutModal')
-@section('content')
+@extends('main.layout')
+@section('contenido')
 <form>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
