@@ -1,4 +1,4 @@
-@extends('main/main')
+@extends('main.main')
 
 @section('contenido')
 @endsection

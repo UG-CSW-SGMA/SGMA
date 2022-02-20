@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main.main')
 
 @section('contenido')
 
