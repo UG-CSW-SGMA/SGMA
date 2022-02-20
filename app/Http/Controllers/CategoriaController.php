@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Categoria;
 
 class CategoriaController extends Controller
@@ -15,7 +16,13 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $articulos = Categoria::all();
+
+        $articulos = DB::table('categorias')
+            ->join('tipo_servicios', 'categorias.TipoServicioId', '=', 'tipo_servicios.Id')
+            ->select('categorias.*', 'tipo_servicios.Nombre as TipoServicioNombre')
+            ->where('categorias.Activo', '=', 1)
+            ->get();
+
         return view('inventario.categorias.index')->with('articulos', $articulos);
     }
 
