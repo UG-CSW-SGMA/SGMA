@@ -3,7 +3,7 @@
   
 ## Acerca de SGMA
 
-Sistema Gestión  de Mecánica Automotriz, es un proyecto en proceso de desarrollo por estudiantes de la Universidad de Guayaquil bajo la catédra SOF-S-MA-6-1 Construcción de Software del Ing.Angel Cuenca en el ciclo CII 2122-2022.
+Sistema Gestión de Mecánica Automotriz, es un proyecto en proceso de desarrollo por estudiantes de la Universidad de Guayaquil bajo la cátedra SOF-S-MA-6-1 Construcción de Software del Ing. Angel Cuenca en el ciclo CII 2122-2022.
 
 ### Integrantes 
 - **[Basurto Cruz Edgar Daniel](https://github.com/edgarbasurto)**
@@ -60,7 +60,7 @@ Este paso descargará y creará la carpeta <strong>Ventor</strong>
 6. Cargar u ejecutar el script en MySQL.
 
 7. Renombrar el archivo <strong>.env.example</strong> por <strong>.env</strong> que se encuentra en carpeta raíz.
-<a style="color red"> <strong>Nota.</strong></a> En el archivo se encuentra la configuración de conexión en la cual se puede definir en función de lo confirado en mySQL.
+<strongstyle="color red">Nota.</strong> En el archivo se encuentra la configuración de conexión en la cual se puede definir en función de lo confirado en mySQL.
    
 ## Ejecución
 1. Abrir una consola de comandos y ubicarse dentro del directorio.
