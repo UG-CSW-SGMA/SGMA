@@ -1,4 +1,4 @@
-@extends('vistapadre')
+@extends('main')
 
 @section('contenido')
 
