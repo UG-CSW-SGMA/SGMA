@@ -37,3 +37,11 @@ Route::get('/inventarios', function () {
 Route::get('/clientes', function () {
     return view('clientes');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Controllers routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
