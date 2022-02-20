@@ -11,7 +11,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-2 text-gray-800">Vehículos</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#newCarModal"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Vehículo</a>
+    <a href="vehiculos/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Vehículo</a>
 </div>
 
 <!-- DataTales Example -->
@@ -27,31 +27,28 @@
                         <th>Placa</th>
                         <th>Marca</th>
                         <th>Modelo</th>
+                        <th>Tipo</th>
+                        <th>Año</th>
+                        <th>Color</th>
                         <th>Descripción</th>
                         <th>-</th>
 
                     </tr>
                 </thead>
-                <!--<tfoot>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>Fecha ingreso</th>
-                                            <th>Documento</th>
-                                            <th>Cliente</th>
-                                            <th>Teléfono</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </tfoot> -->
+               
                 <tbody>
                     @foreach($vehiculos as $vehiculo)
                     <tr>
                         <td>{{$vehiculo->Placa}}</td>
                         <td>{{$vehiculo->Marca}}</td>
                         <td>{{$vehiculo->Modelo}}</td>
+                        <td>{{$vehiculo->Tipo}}</td>
+                        <td>{{$vehiculo->Anio}}</td>
+                        <td>{{$vehiculo->Color}}</td>
                         <td>{{$vehiculo->Descripcion}}</td>
                         <td>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                            <a href="{{$vehiculo->Id}}" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                            <a href="{{$vehiculo->Id}}" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                         </td>
                         @endforeach
                 </tbody>
