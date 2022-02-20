@@ -48,6 +48,28 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->get('tpServicio') > 0) {
+
+            $Descripcion = "";
+            if (!is_null($request->get('descripcion'))) {
+                $Descripcion = $request->get('descripcion');
+            }
+
+            $categora = new Categoria();
+
+            $categora->TipoServicioId = $request->get('tpServicio');;
+            $categora->Nombre = $request->get('nombre');
+            $categora->Descripcion =  $Descripcion;
+            $categora->Activo = "1";
+            $categora->UsuarioCreacion = "0";
+            $categora->UsuarioActualizacion = "0";
+
+            $categora->save();
+
+            return redirect('/categorias');
+        } else {
+            return "Error";
+        }
     }
 
     /**

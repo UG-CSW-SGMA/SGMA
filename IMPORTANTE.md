@@ -1,0 +1,5 @@
+SE DEBE REEMPLAZAR EL ARCHIVO model.php AL DIRECTORIO 
+
+ vendor/laravel/framework/src/Illuminate/Database/Eloquent/
+
+ESTE ARCHIVO TIENE USO DE CONSTANTES PARA LOS INSERT AND UPDATE 
