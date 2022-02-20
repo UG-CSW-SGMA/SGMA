@@ -73,22 +73,13 @@ $ php artisan serve
 A continuación se detalla la ubicacion de las carpetas de las capas.
 ### Modelo
 Ubicación de los modelos/clases
-```
-/app/Models
-```
-Ubicación de las migraciones y especificación de campos
-```
-/database/migrations
-```
+[/app/Models](https://github.com/UG-CSW-SGMA/SGMA/tree/developer/app/Models)
 
+Ubicación de las migraciones y especificación de campos
+[/database/migrations](https://github.com/UG-CSW-SGMA/SGMA/tree/developer/database/migrations)
 
 ### Controlador
-```
-/app/Http/Controllers
-```
-
+[/app/Http/Controllers](https://github.com/UG-CSW-SGMA/SGMA/tree/developer/app/Http/Controllers)
 
 ### Vistas
-```
-/resources/views
-```
+[/resources/views](https://github.com/UG-CSW-SGMA/SGMA/tree/developer/resources/views)
