@@ -1,4 +1,5 @@
-<p align="center"> <img src="![Alt text](./public/img/SGMA.PNG)" width="400"></a></p>
+   ![Image text](./public/img/SGMA.PNG)
+  
   
 ## Acerca de SGMA
 
