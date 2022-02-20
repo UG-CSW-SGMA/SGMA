@@ -33,7 +33,11 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('inventario.categorias.create');
+        $tiposServicios = DB::table('tipo_servicios')
+            ->where('tipo_servicios.Activo', '=', 1)
+            ->get();
+
+        return view('inventario.categorias.create')->with('tiposServicios', $tiposServicios);;
     }
 
     /**
