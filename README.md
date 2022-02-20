@@ -1,64 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"> <img src="![Alt text](./public/img/SGMA.PNG)" width="400"></a></p>
+  
+## Acerca de SGMA
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema Gestión  de Mecánica Automotriz, es un proyecto en proceso de desarrollo por estudiantes de la Universidad de Guayaquil bajo la catédra SOF-S-MA-6-1 Construcción de Software del Ing.Angel Cuenca en el ciclo CII 2122-2022.
 
-## About Laravel
+### Integrantes 
+- **[Basurto Cruz Edgar Daniel](https://github.com/edgarbasurto)**
+- **[Dávila Vidal Josá Andrés](https://github.com/Andresdavidala)**
+- **[Espinoza De Los Monteros Víctor Iván](https://github.com/IvanEspiM)**
+- **[Larrea Buste Edwin Rafael](https://github.com/Rafael1108)**
+- **[Prado Velarde Andrés](https://github.com/AndresPradoVelarde)**
+ 
+## Funcionalidad 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Version 1.0
+- Gestión del Sistema y Usuarios.
+- Parametrización.
+- Gestión de Inventario.
+- Gestión del Taller.
+- Gestión de Compras.
+- Reportes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologías usadas
+* [Lavarel](https://laravel.com/docs/9.x): Versión 9 
+* [PHP](https://www.php.net/): Versión ^8.0.2
+* [Apache](https://apache.org/): Versión 2.4.51 
+* [Boostrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/): Versión 5 
+* [MySQL](https://dev.mysql.com/doc/): Versión 7.4.19  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Pre Requisitos 
+- Tener previamente instalado y configurado las técnologías usadas.}
+- [Lavarel](https://laravel.com/docs/9.x) para gestionar sus directivas recomienda el uso de [Composer](https://getcomposer.org/) se requiere que el equipo tenga instalado este componente.
 
-## Learning Laravel
+## Instalación
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clonar el repositorio.
+```
+$ git clone https://github.com/UG-CSW-SGMA/SGMA.git
+```
+2. Abrir una consola de comandos y ubicarse dentro del directorio clonado.
+3. Ejecutar la descarga de componentes de laravel:
+```
+$ composer update 
+``` 
+Este paso descargará y creará la carpeta <strong>Ventor</strong>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. Copiar el archivo <strong>model.php</strong> que se encuentra en carpeta raíz y pegar en la ruta: 
+```
+/vendor/laravel/framework/src/Illuminate/Database/Eloquent/
+``` 
+<a style="color red"> <strong>Nota.</strong></a> Paso requerido para el manejo de los CRUD en  las bases de datos.
 
-## Laravel Sponsors
+5. Descargar archivo de script de base de datos <strong> SGMA_V10.sql</strong> ubicado en la siguiente dirección del proyecto. 
+```
+/database/backup/
+``` 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+6. Cargar u ejecutar el script en MySQL.
 
-### Premium Partners
+7. Renombrar el archivo <strong>.env.example</strong> por <strong>.env</strong> que se encuentra en carpeta raíz.
+<a style="color red"> <strong>Nota.</strong></a> En el archivo se encuentra la configuración de conexión en la cual se puede definir en función de lo confirado en mySQL.
+   
+## Ejecución
+1. Abrir una consola de comandos y ubicarse dentro del directorio.
+2. Ejecutar:
+```
+$ php artisan serve 
+``` 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Arquitectura MVC
+A continuación se detalla la ubicacion de las carpetas de las capas.
+### Modelo
+Ubicación de los modelos/clases
+```
+/app/Models
+```
+Ubicación de las migraciones y especificación de campos
+```
+/database/migrations
+```
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Controlador
+```
+/app/Http/Controllers
+```
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Vistas
+```
+/resources/views
+```
