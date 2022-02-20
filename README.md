@@ -29,7 +29,7 @@ Sistema Gestión  de Mecánica Automotriz, es un proyecto en proceso de desarrol
 * [MySQL](https://dev.mysql.com/doc/): Versión 7.4.19  
 
 ### Pre Requisitos 
-- Tener previamente instalado y configurado las técnologías usadas.}
+- Tener previamente instalado y configurado las técnologías usadas.
 - [Lavarel](https://laravel.com/docs/9.x) para gestionar sus directivas recomienda el uso de [Composer](https://getcomposer.org/) se requiere que el equipo tenga instalado este componente.
 
 ## Instalación
