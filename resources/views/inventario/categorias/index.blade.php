@@ -12,7 +12,7 @@
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h6 class="m-0 font-weight-bold text-primary">Categorías</h6>
-            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/create" title="Crear Nueva Cateforía"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Categoría</a>
+            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/create" title="Crear Nueva Categoría"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Categoría</a>
         </div>
     </div>
     <div class="card-body">
@@ -47,17 +47,8 @@
 <!-- small modal -->
 <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="smallBody">
-                <div>
-                    <!-- the result to be displayed apply here -->
-                </div>
-            </div>
+        <div class="modal-content" id="smallBody">
+
         </div>
     </div>
 </div>
@@ -66,17 +57,8 @@
 <!-- medium modal -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="mediumBody">
-                <div>
-                    <!-- the result to be displayed apply here -->
-                </div>
-            </div>
+        <div class="modal-content" id="mediumBody">
+
         </div>
     </div>
 </div>
