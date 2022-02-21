@@ -29,9 +29,6 @@ Route::get('/gestionODA', function () {
     return view('taller.gestionODA');
 });
 
-Route::get('/vehiculos', function () {
-    return view('taller.vehiculos');
-});
 
 Route::get('/inventarios', function () {
     return view('inventario.inventarios');
@@ -46,3 +43,5 @@ Route::get('/inventarios', function () {
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
 
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
+
+Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
