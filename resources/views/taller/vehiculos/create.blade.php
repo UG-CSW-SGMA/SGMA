@@ -7,31 +7,50 @@
 
 @section('contenido')
 
-<form action="/articulos" method="post">
+<form action="vehiculos" method="post">
+    @csrf
     <div class="mb-3">
-        <label for="" class="form-label">Código</label>
-        <input id="codigo" name="codigo" type="text" class="form-control" tabindex="1">
+        <label for="" class="form-label">Placa</label>
+        <input id="placa" name="placa" type="text" class="form-control" tabindex="1">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Marca</label>
+        <input id="marca" name="marca" type="text" class="form-control" tabindex="2">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Modelo</label>
+        <input id="modelo" name="modelo" type="text" class="form-control" tabindex="3">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Tipo</label>
+        <input id="tipo" name="tipo" type="text" class="form-control" tabindex="4">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Año</label>
+        <input id="anio" name="anio" type="number" min="1900" max="2023" class="form-control" tabindex="5">
+    </div>
+   
+    <div class="mb-3">
+        <label for="" class="form-label">Color</label>
+        <input id="color" name="color" type="text" class="form-control" tabindex="6">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Descripción</label>
-        <input id="descripcion" name="descripcion" type="text" class="form-control" tabindex="2">
-    </div>
-
-    <div class="mb-3">
-        <label for="" class="form-label">Cantidad</label>
-        <input id="cantidad" name="cantidad" type="number" class="form-control" tabindex="3">
-    </div>
-
-    <div class="mb-3">
-        <label for="" class="form-label">Precio</label>
-        <input id="precio" name="precio" type="number" step="any" value="0.0" class="form-control" tabindex="4">
+        <input id="descripcion" name="descripcion" type="text" class="form-control" tabindex="7">
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary" name="action" id="#" value="add" data-dismiss="modal">Guardar</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
+        <!-- <button type="submit" class="btn btn-primary" name="action" id="#" value="add" data-dismiss="modal">Guardar</button> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="8">Cerrar</button>
+        <button type="submit" class="btn btn-primary" tabindex="9">Guardar</button>
     </div>
+
 </form>
 
 

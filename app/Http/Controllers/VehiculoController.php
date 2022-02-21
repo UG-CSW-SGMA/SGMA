@@ -17,11 +17,11 @@ class VehiculoController extends Controller
     public function index()
     {
         $vehiculos = DB::table('vehiculos')
-        ->select('vehiculos.*')
-        ->where('vehiculos.Activo', '=', 1)
-        ->get();
+            ->select('vehiculos.*')
+            ->where('vehiculos.Activo', '=', 1)
+            ->get();
 
-    return view('taller.vehiculos.vehiculos')->with('vehiculos', $vehiculos);
+        return view('taller.vehiculos.vehiculos')->with('vehiculos', $vehiculos);
     }
 
     /**
@@ -43,7 +43,25 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehiculos = new Vehiculo();
+
+        $vehiculos->SujetoId = "1";
+        $vehiculos->Placa = $request->get('placa');
+        $vehiculos->Modelo = $request->get('modelo');
+        $vehiculos->Marca  = $request->get('marca');
+        $vehiculos->Descripcion = $request->get('descripcion');
+        $vehiculos->Activo = "1";
+        $vehiculos->UsuarioCreacion = "0";
+        $vehiculos->UsuarioActualizacion = "0";
+        $vehiculos->FechaCreacion = now();
+        $vehiculos->FechaActualizacion = now();
+        $vehiculos->Anio = $request->get('anio');
+        $vehiculos->Tipo = $request->get('tipo');
+        $vehiculos->Color = $request->get('color');
+        
+        $vehiculos->save();
+
+        return redirect('/vehiculos');
     }
 
     /**
@@ -89,6 +107,6 @@ class VehiculoController extends Controller
     public function destroy($id)
     {
         //
-                
+
     }
 }
