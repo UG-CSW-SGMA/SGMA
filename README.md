@@ -3,7 +3,7 @@
   
 ## Acerca de SGMA
 
-Sistema Gestión  de Mecánica Automotriz, es un proyecto en proceso de desarrollo por estudiantes de la Universidad de Guayaquil bajo la catédra SOF-S-MA-6-1 Construcción de Software del Ing.Angel Cuenca en el ciclo CII 2122-2022.
+Sistema Gestión de Mecánica Automotriz, es un proyecto en proceso de desarrollo por estudiantes de la Universidad de Guayaquil bajo la cátedra SOF-S-MA-6-1 Construcción de Software del Ing. Angel Cuenca en el ciclo CII 2122-2022.
 
 ### Integrantes 
 - **[Basurto Cruz Edgar Daniel](https://github.com/edgarbasurto)**
