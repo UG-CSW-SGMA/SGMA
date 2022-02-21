@@ -60,7 +60,7 @@ Este paso descargará y creará la carpeta <strong>Ventor</strong>
 6. Cargar u ejecutar el script en MySQL.
 
 7. Renombrar el archivo <strong>.env.example</strong> por <strong>.env</strong> que se encuentra en carpeta raíz.
-<a style="color red"> <strong>Nota.</strong></a> En el archivo se encuentra la configuración de conexión en la cual se puede definir en función de lo confirado en mySQL.
+<strongstyle="color red">Nota.</strong> En el archivo se encuentra la configuración de conexión en la cual se puede definir en función de lo confirado en mySQL.
    
 ## Ejecución
 1. Abrir una consola de comandos y ubicarse dentro del directorio.
