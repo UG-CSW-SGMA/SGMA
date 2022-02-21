@@ -21,7 +21,7 @@ class VehiculoController extends Controller
         ->where('vehiculos.Activo', '=', 1)
         ->get();
 
-    return view('taller.vehiculos')->with('vehiculos', $vehiculos);
+    return view('taller.vehiculos.vehiculos')->with('vehiculos', $vehiculos);
     }
 
     /**
@@ -32,6 +32,7 @@ class VehiculoController extends Controller
     public function create()
     {
         //
+        return view('taller.vehiculos.create');
     }
 
     /**
@@ -88,5 +89,6 @@ class VehiculoController extends Controller
     public function destroy($id)
     {
         //
+                
     }
 }
