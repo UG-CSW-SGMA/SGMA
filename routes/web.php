@@ -30,9 +30,7 @@ Route::get('/gestionODA', function () {
 });
 
 
-Route::get('/inventarios', function () {
-    return view('inventario.inventarios');
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +39,7 @@ Route::get('/inventarios', function () {
 |
 */
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
-
+Route::resource('productos', 'App\Http\Controllers\ProductoController');
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 
 Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
