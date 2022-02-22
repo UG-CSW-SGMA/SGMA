@@ -11,7 +11,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#newClientModal"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Cliente</a>
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="clientes/create" title="Crear Nuevo Cliente"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Cliente</a>
 </div>
 
 <!-- DataTales Example -->
@@ -33,16 +33,7 @@
                         <th>-</th>
                     </tr>
                 </thead>
-                <!--<tfoot>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>Fecha ingreso</th>
-                                            <th>Documento</th>
-                                            <th>Cliente</th>
-                                            <th>Teléfono</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </tfoot> -->
+                
                 <tbody>
                 @foreach($clientes as $cliente)
                     <tr>
@@ -62,6 +53,27 @@
         </div>
     </div>
 </div>
+
+
+<!-- small modal -->
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" id="smallBody">
+
+        </div>
+    </div>
+</div>
+
+
+<!-- medium modal -->
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="mediumBody">
+
+        </div>
+    </div>
+</div>
+
 
 @endsection
 
@@ -94,5 +106,60 @@
 
         table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
     });
+
+    
+    // display a modal (small modal)
+    $(document).on('click', '#smallButton', function(event) {
+        event.preventDefault();
+        let href = $(this).attr('data-attr');
+        $.ajax({
+            url: href,
+            beforeSend: function() {
+                $('#loader').show();
+            },
+            // return the result
+            success: function(result) {
+                //$('#smallModal').modal("show"); //Rafael1108 error si está disponible
+                $('#smallBody').html(result).show();
+            },
+            complete: function() {
+                $('#loader').hide();
+            },
+            error: function(jqXHR, testStatus, error) {
+                console.log(error);
+                alert("Page " + href + " cannot open. Error:" + error);
+                $('#loader').hide();
+            },
+            timeout: 8000
+        })
+    });
+
+    // display a modal (medium modal)
+    $(document).on('click', '#mediumButton', function(event) {
+        event.preventDefault();
+        let href = $(this).attr('data-attr');
+        $.ajax({
+            url: href,
+            beforeSend: function() {
+                $('#loader').show();
+            },
+            // return the result
+            success: function(result) {
+                //$('#mediumModal').modal("show"); //Rafael1108 error si está disponible
+                $('#mediumBody').html(result).show();
+            },
+            complete: function() {
+                $('#loader').hide();
+            },
+            error: function(jqXHR, testStatus, error) {
+                console.log(error);
+                alert("Page " + href + " cannot open. Error:" + error);
+                $('#loader').hide();
+            },
+            timeout: 8000
+        })
+    });
 </script>
+
+
 @endsection

@@ -11,17 +11,17 @@
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Placa</label>
-        <input id="placa" name="placa" type="text" class="form-control" tabindex="1">
+        <input id="placa" name="placa" type="text" class="form-control" tabindex="1" required>
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Marca</label>
-        <input id="marca" name="marca" type="text" class="form-control" tabindex="2">
+        <input id="marca" name="marca" type="text" class="form-control" tabindex="2" required>
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Modelo</label>
-        <input id="modelo" name="modelo" type="text" class="form-control" tabindex="3">
+        <input id="modelo" name="modelo" type="text" class="form-control" tabindex="3" required>
     </div>
 
     <div class="mb-3">
@@ -31,12 +31,12 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Año</label>
-        <input id="anio" name="anio" type="number" min="1900" max="2023" class="form-control" tabindex="5">
+        <input id="anio" name="anio" type="number" min="1900" max="2023" class="form-control" tabindex="5" required>
     </div>
    
     <div class="mb-3">
         <label for="" class="form-label">Color</label>
-        <input id="color" name="color" type="text" class="form-control" tabindex="6">
+        <input id="color" name="color" type="text" class="form-control" tabindex="6" required>
     </div>
 
     <div class="mb-3">

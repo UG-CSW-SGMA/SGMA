@@ -53,8 +53,7 @@ class VehiculoController extends Controller
         $vehiculos->Activo = "1";
         $vehiculos->UsuarioCreacion = "0";
         $vehiculos->UsuarioActualizacion = "0";
-        $vehiculos->FechaCreacion = now();
-        $vehiculos->FechaActualizacion = now();
+        
         $vehiculos->Anio = $request->get('anio');
         $vehiculos->Tipo = $request->get('tipo');
         $vehiculos->Color = $request->get('color');
