@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Categoria;
+use App\Models\TipoServicio;
+
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
+    protected $CategoriaModel;
+    public function __construct(Categoria $categoria)
+    {
+        $this->CategoriaModel = $categoria;
+    }
+
     /**
      * 
      * Muestra la vista de todas las categorias.
@@ -16,14 +24,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-
-        $categorias = DB::table('categorias')
-            ->join('tipo_servicios', 'categorias.TipoServicioId', '=', 'tipo_servicios.Id')
-            ->select('categorias.*', 'tipo_servicios.Nombre as TipoServicioNombre')
-            ->where('categorias.Activo', '=', 1)
-            ->get();
-
-        return view('inventario.categorias.index')->with('articulos', $categorias);
+        return view('inventario.categorias.index')->with('articulos', $this->CategoriaModel->getListadoActivoConTipoServicio());
     }
 
     /**
@@ -33,11 +34,8 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        $tiposServicios = DB::table('tipo_servicios')
-            ->where('tipo_servicios.Activo', '=', 1)
-            ->get();
-
-        return view('inventario.categorias.create')->with('tiposServicios', $tiposServicios);;
+        $TipoServicio = new TipoServicio();
+        return view('inventario.categorias.create')->with('tiposServicios', $TipoServicio->getListadoActivos());;
     }
 
     /**
