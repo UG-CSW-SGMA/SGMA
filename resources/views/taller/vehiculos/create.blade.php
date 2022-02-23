@@ -13,6 +13,10 @@
         <label for="" class="form-label">Placa</label>
         <input id="placa" name="placa" type="text" class="form-control" tabindex="1" required>
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Placa</label>
+        <input id="placa" name="placa" type="text" class="form-control" tabindex="1" required>
+    </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Marca</label>
