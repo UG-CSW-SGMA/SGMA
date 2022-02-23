@@ -21,9 +21,6 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/usuarios', function () {
-    return view('parametros.usuarios');
-});
 
 Route::get('/gestionODA', function () {
     return view('taller.gestionODA');
@@ -43,6 +40,7 @@ Route::get('/gestionODA', function () {
  * Parametros 
  */
 Route::resource('servicios', 'App\Http\Controllers\TipoServicioController');
+Route::resource('usuarios', 'App\Http\Controllers\UsuarioController');
 
 /*
  * Inventario

@@ -2,32 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    protected $UsuarioModel;
+    public function __construct(Usuario $Usuario)
+    {
+        $this->UsuarioModel = $Usuario;
+    }
+
     /**
-     * Display a listing of the resource.
+     * 
+     * Muestra la vista de todas las categorias.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('parametros.usuario.index')->with('usuarios', $this->UsuarioModel->getListadoActivos());
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar el formulario para crear una nueva categoria.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        //  
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacena la categoría recién creada en el almacenamiento.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,7 +46,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Devuelve una categoría.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -49,7 +57,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar una categoria.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -60,7 +68,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza en Base datos el registro de la tabla categoría.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -72,13 +80,13 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina en Base de datos el registro de la tabla categoría.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        //Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
     }
 }
