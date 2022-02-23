@@ -38,8 +38,21 @@ Route::get('/gestionODA', function () {
 |--------------------------------------------------------------------------
 |
 */
+
+/*
+ * Parametros 
+ */
+Route::resource('servicios', 'App\Http\Controllers\TipoServicioController');
+
+/*
+ * Inventario
+ */
+
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
 Route::resource('productos', 'App\Http\Controllers\ProductoController');
-Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 
+/*
+ * Taller
+ */
+Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');

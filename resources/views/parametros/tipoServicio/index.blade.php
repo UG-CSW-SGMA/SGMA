@@ -11,33 +11,27 @@
 <div class=" card shadow mb-4">
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
-            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="productos/create" title="Crear Nuevo Producto"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Producto</a>
+            <h6 class="m-0 font-weight-bold text-primary">Servicios del Taller</h6>
+
         </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="tbl_productos" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+            <table id="tbl_categorias" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">Código</th>
-                        <th scope="col">Categoría</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Costo</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($productos as $producto)
+                    @foreach($tiposServicio as $tipoServicio)
                     <tr>
-                        <td scope="row">{{$producto->Codigo}}</td>
-                        <td>{{$producto->Categoria}}</td>
-                        <td>{{$producto->Nombre}}</td>
-                        <td>{{$producto->Descripcion}}</td>
-                        <td>{{"$ " . number_format( $producto->Precio, 2, '.', ',')}}</td>
-                        <td>{{"$ " . number_format( $producto->Costo, 2, '.', ',')}}</td>
+                        <td scope="row">{{$tipoServicio->Id}}</td>
+                        <td>{{$tipoServicio->Nombre}}</td>
+                        <td>{{$tipoServicio->Descripcion}}</td>
                         <td>
                             <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
                             <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
@@ -84,7 +78,7 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
 <script>
     $(document).ready(function() {
-        var table = $('#tbl_productos').DataTable({
+        var table = $('#tbl_categorias').DataTable({
             lengthChange: false,
             buttons: {
                 buttons: ['copy', 'csv', 'excel']
