@@ -12,12 +12,12 @@
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h6 class="m-0 font-weight-bold text-primary">Usuarios</h6>
-            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="usuarios/create" title="Crear un nuevo usuario"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Usuario</a>
+            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/create" title="Crear "><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Usuario</a>
         </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="tbl_usuarios" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+            <table id="tbl_categorias" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">Perfil</th>
@@ -62,36 +62,6 @@
         </div>
     </div>
 </div>
-
-<form id="formulario" class="form-registrar" enctype="multipart/form-data" action='{{url('/usuarios')}}' method ='POST' >
-    @csrf
-        <h4>Nuevo Usuario</h4>
-        <div class="doble">
-            <input required="" autocomplete="off" class="controls" type="number" id="TipoRol" name='TipoRol' placeholder="Ingrese el rol de usuario">
-            <div class="input-group">-</div>
-            <input required="" autocomplete="off" class="controls" type="text" name="NickName" id="NickName" placeholder="Ingrese su nickname o apodo">
-            <input  required=""autocomplete="off" class="controls" type="email" name="Email" id="Email" placeholder="Ingrese su correo electrónico">
-            <div class="input-group">-</div>
-            <input required="" autocomplete="off" class="controls" type="text" name="NombreCompleto" id="NombreCompleto" placeholder="Ingrese su nombre completo">
-            <div>
-            <input required="" autocomplete="off" class="controls" type="password" name="PasswordSALT" id="PasswordSALT" placeholder="Ingrese su contraseña">
-            <input required="" autocomplete="off" class="controls" type="password" name="PasswordHASH" id="PasswordHASH" placeholder="Ingrese su contraseña">
-            </div>
-
-            <div class="input-group">-</div>
-
-            <select required="" id="selector" class="controlsOp" name="Activo">
-            <option class="optionText" value="">Estado de usuario</option>
-			<option class="optionText" value="Inactivo">0</option>
-			<option class="optionText" value="Activo">1</option>
-            </select>
-            
-        </div>
-        <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a> <input required="" id="box" type="checkbox"></p>
-        
-        <input type="submit"  class="boton" value="Registrar Usuario">
-       
-        </form>
 @endsection
 @section ('js')
 
@@ -108,7 +78,7 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
 <script>
     $(document).ready(function() {
-        var table = $('#tbl_usuarios').DataTable({
+        var table = $('#tbl_categorias').DataTable({
             lengthChange: false,
             buttons: {
                 buttons: ['copy', 'csv', 'excel']
