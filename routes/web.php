@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+//rutas para inserción de usuarios ↓
+
+Route::get('/usuarios/{id}/delete',[UsuarioController::class,'destroy']);
+Route::resource('/usuarios',UsuarioController::class);
+
+//rutas para inserción de usuarios ↑
+
+
+Route::get('/', [LoginController::class, 'login']); 
+Route::post('/', [LoginController::class, 'check_login']);
 
 Route::get('dashboard', function () {
     return view('dashboard');
