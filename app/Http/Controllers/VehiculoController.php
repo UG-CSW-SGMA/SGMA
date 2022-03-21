@@ -51,13 +51,13 @@ class VehiculoController extends Controller
         $vehiculos->Marca  = $request->get('marca');
         $vehiculos->Descripcion = $request->get('descripcion');
         $vehiculos->Activo = "1";
-        $vehiculos->UsuarioCreacion = "0";
-        $vehiculos->UsuarioActualizacion = "0";
-        
+        $vehiculos->UserCreated = "0";
+        $vehiculos->UserCreated = "0";
+
         $vehiculos->Anio = $request->get('anio');
         $vehiculos->Tipo = $request->get('tipo');
         $vehiculos->Color = $request->get('color');
-        
+
         $vehiculos->save();
 
         return redirect('/vehiculos');

@@ -27,8 +27,8 @@ return new class extends Migration
             $table->decimal('CostoToalSaldo', 18, 6);
 
             //Auditoria
-            $table->unsignedBigInteger('UsuarioCreacion');
-            $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
+            $table->unsignedBigInteger('UserCreated');
+            $table->unsignedBigInteger('UserUpdated')->nullable();
             $table->timestamps();
 
             //Foreign key 

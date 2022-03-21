@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\TipoServicio;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
     protected $CategoriaModel;
+
     public function __construct(Categoria $categoria)
     {
         $this->CategoriaModel = $categoria;
@@ -35,7 +37,9 @@ class CategoriaController extends Controller
     public function create()
     {
         $TipoServicio = new TipoServicio();
-        return view('inventario.categorias.create')->with('tiposServicios', $TipoServicio->getListadoActivos());;
+        $tiposServicios = $TipoServicio->getListadoActivos();
+        print_r($tiposServicios);
+        return view('inventario.categorias.create')->with('tiposServicios',);
     }
 
     /**
@@ -46,23 +50,22 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->get('tpServicio') > 0) {
+        $date = Carbon::now();
+        if ($request->get('txtTipoServicio') > 0) {
 
             $Descripcion = "";
-            if (!is_null($request->get('descripcion'))) {
-                $Descripcion = $request->get('descripcion');
+            if (!is_null($request->get('txtDescripcion'))) {
+                $Descripcion = $request->get('txtDescripcion');
             }
 
-            $categora = new Categoria();
+            $cat_new = new Categoria();
 
-            $categora->TipoServicioId = $request->get('tpServicio');;
-            $categora->Nombre = $request->get('nombre');
-            $categora->Descripcion =  $Descripcion;
-            $categora->Activo = "1";
-            $categora->UsuarioCreacion = "0";
-            $categora->UsuarioActualizacion = "0";
-
-            $categora->save();
+            $cat_new->TipoServicioId = $request->get('txtTipoServicio');;
+            $cat_new->Nombre = $request->get('txtNombre');
+            $cat_new->Descripcion =  $Descripcion;
+            $cat_new->Activo = "1";
+            $cat_new->UserAdd = 0;
+            $cat_new->save();
 
             return redirect('/categorias');
         } else {
@@ -89,7 +92,11 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ObjCategoria = $this->CategoriaModel::find($id);
+
+        $TipoServicio = new TipoServicio();
+
+        return view('inventario.categorias.edit')->with('ObjCategoria', $ObjCategoria)->with('tiposServicios', $TipoServicio->getListadoActivos());
     }
 
     /**
@@ -101,17 +108,29 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $date = Carbon::now();
+        $Descripcion = "";
+        if (!is_null($request->get('txtDescripcion'))) {
+            $Descripcion = $request->get('txtDescripcion');
+        }
+        $categoria_edit = $this->CategoriaModel::find($id);
+        $categoria_edit->TipoServicioId = $request->get('txtTipoServicio');;
+        $categoria_edit->Nombre = $request->get('txtNombre');
+        $categoria_edit->Descripcion =  $Descripcion;
+        $categoria_edit->Activo =  1;
+        $categoria_edit->UserUpdate = 0;
+        $categoria_edit->save();
+
+        return redirect('/categorias');
     }
 
     /**
      * Elimina en Base de datos el registro de la tabla categoría.
-     *
+     * Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
     }
 }

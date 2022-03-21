@@ -49,10 +49,10 @@ class ClienteController extends Controller
         $dni = $request->get('dni');
 
         $encontrado = DB::table('sujetos')
-        ->select('sujetos.*')
-        ->where('sujetos.DNI', '=', $dni)
-        // ->where('sujetos.Activo', '=', 1, 'and', 'sujetos.TipoSujeto', '=', 1, 'and', 'sujetos.DNI', '=', $dni)
-        ->get();
+            ->select('sujetos.*')
+            ->where('sujetos.DNI', '=', $dni)
+            // ->where('sujetos.Activo', '=', 1, 'and', 'sujetos.TipoSujeto', '=', 1, 'and', 'sujetos.DNI', '=', $dni)
+            ->get();
 
         if (!isset($encontrado)) {
             $clientes = new Sujeto();
@@ -65,15 +65,15 @@ class ClienteController extends Controller
             $clientes->Telefono = $request->get('telefono');
             $clientes->Email = $request->get('email');
             $clientes->Activo = "1";
-            $clientes->UsuarioCreacion = "0";
-            $clientes->UsuarioActualizacion = "0";
+            $clientes->UserCreated = "0";
+            $clientes->UserCreated = "0";
             $clientes->save();
             // try {
             //     $clientes->save();
             // } catch (QueryException $e) {
             //     return $e->getMessage();
             // }
-               
+
             return redirect('/clientes');
         } else {
             return 'error';

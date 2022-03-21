@@ -32,8 +32,8 @@ return new class extends Migration
             $table->enum('EstadoODA', [1, 2, 3, 4])->comment('Estado(1=>Activo, 2=>En Atecion, 3=>Cerrado, 4=>No Atendido)');
 
             //Auditoria
-            $table->unsignedBigInteger('UsuarioCreacion');
-            $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
+            $table->unsignedBigInteger('UserCreated');
+            $table->unsignedBigInteger('UserUpdated')->nullable();
             $table->timestamps();
 
             //Foreign key

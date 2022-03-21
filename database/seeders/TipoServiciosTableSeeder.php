@@ -32,8 +32,8 @@ class TipoServiciosTableSeeder extends Seeder
             DB::table('tipo_servicios')->insert([
                 'Nombre' => $tiposervicio[0],
                 'Descripcion' =>  $tiposervicio[1],
-                'UsuarioCreacion' => 0,
-                'FechaCreacion' => $date,
+                'UserCreated' => 0,
+                'created_at' => $date,
             ]);
         }
     }

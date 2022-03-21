@@ -24,10 +24,10 @@ return new class extends Migration
             $table->decimal('Impuestos', 18, 2)->default('0');
             $table->decimal('Total', 18, 2)->default('0');
             $table->boolean('Activo')->default(1);
-            
+
             //Auditoria
-            $table->unsignedBigInteger('UsuarioCreacion');
-            $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
+            $table->unsignedBigInteger('UserCreated');
+            $table->unsignedBigInteger('UserUpdated')->nullable();
             $table->timestamps();
 
             //Foreign key

@@ -3,6 +3,7 @@
 @section ('css')
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
+
 @endsection
 
 @section('contenido')
@@ -33,7 +34,8 @@
                         <td>{{$articulo->Nombre}}</td>
                         <td>{{$articulo->Descripcion}}</td>
                         <td>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/{{ $articulo->id}}/edit/" title="Crear Nueva Categoría"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+
                             <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                         </td>
                         @endforeach

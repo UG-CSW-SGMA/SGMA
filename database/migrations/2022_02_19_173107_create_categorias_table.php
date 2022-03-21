@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('Descripcion', 100)->Nullable()->default('');
             $table->boolean('Activo')->default(1);
 
-            //Auditoria
-            $table->unsignedBigInteger('UsuarioCreacion');
-            $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
+            //Auditoria        
+            $table->unsignedBigInteger('UserCreated');
+            $table->unsignedBigInteger('UserUpdated')->nullable();
             $table->timestamps();
 
             //Foreign key

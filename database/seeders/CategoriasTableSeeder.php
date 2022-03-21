@@ -33,8 +33,8 @@ class CategoriasTableSeeder extends Seeder
                 'TipoServicioId' => $categoria[0],
                 'Nombre' => $categoria[1],
                 'Descripcion' =>  $categoria[2],
-                'UsuarioCreacion' => 0,
-                'FechaCreacion' => $date,
+                'UserCreated' => 0,
+                'created_at' => $date,
             ]);
         }
     }

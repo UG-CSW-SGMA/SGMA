@@ -28,8 +28,8 @@ return new class extends Migration
             $table->enum('EstadoCompra', [1, 2, 3])->comment('Estado(1=>Activo, 2=>Cerrado, 3=>Anulado)');
 
             //Auditoria
-            $table->unsignedBigInteger('UsuarioCreacion');
-            $table->unsignedBigInteger('UsuarioActualizacion')->nullable();
+            $table->unsignedBigInteger('UserCreated');
+            $table->unsignedBigInteger('UserUpdated')->nullable();
             $table->timestamps();
 
             //Foreign key

@@ -47,8 +47,8 @@
                         <td>{{$vehiculo->Color}}</td>
                         <td>{{$vehiculo->Descripcion}}</td>
                         <td>
-                            <a href="vehiculos/edit({{$vehiculo->Id}})" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="vehiculos/destroy({{$vehiculo->Id}})" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                            <a href="vehiculos/edit({{$vehiculo->id}})" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                            <a href="vehiculos/destroy({{$vehiculo->id}})" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
                         </td>
                         @endforeach
                 </tbody>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('IP', 17);
             $table->string('InfoAdicional', 255);
 
-            $table->foreign('UsuarioId')->references('Id')->on('usuarios');
+            $table->foreign('UsuarioId')->references('id')->on('usuarios');
         });
     }
 

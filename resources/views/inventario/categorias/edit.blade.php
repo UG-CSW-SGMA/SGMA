@@ -1,21 +1,18 @@
 @extends('main.layout')
 
 @section('form-title')
-<h6 class="m-0 font-weight-bold text-primary">Nueva Categoría</h6>
+<h6 class="m-0 font-weight-bold text-primary">Editar Categoría</h6>
 @endsection
 
-
-
 @section('contenido')
-<form action="categorias" method="POST">
+<form action="categorias/{{$ObjCategoria->id}}" method="POST">
     @csrf
-
+    @method('PUT')
     <div class="mb-3">
         <label for="txtTipoServicio" class="form-label">Tipo Servicio</label>
-        <select class="form-select" id="txtTipoServicio" name="txtTipoServicio" required>
-            <option selected disabled value="">Escoja...</option>
+        <select class="form-select" id="txtTipoServicio" name="txtTipoServicio" required value="{{$ObjCategoria->TipoServicioId}}">
             @foreach($tiposServicios as $tp)
-            <option value="{{$tp->id}}">{{$tp->Nombre}}</option>
+            <option @if($ObjCategoria->TipoServicioId==$tp->id) selected @endif value="{{$tp->id}}">{{$tp->Nombre}}</option>
             @endforeach
 
         </select>
@@ -26,7 +23,7 @@
 
     <div class="mb-3    ">
         <label for="txtNombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="txtNombre" name="txtNombre" maxlength="80" aria-describedby="msjValidacion_Nombre" placeholder="Nombre completo de la categoría" required>
+        <input type="text" class="form-control" id="txtNombre" name="txtNombre" maxlength="80" aria-describedby="msjValidacion_Nombre" placeholder="Nombre completo de la categoría" required value="{{$ObjCategoria->Nombre}}">
         <div class="valid-feedback">
             Datos correctos!
         </div>
@@ -37,7 +34,7 @@
 
     <div class="mb-3    ">
         <label for="txtDescripcion" class="form-label">Descripcion</label>
-        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" maxlength="80" aria-describedby="msjValidacion_Descrip" placeholder="Descripción corta">
+        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" maxlength="80" aria-describedby="msjValidacion_Descrip" placeholder="Descripción corta" value="{{$ObjCategoria->Descripcion}}">
         <div class="valid-feedback">
             Datos correctos!
         </div>

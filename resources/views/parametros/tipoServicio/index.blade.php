@@ -29,7 +29,7 @@
                 <tbody>
                     @foreach($tiposServicio as $tipoServicio)
                     <tr>
-                        <td scope="row">{{$tipoServicio->Id}}</td>
+                        <td scope="row">{{$tipoServicio->id}}</td>
                         <td>{{$tipoServicio->Nombre}}</td>
                         <td>{{$tipoServicio->Descripcion}}</td>
                         <td>

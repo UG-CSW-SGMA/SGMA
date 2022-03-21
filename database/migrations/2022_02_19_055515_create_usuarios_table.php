@@ -25,7 +25,7 @@ return new class extends Migration
 
             //Auditoria
             $table->unsignedBigInteger('UsuarioCreacion');
-            $table->unsignedBigInteger('UsuarioActualizacion');
+            $table->unsignedBigInteger('UserCreated');
             $table->timestamps();
         });
     }
