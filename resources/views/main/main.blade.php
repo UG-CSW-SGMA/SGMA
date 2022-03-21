@@ -118,11 +118,23 @@
                         <!--<h6 class="collapse-header">Custom Components:</h6>  -->
                         <a class="collapse-item" href="compras">Compras</a>
                         <a class="collapse-item" href="proveedores">Proveedores</a>
-                        <a class="collapse-item" href="reportes">Reportes</a>
                     </div>
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    <i class="fa-solid fa-memo"></i>
+                    <span>reportes</span>
+                </a>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href=" ">report 1 </a>
+                        <a class="collapse-item" href=" ">report 2 </a>
+                        <a class="collapse-item" href=" ">report 3 </a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

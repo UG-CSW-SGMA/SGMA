@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\TipoServicio;
 
-use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {

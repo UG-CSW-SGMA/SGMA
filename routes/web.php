@@ -26,14 +26,15 @@ Route::get('/gestionODA', function () {
     return view('taller.gestionODA');
 });
 
-/*@Rafael1108 creo ruta personalida que apunta a la funcion del del CategoriaController para mostrar modal de eliminar*/
-Route::get('categorias/{id}/del', 'App\Http\Controllers\CategoriaController@del');
+
 
 
 /*
 |--------------------------------------------------------------------------
 | Controllers routes
 |--------------------------------------------------------------------------
+| 
+| Establece el ruteo de los controladores
 |
 */
 
@@ -46,8 +47,11 @@ Route::resource('usuarios', 'App\Http\Controllers\UsuarioController');
 /*
  * Inventario
  */
-
+/*@Rafael1108 se crea ruta personalida que apunta a la funcion del CategoriaController para mostrar modal de eliminar*/
+Route::get('categorias/{id}/del', 'App\Http\Controllers\CategoriaController@del');
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
+
+
 Route::resource('productos', 'App\Http\Controllers\ProductoController');
 
 /*
@@ -55,3 +59,11 @@ Route::resource('productos', 'App\Http\Controllers\ProductoController');
  */
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
+
+/*
+ * Compras
+ */
+/*@Rafael1108 se crea ruta personalida que apunta a la funcion del CategoriaController para mostrar modal de eliminar*/
+Route::get('proveedores/{id}/del', 'App\Http\Controllers\ProveedorController@del');
+Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
+//Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
