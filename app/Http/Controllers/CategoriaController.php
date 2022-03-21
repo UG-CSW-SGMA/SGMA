@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\Notificacion;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\TipoServicio;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
@@ -37,9 +37,7 @@ class CategoriaController extends Controller
     public function create()
     {
         $TipoServicio = new TipoServicio();
-        $tiposServicios = $TipoServicio->getListadoActivos();
-        print_r($tiposServicios);
-        return view('inventario.categorias.create')->with('tiposServicios',);
+        return view('inventario.categorias.create')->with('tiposServicios', $TipoServicio->getListadoActivos());
     }
 
     /**
@@ -50,7 +48,6 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $date = Carbon::now();
         if ($request->get('txtTipoServicio') > 0) {
 
             $Descripcion = "";
@@ -64,7 +61,7 @@ class CategoriaController extends Controller
             $cat_new->Nombre = $request->get('txtNombre');
             $cat_new->Descripcion =  $Descripcion;
             $cat_new->Activo = "1";
-            $cat_new->UserAdd = 0;
+            $cat_new->UserCreated = 0;
             $cat_new->save();
 
             return redirect('/categorias');
@@ -93,7 +90,6 @@ class CategoriaController extends Controller
     public function edit($id)
     {
         $ObjCategoria = $this->CategoriaModel::find($id);
-
         $TipoServicio = new TipoServicio();
 
         return view('inventario.categorias.edit')->with('ObjCategoria', $ObjCategoria)->with('tiposServicios', $TipoServicio->getListadoActivos());
@@ -108,7 +104,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $date = Carbon::now();
+
         $Descripcion = "";
         if (!is_null($request->get('txtDescripcion'))) {
             $Descripcion = $request->get('txtDescripcion');
@@ -118,9 +114,10 @@ class CategoriaController extends Controller
         $categoria_edit->Nombre = $request->get('txtNombre');
         $categoria_edit->Descripcion =  $Descripcion;
         $categoria_edit->Activo =  1;
-        $categoria_edit->UserUpdate = 0;
-        $categoria_edit->save();
-
+        $categoria_edit->UserUpdated = 0;
+        if ($categoria_edit->save() == 1) {
+            //$Notificar->setNotificacion("Categoría actualizada!", "blue", "Mostrar");
+        }
         return redirect('/categorias');
     }
 
@@ -132,5 +129,22 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
+        $categoria_edit = $this->CategoriaModel::find($id);
+        $categoria_edit->Activo =  0;
+        $categoria_edit->save();
+
+        return redirect('/categorias');
+    }
+
+    /**
+     * Muestra el formulario modal para eliminar una categoria.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public  function del($id)
+    {
+        $ObjCategoria = $this->CategoriaModel::find($id);
+        return view('inventario.categorias.delete')->with('ObjCategoria', $ObjCategoria);
     }
 }

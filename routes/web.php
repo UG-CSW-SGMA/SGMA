@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Aquí es donde puede registrar rutas web para su aplicación. Estas
+| las rutas son cargadas por el RouteServiceProvider dentro de un grupo que
+| contiene el grupo de middleware "web". ¡Ahora crea algo grandioso! 
 |
 */
 
@@ -26,7 +26,8 @@ Route::get('/gestionODA', function () {
     return view('taller.gestionODA');
 });
 
-
+/*@Rafael1108 creo ruta personalida que apunta a la funcion del del CategoriaController para mostrar modal de eliminar*/
+Route::get('categorias/{id}/del', 'App\Http\Controllers\CategoriaController@del');
 
 
 /*
