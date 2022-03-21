@@ -24,7 +24,7 @@
                         <th scope="col">Tipo Servicio</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
-                        <th scope="col"></th>
+                        <th style="width: 10%" scope="col"> - </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,10 +33,11 @@
                         <td>{{$articulo->TipoServicioNombre}}</td>
                         <td>{{$articulo->Nombre}}</td>
                         <td>{{$articulo->Descripcion}}</td>
-                        <td>
-                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/{{ $articulo->id}}/edit/" title="Crear Nueva Categoría"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                        <td style="width: 10%">
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/{{ $articulo->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
 
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-danger" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/{{$articulo->id}}/del/"><i class="fas fa-times-circle fa-sm text-white-50"></i></a>
+
                         </td>
                         @endforeach
 
