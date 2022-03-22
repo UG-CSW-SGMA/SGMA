@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Sujeto;
+use GrahamCampbell\ResultType\Success;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use PhpParser\Node\Stmt\TryCatch;
 
 use function PHPUnit\Framework\isEmpty;
@@ -13,6 +16,13 @@ use function PHPUnit\Framework\isNull;
 
 class ClienteController extends Controller
 {
+    protected $ClienteModel;
+
+    public function __construct(Sujeto $cliente)
+    {
+        $this->ClienteModel = $cliente;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,13 +58,9 @@ class ClienteController extends Controller
     {
         $dni = $request->get('dni');
 
-        $encontrado = DB::table('sujetos')
-            ->select('sujetos.*')
-            ->where('sujetos.DNI', '=', $dni)
-            // ->where('sujetos.Activo', '=', 1, 'and', 'sujetos.TipoSujeto', '=', 1, 'and', 'sujetos.DNI', '=', $dni)
-            ->get();
-
-        if (!isset($encontrado)) {
+        $encontrado = $this->ClienteModel->getCliente($dni);
+       
+        if (!$encontrado) {
             $clientes = new Sujeto();
 
             $clientes->TipoSujeto = "1";
@@ -66,18 +72,21 @@ class ClienteController extends Controller
             $clientes->Email = $request->get('email');
             $clientes->Activo = "1";
             $clientes->UserCreated = "0";
-            $clientes->UserCreated = "0";
             $clientes->save();
+            
             // try {
             //     $clientes->save();
             // } catch (QueryException $e) {
             //     return $e->getMessage();
             // }
+            $_SESSION['RegistroCliente-agregado'] = 'true'; 
+            return var_dump($_SESSION);
 
-            return redirect('/clientes');
-        } else {
-            return 'error';
-        }
+            // return redirect('/clientes');
+         } else {
+             $_SESSION['RegistroCliente-error'] = 'true'; 
+             return var_dump($_SESSION);
+         }
     }
 
     /**
