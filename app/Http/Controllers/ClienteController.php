@@ -101,7 +101,26 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = $this->ClienteModel::find($id);
+        $cliente->TipoSujeto = 1;
+        $cliente->Nombre = $request->get('nombre');
+        $cliente->Apellido  = $request->get('apellido');
+        $cliente->Direccion = $request->get('direccion');
+        if (!is_null($request->get('telefono'))) {
+            $cliente->Telefono =  $request->get('telefono');
+        }
+        $cliente->Email = $request->get('email');
+        
+        
+        $cliente->Activo = 1;
+        $cliente->UserUpdated = 0;
+        $cliente->save();
+
+        
+        if ($cliente->save() == 1) {
+            return redirect('/clientes')->with('actualizar', 'ok');
+        }
+        return redirect('/clientes')->with('actualizar', 'failed');
     }
 
     /**

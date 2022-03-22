@@ -24,13 +24,13 @@
             <table class="table table-bordered table-hover" id="tbl_clientes" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>DNI</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>-</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Correo</th>
+                        <th style="width: 10%" scope="col">-</th>
                     </tr>
                 </thead>
 
@@ -43,7 +43,7 @@
                         <td>{{$cliente->Direccion}}</td>
                         <td>{{$cliente->Telefono}}</td>
                         <td>{{$cliente->Email}}</td>
-                        <td>
+                        <td style="width: 10%">
 
                             <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="clientes/{{$cliente->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
 
@@ -76,7 +76,7 @@
 
 <!-- medium modal -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="mediumBody">
 
         </div>
@@ -113,8 +113,25 @@
 </script>
 @endif
 
+@if (session('actualizar')== 'ok')
+<script>
+    Swal.fire(
+        'Actualizado!',
+        'El registro fue actualizado con éxito.',
+        'success'
+    )
+</script>
+@endif
 
-
+@if (session('actualizar')== 'failed')
+<script>
+    Swal.fire(
+        'Error!',
+        'El registro NO fue actualizado con éxito.',
+        'success'
+    )
+</script>
+@endif
 <script>
     $('.formulario-eliminar').submit(function(e) {
         e.preventDefault();
