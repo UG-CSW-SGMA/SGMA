@@ -9,10 +9,10 @@
 
 <form action="vehiculos" method="post">
     @csrf
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="" class="form-label">Placa</label>
         <input id="placa" name="placa" type="text" class="form-control" tabindex="1" required>
-    </div>
+    </div> -->
     <div class="mb-3">
         <label for="" class="form-label">Placa</label>
         <input id="placa" name="placa" type="text" class="form-control" tabindex="1" required>
@@ -49,8 +49,7 @@
     </div>
 
     <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
-        <!-- <button type="submit" class="btn btn-primary" name="action" id="#" value="add" data-dismiss="modal">Guardar</button> -->
+       
         <button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="8">Cerrar</button>
         <button type="submit" class="btn btn-primary" tabindex="9">Guardar</button>
     </div>

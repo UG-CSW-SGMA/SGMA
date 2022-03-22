@@ -44,8 +44,17 @@
                         <td>{{$cliente->Telefono}}</td>
                         <td>{{$cliente->Email}}</td>
                         <td>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="clientes/{{$cliente->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+
+                            <form action="{{route('clientes.destroy',$cliente->id)}}" method="POST" class="d-inline formulario-eliminar">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></button>
+                            </form>
+
+
+
                         </td>
                         @endforeach
                 </tbody>
@@ -92,6 +101,39 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar')== 'ok')
+<script>
+    Swal.fire(
+        'Eliminado!',
+        'El registro fue eliminado con éxito.',
+        'success'
+    )
+</script>
+@endif
+
+
+
+<script>
+    $('.formulario-eliminar').submit(function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Está seguro de eliminar?',
+            text: "El registro se eliminará definitivamente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+    })
+</script>
 <script src="{{ asset('js/validadorCedula.js')}}"></script>
 <script>
     $(document).ready(function() {
@@ -107,7 +149,6 @@
 
         table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
     });
-
 
     // display a modal (small modal)
     $(document).on('click', '#smallButton', function(event) {
@@ -139,6 +180,7 @@
     $(document).on('click', '#mediumButton', function(event) {
         event.preventDefault();
         let href = $(this).attr('data-attr');
+        console.log(href);
         $.ajax({
             url: href,
             beforeSend: function() {
@@ -160,7 +202,6 @@
             timeout: 8000
         })
     });
+    $('#dni').validarCedulaEC();
 </script>
-
-
 @endsection

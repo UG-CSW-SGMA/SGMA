@@ -9,6 +9,15 @@ use App\Models\Vehiculo;
 
 class VehiculoController extends Controller
 {
+    protected $VehiculoModel;
+
+    public function __construct(Vehiculo $vehiculo)
+    {
+        $this->VehiculoModel = $vehiculo;
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,12 +25,7 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculos = DB::table('vehiculos')
-            ->select('vehiculos.*')
-            ->where('vehiculos.Activo', '=', 1)
-            ->get();
-
-        return view('taller.vehiculos.vehiculos')->with('vehiculos', $vehiculos);
+        return view('taller.vehiculos.vehiculos')->with('vehiculos', $this->VehiculoModel->getListadoVehiculos());
     }
 
     /**
@@ -52,7 +56,6 @@ class VehiculoController extends Controller
         $vehiculos->Descripcion = $request->get('descripcion');
         $vehiculos->Activo = "1";
         $vehiculos->UserCreated = "0";
-        $vehiculos->UserCreated = "0";
 
         $vehiculos->Anio = $request->get('anio');
         $vehiculos->Tipo = $request->get('tipo');
@@ -60,7 +63,7 @@ class VehiculoController extends Controller
 
         $vehiculos->save();
 
-        return redirect('/vehiculos');
+        return redirect('/vehiculos')->with('guardar', 'ok');
     }
 
     /**
@@ -105,7 +108,11 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehiculo = $this->VehiculoModel::find($id);
+        $vehiculo->Activo =  0;
+        $vehiculo->save();
+
+        return redirect('/vehiculos')->with('eliminar', 'ok');
 
     }
 }

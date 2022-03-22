@@ -47,8 +47,15 @@
                         <td>{{$vehiculo->Color}}</td>
                         <td>{{$vehiculo->Descripcion}}</td>
                         <td>
-                            <a href="vehiculos/edit({{$vehiculo->id}})" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="vehiculos/destroy({{$vehiculo->id}})" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="vehiculos/{{$vehiculo->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+
+                            <form action="{{route('vehiculos.destroy',$vehiculo->id)}}" method="POST" class="d-inline formulario-eliminar">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></button>
+                            </form>
+           
                         </td>
                         @endforeach
                 </tbody>
@@ -90,6 +97,51 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar')== 'ok')
+<script>
+    Swal.fire(
+        'Eliminado!',
+        'El registro fue eliminado con éxito.',
+        'success'
+    )
+</script>
+@endif
+
+@if (session('guardar')== 'ok')
+<script>
+    Swal.fire(
+        'Guardado!',
+        'El registro fue guardado con éxito.',
+        'success'
+    )
+</script>
+@endif
+
+
+<script>
+    $('.formulario-eliminar').submit(function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Está seguro de eliminar?',
+            text: "El registro se eliminará definitivamente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+    })
+</script>
+
+
+
 <script>
     $(document).ready(function() {
         var table = $('#tbl_vehiculos').DataTable({
