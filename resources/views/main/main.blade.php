@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
     <!-- css personalizado-->
     @yield('css')
@@ -124,8 +125,8 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                    <i class="fa-solid fa-memo"></i>
-                    <span>reportes</span>
+                <i class="fa fa-file" aria-hidden="true"></i>
+                    <span>Reportes</span>
                 </a>
                 <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
