@@ -148,6 +148,5 @@
             timeout: 8000
         })
     });
-    $("txtDNI").validarCedulaEC();
 </script>
 @endsection

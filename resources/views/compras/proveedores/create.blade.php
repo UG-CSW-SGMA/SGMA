@@ -4,18 +4,19 @@
 <h6 class="m-0 font-weight-bold text-primary">Nueva Categoría</h6>
 @endsection
 
-
-
 @section('contenido')
 
-<form class="row g-3" action="proveedores" method="post">
+<form class="row g-3 needs-validation" novalidate action="proveedores" method="post">
     @csrf
-    <div id="errorNotifi"></div>
     <div class="col-md-12">
-        <div class="col-sm-6" style="padding:0">
+        <div class="col-sm-6  has-validation" style="padding:0">
             <label for="txtDNI" class="form-label">DNI</label>
-            <input id="txtDNI" name="txtDNI" type="text" class="form-control" tabindex="1" required>
+            <input id="txtDNI" name="txtDNI" type="text" class="form-control" aria-describedby="msjValidacion_Nombre" tabindex="1" required>
+            <div id="msjValidacion_Nombre" class="invalid-feedback">
+                El proveedor ya se encuentra registrado!
+            </div>
         </div>
+
     </div>
 
     <div class="col-md-6 py-2">
@@ -44,38 +45,55 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="7">Cerrar</button>
-        <button type="submit" class="btn btn-primary" tabindex="8">Guardar</button>
+        <button type="submit" class="btn btn-primary" id="submitbutton" tabindex="8">Guardar</button>
     </div>
 
-</form>
+    <script>
+        // $("txtDNI").validarCedulaEC();
+        $(document).on('keyup', '#txtDNI', function(event) {
+            event.preventDefault();
+            let dni = document.getElementById('txtDNI').value;
+            let href = 'proveedores/' + dni + '/getByDNI';
+            $.ajax({
+                url: href,
+                type: "GET",
+                data: JSON,
+                // contentType: false,
+                // processData: false,
+                success: function(datos) {
+                    let input = document.getElementById("txtDNI");
+                    let button = document.getElementById("submitbutton");
+                    if (datos === '') {
+                        input.classList.add("is-valid");
+                        button.add = "disabled";
+                    } else {
+                        input.classList.add("is-invalid");
+                        button.disabled = "disabled";
+                    }
+                    console.log(datos);
+                }
+            })
+        });
+        (
+            function() {
+                'use strict'
+                var forms = document.querySelectorAll('.needs-validation')
+                Array.prototype.slice.call(forms)
+                    .forEach(function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
 
-@endsection
-
-<script>
-    $(document).on('keyup', '#txtDNI', function(event) {
-        event.preventDefault();
-        let dni = document.getElementById('txtDNI').value;
-        let href = 'proveedores/' + dni + '/getByDNI';
-        $.ajax({
-            url: href,
-            type: "GET",
-            data: JSON,
-            // contentType: false,
-            // processData: false,
-            success: function(datos) {
-                console.log(datos);
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
             }
 
 
+        )()
+    </script>
+</form>
 
-        })
-    });
-</script>
-< !-- < div class="alert alert-danger d-flex align-items-center" role="alert">
-    < svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria - label="Danger:">
-        < use xlink: href="#exclamation-triangle-fill" />
-        < /svg>
-            < div>
-                An example danger alert with an icon < /div>
-                    < / div>
-                        -- >
+@endsection
