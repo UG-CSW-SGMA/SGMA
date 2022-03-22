@@ -52,26 +52,22 @@
 @endsection
 
 <script>
-    $(document).on('keydown', '#txtDNI', function(event) {
+    $(document).on('keyup', '#txtDNI', function(event) {
         event.preventDefault();
-        // 'proveedores/1234455666424324/getByDNI'
-        let href = $(this).attr('data-attr');
+        let dni = document.getElementById('txtDNI').value;
+        let href = 'proveedores/' + dni + '/getByDNI';
         $.ajax({
             url: href,
-            beforeSend: function() {
-                $('#loader').show();
-            },
-            // return the result
-            success: function(result) {
+            type: "GET",
+            data: JSON,
+            // contentType: false,
+            // processData: false,
+            success: function(datos) {
+                console.log(datos);
+            }
 
-            },
-            complete: function() {
 
-            },
-            error: function(jqXHR, testStatus, error) {
 
-            },
-            timeout: 8000
         })
     });
 </script>
