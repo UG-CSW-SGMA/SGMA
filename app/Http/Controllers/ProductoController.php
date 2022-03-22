@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\Notificacion;
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Categoria;
 
 class ProductoController extends Controller
 {
@@ -15,7 +17,7 @@ class ProductoController extends Controller
 
     /**
      * 
-     * Muestra la vista de todas las categorias.
+     * Muestra la vista de todos los productos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,18 +27,21 @@ class ProductoController extends Controller
     }
 
     /**
-     * Mostrar el formulario para crear una nueva categoria.
+     * Mostrar el formulario para crear un nuevo producto.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
         //
-        return view('inventario.productos.create');
+
+        $Categoria = new Categoria();
+        return view('inventario.productos.create')->with('categorias', $Categoria->getListadoActivos());
+
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacena el producto recién creada en el almacenamiento.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -44,10 +49,33 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->get('CategoriaId') > 0) {
+
+            $Descripcion = "";
+            if (!is_null($request->get('Descripcion'))) {
+                $Descripcion = $request->get('Descripcion');
+            }
+
+            $producto_edit = new Producto();
+            $producto_edit->CategoriaId  = $request->get('CategoriaId');;
+            $producto_edit->Codigo = $request->get('Codigo');
+            $producto_edit->Nombre = $request->get('Nombre');
+            $producto_edit->Descripcion =  $Descripcion;
+            $producto_edit->NumeroParte = $request->get('NumeroParte');
+            $producto_edit->Precio = $request->get('Precio');
+            $producto_edit->Costo = $request->get('Costo');      
+            $producto_edit->Activo = "1";
+            $producto_edit->UserCreated = 0;
+            $producto_edit->save();
+
+            return redirect('/productos');
+        } else {
+            return "Error";
+        }
     }
 
     /**
-     * Display the specified resource.
+     * Devuelve un producto.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -58,7 +86,7 @@ class ProductoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar un producto.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -66,10 +94,15 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
+        $ObjProducto = $this->ProductoModel::find($id);
+        $Categoria = new Categoria();
+
+        return view('inventario.productos.edit')->with('ObjProducto', $ObjProducto)->with('categorias', $Categoria->getListadoActivos());
+
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza en Base datos el registro de la tabla producto.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -78,10 +111,30 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $Descripcion = "";
+        if (!is_null($request->get('Descripcion'))) {
+            $Descripcion = $request->get('Descripcion');
+        }
+        $producto_edit = $this->ProductoModel::find($id);
+        $producto_edit->CategoriaId  = $request->get('CategoriaId');;
+        $producto_edit->Codigo = $request->get('Codigo');
+        $producto_edit->Nombre = $request->get('Nombre');
+        $producto_edit->Descripcion =  $Descripcion;
+        $producto_edit->NumeroParte = $request->get('NumeroParte');
+        $producto_edit->Precio = $request->get('Precio');
+        $producto_edit->Costo = $request->get('Costo');      
+        $producto_edit->Activo =  1;
+        $producto_edit->UserUpdated = 0;
+        if ($producto_edit->save() == 1) {
+            
+        }
+        return redirect('/productos');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina en Base de datos el registro de la tabla producto.
+     * Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -89,5 +142,25 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         //
+        $producto_edit = $this->ProductoModel::find($id);
+        $producto_edit->Activo =  0;
+        $producto_edit->save();
+
+        return redirect('/productos');
+        
+        
     }
+
+    /**
+     * Muestra el formulario modal para eliminar un producto.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public  function del($id)
+    {
+        $ObjProducto = $this->ProductoModel::find($id);
+        return view('inventario.productos.delete')->with('ObjProducto', $ObjProducto);
+    }
+
 }
