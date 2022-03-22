@@ -23,7 +23,7 @@
                         <th scope="col">Código</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
-                        <th scope="col"></th>
+                        <th scope="col" style="width: 5%"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,9 +32,9 @@
                         <td scope="row">{{$tipoServicio->id}}</td>
                         <td>{{$tipoServicio->Nombre}}</td>
                         <td>{{$tipoServicio->Descripcion}}</td>
-                        <td>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                        <td style="width: 5%">
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="servicios/{{ $tipoServicio->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                            <!-- <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a> -->
                         </td>
                         @endforeach
 

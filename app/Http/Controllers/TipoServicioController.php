@@ -64,7 +64,8 @@ class TipoServicioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ObjServicio = $this->TipoServicioModel::find($id);
+        return view('parametros.tipoServicio.edit')->with('ObjServicio', $ObjServicio);
     }
 
     /**
