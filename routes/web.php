@@ -65,9 +65,17 @@ Route::resource('productos', 'App\Http\Controllers\ProductoController');
 /*
  * Taller
  */
-Route::resource('clientes', 'App\Http\Controllers\ClienteController');
-Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
+/**
+ * @edgarbasurto
+ * Ruta de metodo de busqueda Ajax, por DNI
+ */
+Route::get('clientes/{dni}/getByDNI', 'App\Http\Controllers\ClienteController@getByDNI');
 
+
+Route::resource('clientes', 'App\Http\Controllers\ClienteController');
+
+
+Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
 /*
  * Compras
  */
@@ -88,4 +96,4 @@ Route::get('proveedores/{id}/del', 'App\Http\Controllers\ProveedorController@del
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
 
 
-//Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
+
