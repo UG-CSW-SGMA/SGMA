@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="col-sm-6  has-validation" style="padding:0">
             <label for="txtDNI" class="form-label">DNI</label>
-            <input id="txtDNI" name="txtDNI" type="text" class="form-control" aria-describedby="msjValidacion_Nombre" tabindex="1" required>
+            <input id="txtDNI" name="txtDNI" class="form-control" maxlength="13" type="number" aria-describedby="msjValidacion_Nombre" tabindex="1" required>
             <div id="msjValidacion_Nombre" class="invalid-feedback">
                 El proveedor ya se encuentra registrado!
             </div>
@@ -21,26 +21,26 @@
 
     <div class="col-md-6 py-2">
         <label for="txtNombre" class="form-label">Nombre</label>
-        <input id="txtNombre" name="txtNombre" type="text" class="form-control" tabindex="2" required>
+        <input id="txtNombre" name="txtNombre" type="text" class="form-control" maxlength="20" tabindex="2" required>
     </div>
 
     <div class="col-md-6 py-2">
         <label for="txtApellido" class="form-label">Apellido</label>
-        <input id="txtApellido" name="txtApellido" type="text" class="form-control" tabindex="3">
+        <input id="txtApellido" name="txtApellido" type="text" class="form-control" maxlength="20" tabindex="3">
     </div>
     <div class="col-md-6 py-2">
         <label for="txtTelefono" class="form-label">Teléfono</label>
-        <input id="txtTelefono" name="txtTelefono" type="text" class="form-control" tabindex="5">
+        <input id="txtTelefono" name="txtTelefono" type="number" class="form-control" maxlength="20" tabindex="5">
     </div>
 
     <div class="col-md-6 py-2">
         <label for="txtEmail" class="form-label">Email</label>
-        <input id="txtEmail" name="txtEmail" type="email" class="form-control" tabindex="6" required>
+        <input id="txtEmail" name="txtEmail" type="email" class="form-control" maxlength="25" tabindex="6" required>
     </div>
 
     <div class="col-md-12 py-2">
         <label for="txtDireccion" class="form-label">Dirección</label>
-        <input id="txtDireccion" name="txtDireccion" type="text" class="form-control" tabindex="4" required>
+        <input id="txtDireccion" name="txtDireccion" type="text" maxlength="125" class="form-control" tabindex="4" required>
     </div>
 
     <div class="modal-footer">
@@ -65,10 +65,10 @@
                     let button = document.getElementById("submitbutton");
                     if (datos === '') {
                         input.classList.add("is-valid");
-                        button.add = "disabled";
+                        button.removeAttribute('disabled', '');
                     } else {
                         input.classList.add("is-invalid");
-                        button.disabled = "disabled";
+                        button.setAttribute('disabled', '');
                     }
                     console.log(datos);
                 }

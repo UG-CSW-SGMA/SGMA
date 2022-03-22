@@ -1,7 +1,7 @@
 @extends('main.layout')
 
 @section('form-title')
-<h6 class="m-0 font-weight-bold text-primary">Editar Categoría</h6>
+<h6 class="m-0 font-weight-bold text-primary">Editar </h6>
 @endsection
 
 @section('contenido')
