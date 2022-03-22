@@ -46,12 +46,28 @@ class Sujeto extends Model
             ->get();
     }
 
-    public function getCliente($dni){
+    /**
+     * @Rafael1108
+     * Método para obtener un vista del listado de proveedores activos. 
+     */
+    public function getProveedorByDNI($DNI)
+    {
+        return DB::table('sujetos')
+            ->select('*')
+            ->where([
+                ['DNI', 'like',  $DNI],
+                ['TipoSujeto', '=', '2'],
+            ])
+            ->first();
+    }
+
+    public function getCliente($dni)
+    {
         $encontrado = DB::table('sujetos')
-        ->select('*')
-        ->where('DNI', '=', $dni)
-        ->get();
-       
+            ->select('*')
+            ->where('DNI', '=', $dni)
+            ->get();
+
         if (!($encontrado->isEmpty())) {
             return TRUE;
         } else {
