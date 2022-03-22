@@ -43,6 +43,7 @@ Route::get('/gestionODA', function () {
  */
 Route::resource('servicios', 'App\Http\Controllers\TipoServicioController');
 Route::resource('usuarios', 'App\Http\Controllers\UsuarioController');
+Route::resource('empresa', 'App\Http\Controllers\EmpresaController');
 
 /*
  * Inventario
@@ -94,6 +95,3 @@ Route::get('proveedores/{DNI}/getByDNI', 'App\Http\Controllers\ProveedorControll
 Route::get('proveedores/{id}/del', 'App\Http\Controllers\ProveedorController@del');
 
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
-
-
-
