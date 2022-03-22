@@ -61,17 +61,18 @@ class Sujeto extends Model
             ->first();
     }
 
-    public function getCliente($dni)
+    /**
+     * @edgarbasurto
+     * Método de busqueda de clientes por el DNI
+     */
+    public function getClienteByDNI($DNI)
     {
-        $encontrado = DB::table('sujetos')
+        return DB::table('sujetos')
             ->select('*')
-            ->where('DNI', '=', $dni)
-            ->get();
-
-        if (!($encontrado->isEmpty())) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
+            ->where([
+                ['DNI', 'like',  $DNI],
+                ['TipoSujeto', '=', '1'],
+            ])
+            ->first();
     }
 }

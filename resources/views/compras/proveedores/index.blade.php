@@ -38,7 +38,7 @@
                         <td>{{$proveedor->Telefono}}</td>
                         <td>{{$proveedor->Email}}</td>
                         <td style="width: 10%">
-                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="proveedores/{{ $proveedor->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="proveedores/{{$proveedor->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
 
                             <a class="d-none d-sm-inline-block btn btn-sm btn-danger" data-toggle="modal" id="smallButton" data-target="#smallModal" data-attr="proveedores/{{$proveedor->id}}/del/"><i class="fas fa-times-circle fa-sm text-white-50"></i></a>
                         </td>
@@ -148,6 +148,5 @@
             timeout: 8000
         })
     });
-    $("txtDNI").validarCedulaEC();
 </script>
 @endsection

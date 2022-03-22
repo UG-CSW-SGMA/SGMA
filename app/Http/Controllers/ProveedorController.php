@@ -79,7 +79,7 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        $ObjSujeto = $this->Sujeto::find($id);
+        $ObjSujeto = $this->ProveedorModel::find($id);
 
         return view('compras.proveedores.edit')->with('ObjSujeto', $ObjSujeto);
     }
@@ -93,21 +93,24 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $sujeto_edit = $this->ProveedorModel::find($id);
+        $sujeto_edit->TipoSujeto = 2;
+        $sujeto_edit->Nombre = $request->get('txtNombre');
+        $sujeto_edit->Apellido = $request->get('txtApellido');
+        $sujeto_edit->Direccion = $request->get('txtDireccion');
+        if (!is_null($request->get('txtTelefono'))) {
+            $sujeto_edit->Telefono =  $request->get('txtTelefono');
+        }
+        $sujeto_edit->Email = $request->get('txtEmail');
+        $sujeto_edit->Activo = 1;
+        $sujeto_edit->UserUpdated = 0;
+        $sujeto_edit->save();
 
-        // $Descripcion = "";
-        // if (!is_null($request->get('txtDescripcion'))) {
-        //     $Descripcion = $request->get('txtDescripcion');
-        // }
-        // $categoria_edit = $this->CategoriaModel::find($id);
-        // $categoria_edit->TipoServicioId = $request->get('txtTipoServicio');;
-        // $categoria_edit->Nombre = $request->get('txtNombre');
-        // $categoria_edit->Descripcion =  $Descripcion;
-        // $categoria_edit->Activo =  1;
-        // $categoria_edit->UserUpdated = 0;
-        // if ($categoria_edit->save() == 1) {
-        //     //$Notificar->setNotificacion("Categoría actualizada!", "blue", "Mostrar");
-        // }
-        // return redirect('/categorias');
+        return redirect('/proveedores');
+        if ($sujeto_edit->save() == 1) {
+            //$Notificar->setNotificacion("Categoría actualizada!", "blue", "Mostrar");
+        }
+        return redirect('/proveedores');
     }
 
     /**

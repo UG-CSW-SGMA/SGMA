@@ -30,12 +30,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = DB::table('sujetos')
-            ->select('sujetos.*')
-            ->where('sujetos.Activo', '=', 1, 'and', 'sujetos.TipoSujeto', '=', 1)
-            ->get();
-
-        return view('taller.clientes.clientes')->with('clientes', $clientes);
+        return view('taller.clientes.clientes')->with('clientes', $this->ClienteModel->getListadoClientes());
     }
 
     /**
@@ -57,36 +52,20 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $dni = $request->get('dni');
+        $clientes = new Sujeto();
 
-        $encontrado = $this->ClienteModel->getCliente($dni);
-       
-        if (!$encontrado) {
-            $clientes = new Sujeto();
+        $clientes->TipoSujeto = "1";
+        $clientes->DNI = $dni;
+        $clientes->Nombre = $request->get('nombre');
+        $clientes->Apellido  = $request->get('apellido');
+        $clientes->Direccion = $request->get('direccion');
+        $clientes->Telefono = $request->get('telefono');
+        $clientes->Email = $request->get('email');
+        $clientes->Activo = "1";
+        $clientes->UserCreated = "0";
+        $clientes->save();
 
-            $clientes->TipoSujeto = "1";
-            $clientes->DNI = $dni;
-            $clientes->Nombre = $request->get('nombre');
-            $clientes->Apellido  = $request->get('apellido');
-            $clientes->Direccion = $request->get('direccion');
-            $clientes->Telefono = $request->get('telefono');
-            $clientes->Email = $request->get('email');
-            $clientes->Activo = "1";
-            $clientes->UserCreated = "0";
-            $clientes->save();
-            
-            // try {
-            //     $clientes->save();
-            // } catch (QueryException $e) {
-            //     return $e->getMessage();
-            // }
-            $_SESSION['RegistroCliente-agregado'] = 'true'; 
-            return var_dump($_SESSION);
-
-            // return redirect('/clientes');
-         } else {
-             $_SESSION['RegistroCliente-error'] = 'true'; 
-             return var_dump($_SESSION);
-         }
+        return redirect('/clientes')->with('guardar', 'ok');
     }
 
     /**
@@ -108,7 +87,9 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = $this->ClienteModel::find($id);
+
+        return view('taller.clientes.edit')->with('cliente', $cliente);
     }
 
     /**
@@ -120,7 +101,26 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = $this->ClienteModel::find($id);
+        $cliente->TipoSujeto = 1;
+        $cliente->Nombre = $request->get('nombre');
+        $cliente->Apellido  = $request->get('apellido');
+        $cliente->Direccion = $request->get('direccion');
+        if (!is_null($request->get('telefono'))) {
+            $cliente->Telefono =  $request->get('telefono');
+        }
+        $cliente->Email = $request->get('email');
+        
+        
+        $cliente->Activo = 1;
+        $cliente->UserUpdated = 0;
+        $cliente->save();
+
+        
+        if ($cliente->save() == 1) {
+            return redirect('/clientes')->with('actualizar', 'ok');
+        }
+        return redirect('/clientes')->with('actualizar', 'failed');
     }
 
     /**
@@ -131,6 +131,16 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $cliente = $this->ClienteModel::find($id);
+        $cliente->Activo =  0;
+        $cliente->save();
+
+        return redirect('/clientes')->with('eliminar', 'ok');
+    }
+
+    public function getByDNI($DNI)
+    {
+        return $this->ClienteModel->getClienteByDNI($DNI);
     }
 }
