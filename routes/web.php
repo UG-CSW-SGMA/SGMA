@@ -51,7 +51,7 @@ Route::resource('usuarios', 'App\Http\Controllers\UsuarioController');
 Route::get('categorias/{id}/del', 'App\Http\Controllers\CategoriaController@del');
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
 
-
+Route::get('productos/{id}/del', 'App\Http\Controllers\ProductoController@del');
 Route::resource('productos', 'App\Http\Controllers\ProductoController');
 
 /*

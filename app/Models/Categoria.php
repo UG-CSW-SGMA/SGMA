@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\DB;
 class Categoria extends Model
 {
     use HasFactory;
+    /**
+     * @AndresPrado
+     * Método para obtener el listado de los categorias activas. 
+     */
+    public function getListadoActivos()
+    {
+        return DB::table('categorias')
+            ->where('categorias.Activo', '=', 1)
+            ->get();
+    }
+
 
     /**
      * @Rafael1108
