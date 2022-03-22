@@ -10,6 +10,7 @@
 
 <form class="row g-3" action="proveedores" method="post">
     @csrf
+    <div id="errorNotifi"></div>
     <div class="col-md-12">
         <div class="col-sm-6" style="padding:0">
             <label for="txtDNI" class="form-label">DNI</label>
@@ -48,6 +49,37 @@
 
 </form>
 
-
-
 @endsection
+
+<script>
+    $(document).on('keydown', '#txtDNI', function(event) {
+        event.preventDefault();
+        // 'proveedores/1234455666424324/getByDNI'
+        let href = $(this).attr('data-attr');
+        $.ajax({
+            url: href,
+            beforeSend: function() {
+                $('#loader').show();
+            },
+            // return the result
+            success: function(result) {
+
+            },
+            complete: function() {
+
+            },
+            error: function(jqXHR, testStatus, error) {
+
+            },
+            timeout: 8000
+        })
+    });
+</script>
+< !-- < div class="alert alert-danger d-flex align-items-center" role="alert">
+    < svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria - label="Danger:">
+        < use xlink: href="#exclamation-triangle-fill" />
+        < /svg>
+            < div>
+                An example danger alert with an icon < /div>
+                    < / div>
+                        -- >

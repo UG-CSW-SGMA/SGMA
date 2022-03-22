@@ -131,9 +131,20 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public  function del($id)
+    public function del($id)
     {
         $ObjProveedor = $this->ProveedorModel::find($id);
         return view('compras.proveedores.delete')->with('ObjProveedor', $ObjProveedor);
+    }
+
+    /**
+     * Función que busca a un proveedor por el DNI.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getByDNI($DNI)
+    {
+        return $this->ProveedorModel->getProveedorByDNI($DNI);
     }
 }

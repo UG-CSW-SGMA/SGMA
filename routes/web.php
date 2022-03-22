@@ -47,10 +47,14 @@ Route::resource('usuarios', 'App\Http\Controllers\UsuarioController');
 /*
  * Inventario
  */
-/*@Rafael1108 se crea ruta personalida que apunta a la funcion del CategoriaController para mostrar modal de eliminar*/
+
+/*
+*@Rafael1108 
+*Se crea ruta personalida que apunta a la funcion del 
+*CategoriaController para mostrar modal de eliminar
+*/
 Route::get('categorias/{id}/del', 'App\Http\Controllers\CategoriaController@del');
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
-
 
 Route::resource('productos', 'App\Http\Controllers\ProductoController');
 
@@ -63,7 +67,21 @@ Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
 /*
  * Compras
  */
-/*@Rafael1108 se crea ruta personalida que apunta a la funcion del CategoriaController para mostrar modal de eliminar*/
+
+/*
+ *@Rafael1108 
+ *Ruteo de metodos de busqueda Ajax, busqueda por DNI
+ */
+Route::get('proveedores/{DNI}/getByDNI', 'App\Http\Controllers\ProveedorController@getByDNI');
+
+/*
+ *@Rafael1108 
+ *Se crea ruta personalida que apunta a la funcion del
+ *CategoriaController para mostrar modal de eliminar
+ */
 Route::get('proveedores/{id}/del', 'App\Http\Controllers\ProveedorController@del');
+
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
+
+
 //Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
