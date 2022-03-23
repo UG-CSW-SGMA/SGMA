@@ -1,12 +1,17 @@
 @extends('main.main')
 
+@section ('css')
+<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
+@endsection
+
 @section('contenido')
 
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-2 text-gray-800">Orden de atención</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#newOrderModal"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Orden de Atención</a>
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="ordenAtencion/create" title="Crear Nueva Orden de Atención"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Orden de Atención</a>
 </div>
 
 <!-- DataTales Example -->

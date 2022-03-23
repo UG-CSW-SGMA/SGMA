@@ -5,7 +5,6 @@
 <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
 @endsection
 
-
 @section('contenido')
 
 <!-- Page Heading -->
