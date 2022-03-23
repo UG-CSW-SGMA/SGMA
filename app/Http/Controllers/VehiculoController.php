@@ -83,7 +83,9 @@ class VehiculoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehiculo = $this->VehiculoModel::find($id);
+        $clientes = new Sujeto();
+        return view('taller.vehiculos.edit')->with('vehiculo',$vehiculo)->with('clientes', $clientes->getListadoClientes());
     }
 
     /**
