@@ -31,9 +31,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //  
+        return view('parametros.usuario.create');
     }
-
+    
     /**
      * Almacena la categoría recién creada en el almacenamiento.
      *
@@ -42,7 +42,60 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $datosUsuario =request()->all();
+        // $usuarios = new Usuario();
+        // $usuarios->UsuarioCreacion = "0";
+        // $usuarios->UsuarioActualizacion = "0";
+        
+        // $datosUsuario = request()->except('_token');
+  
+       
+        // Usuario::insert($datosUsuario);
+     
+        // return response ()->json($datosUsuario);
+    
+        
+        $request->validate([
+            'TipoRol'=>'required',
+            'NickName'=>'required',
+            'Email'=>'required',
+            'NombreCompleto'=>'required',
+            'PasswordSALT'=>'required',
+            'PasswordHASH'=>'required',
+            'Activo'=>'required',
+        ]);
+
+        // // $data->UsuarioCreacion = "2022 -03 -19 03: 11: 33";
+        // // $data->UsuarioActualizacion = "2022 -03 -19 03: 11: 33";
+        $data=new Usuario;
+        $data->id=$request->id;
+        $data->TipoRol=$request->TipoRol;
+        $data->NickName=$request->NickName;
+        $data->Email=$request->Email;
+        $data->NombreCompleto=$request->NombreCompleto;
+        $data->PasswordSALT=password_hash($request->PasswordSALT,PASSWORD_DEFAULT,array('cost' => 9));
+        $data->PasswordHASH=password_hash($request->PasswordHASH, PASSWORD_DEFAULT, array('cost' => 9));
+        // $paswordHASH = password_hash( $data->PasswordHASH, PASSWORD_DEFAULT);
+        $data->Activo = "1";
+        $data->UsuarioCreacion = "1";
+        $data->UserCreated = "1";
+        // if($request->PasswordSALT != $request->PasswordHASH){
+        //     echo "contraseñas distintas";
+
+        // }else{
+        //     $data->save();
+        //     return redirect('/usuarios')->with('success','Data has been added.');
+        // }
+        $data->save();
+        return redirect('/usuarios')->with('success','Data has been added.');
+        
+
+        
+        // if($ref=='front'){
+        //     return redirect('register')->with('success','Data has been saved.');
+        // }
+
+        
     }
 
     /**
@@ -65,6 +118,12 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         //
+        // $data= Usuario::find($id);
+        // return view('parametros.usuario.edit',['data'=>$data]);
+        $ObjUsuario = $this->UsuarioModel::find($id);
+        $usuarios = new Usuario();
+
+        return view('parametros.usuario.edit')->with('ObjUsuario', $ObjUsuario)->with('usuarios', $usuarios->getListadoActivos());
     }
 
     /**
@@ -77,6 +136,38 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // $datosUsuario = request()->except(['_token', '_method']);  //Evita que tomemos valores innecesarios (toker y method)
+        // Usuario::wherE('id','=',$id)->update($datosUsuario);//ejecuto la intrucción where buscando el id que fue solicitado y hacemos un update usando la información de datos usuarios
+        // $usuario = Usuario::findOrFail($id);
+        // return redirect('/usuarios');
+        $request->validate([
+            'TipoRol'=>'required',
+            'NickName'=>'required',
+            'Email'=>'required',
+            'NombreCompleto'=>'required',
+            'PasswordSALT'=>'required',
+            'PasswordHASH'=>'required',
+            'Activo'=>'required'
+        ]);
+
+       
+        
+        $data=Usuario::find($id);
+        $data->TipoRol=$request->TipoRol;
+        $data->NickName=$request->NickName;
+        $data->Email=$request->Email;
+        $data->NombreCompleto=$request->NombreCompleto;
+      
+        $data->PasswordSALT=password_hash($request->PasswordSALT,PASSWORD_DEFAULT,array('cost' => 9));
+        $data->PasswordHASH=password_hash($request->PasswordHASH, PASSWORD_DEFAULT, array('cost' => 9));
+
+        
+        $data->Activo = "1";
+        $data->UsuarioCreacion = "1";
+        $data->UserCreated = "0";
+       
+        $data->save();
+        return redirect('/usuarios')->with('success','Data has been updated.');
     }
 
     /**
@@ -87,6 +178,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
+        Usuario::destroy($id);
+        return redirect('usuarios');
     }
+   
 }

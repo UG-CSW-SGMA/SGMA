@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+
+
+Route::get('/', [LoginController::class, 'login']); 
+Route::post('/', [LoginController::class, 'check_login']);
+Route::get('/logout', [LoginController::class, 'logout']); 
+
+//sistema login ↑
+
 
 Route::get('dashboard', function () {
     return view('dashboard');

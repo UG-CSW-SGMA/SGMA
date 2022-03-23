@@ -17,7 +17,7 @@ class Usuario extends Model
     public function getListadoActivos()
     {
         return DB::table('usuarios')
-            ->select('usuarios.TipoRol', 'usuarios.NickName', 'usuarios.NombreCompleto')
+            ->select('id','usuarios.TipoRol', 'usuarios.NickName', 'usuarios.NombreCompleto')
             ->where('usuarios.Activo', '=', 1)
             ->get();
     }

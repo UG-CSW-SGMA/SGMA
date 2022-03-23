@@ -12,12 +12,12 @@
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h6 class="m-0 font-weight-bold text-primary">Usuarios</h6>
-            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="categorias/create" title="Crear "><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Usuario</a>
+            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="usuarios/create" title="Crear "><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Usuario</a>
         </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="tbl_categorias" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+            <table id="tbl_usuarios" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">Perfil</th>
@@ -33,9 +33,15 @@
                         <td>{{$usuario->NickName}}</td>
                         <td>{{$usuario->NombreCompleto}}</td>
                         <td>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i></a>
-                            <a href="#" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></a>
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="usuarios/{{$usuario->id}}/edit"><i class="fas fa-edit fa-sm text-white-50"></i></a>
+                            <form method="POST" action="{{url('/usuarios/'.$usuario->id)}}">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                          
+                            <button class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"  type="submit" onclick="return confirm('¿Estas seguro de borrar al usuario: {{$usuario->NickName}}?');"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></button>
+                            </form>
                         </td>
+                    
                         @endforeach
 
                 </tbody>
@@ -62,6 +68,8 @@
         </div>
     </div>
 </div>
+
+
 @endsection
 @section ('js')
 
@@ -78,7 +86,7 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
 <script>
     $(document).ready(function() {
-        var table = $('#tbl_categorias').DataTable({
+        var table = $('#tbl_usuarios').DataTable({
             lengthChange: false,
             buttons: {
                 buttons: ['copy', 'csv', 'excel']
