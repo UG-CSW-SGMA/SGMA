@@ -405,10 +405,10 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
-
+    @php $path =Request::root(); @endphp
     <script>
         $(document).ready(function() {
-            let href = 'empresa/0';
+            let href = '{{$path}}/empresa/0';
             $.ajax({
                 url: href,
                 type: "GET",
