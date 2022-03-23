@@ -46,7 +46,16 @@ class ReportesController extends Controller
      */
     public function show($id)
     {
-        //
+        switch ($id) {
+
+            case 2:
+                /* retorna la vista en funcion del id del reporte que se requiere*/
+                return view('reportes.nuevosClientes');
+                break;
+
+            default:
+                return response()->json(['error' => 'Reporte no encontrado!'], 500);
+        }
     }
 
     /**

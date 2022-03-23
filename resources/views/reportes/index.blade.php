@@ -18,8 +18,32 @@
         <div class="row row-cols-1 row-cols-md-2 g-4 tile-container">
             <div class="col-xl-3 col-md-6">
 
-                <a class="tile" href="/productos">
+                <a class="tile" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="reportes/1">
                     <div class="tile-tittle">Log de Usuarios</div>
+                    <div class="card-body text-center">
+                        <div class="tile-icon">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-xl-3 col-md-6">
+
+                <a class="tile" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="reportes/2">
+                    <div class="tile-tittle">Nuevos Clientes</div>
+                    <div class="card-body text-center">
+                        <div class="tile-icon">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+
+                <a class="tile" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="reportes/3">
+                    <div class="tile-tittle">Autopartes Vendidas</div>
                     <div class="card-body text-center">
                         <div class="tile-icon">
                             <i class="fa fa-archive" aria-hidden="true"></i>
@@ -29,17 +53,22 @@
             </div>
             <div class="col-xl-3 col-md-6">
 
-                <a class="tile" href="/categorias">
-                    <div class="tile-tittle">Categorías</div>
+                <a class="tile" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="reportes/4">
+                    <div class="tile-tittle">Catálogo de Productos</div>
                     <div class="card-body text-center">
                         <div class="tile-icon">
-                            <i class="fa fa-tags" aria-hidden="true"></i>
+                            <i class="fa fa-archive" aria-hidden="true"></i>
                         </div>
                     </div>
                 </a>
             </div>
-
-
+        </div>
+    </div>
+</div>
+<!-- medium modal -->
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="mediumBody">
 
         </div>
     </div>
@@ -47,15 +76,26 @@
 @endsection
 
 @section ('js')
-@if (session('actualizar')== 'ok')
+
 <script>
-    Swal.fire(
-        'Actualizado!',
-        'El registro fue actualizado con éxito.',
-        'success'
-    )
+    // display a modal (medium modal)
+    $(document).on('click', '#mediumButton', function(event) {
+        event.preventDefault();
+        let href = $(this).attr('data-attr');
+        $.ajax({
+            url: href,
+            // return the result
+            success: function(result, textStatus, XMLHttpRequest) {
+                $('#mediumBody').html(result).show();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+                $('#mediumBody').html('<div class="modal-header">Reportes</div><div class="modal-body"><div><h6 class="m-0 font-weight-bold text-primary text-center">Reporte no encontrado!</h6></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="7">ok</button>').show();
+            },
+            timeout: 8000
+        })
+    });
 </script>
-@endif
 
 
 @endsection
