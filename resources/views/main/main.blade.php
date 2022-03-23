@@ -81,8 +81,7 @@
                     </div>
                 </div>
             </li>
-
-
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-tools"></i>
@@ -90,7 +89,7 @@
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="gestionODA">Gestión ODA</a>
+                        <a class="collapse-item" href="gestionODA">Orden de atención</a>
                         <a class="collapse-item" href="clientes">Clientes</a>
                         <a class="collapse-item" href="vehiculos">Vehículos</a>
                     </div>
