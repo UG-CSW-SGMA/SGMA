@@ -76,8 +76,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="categorias">Categorías</a>
-                        <a class="collapse-item" href="productos">Productos</a>
+                        <a class="collapse-item" href="/categorias">Categorías</a>
+                        <a class="collapse-item" href="/productos">Productos</a>
                     </div>
                 </div>
             </li>
@@ -89,9 +89,9 @@
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="ordenAtencion">Orden de atención</a>
-                        <a class="collapse-item" href="clientes">Clientes</a>
-                        <a class="collapse-item" href="vehiculos">Vehículos</a>
+                        <a class="collapse-item" href="/ordenAtencion">Orden de atención</a>
+                        <a class="collapse-item" href="/clientes">Clientes</a>
+                        <a class="collapse-item" href="/vehiculos">Vehículos</a>
                     </div>
                 </div>
             </li>
@@ -103,8 +103,8 @@
                 </a>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="compras">Compras</a>
-                        <a class="collapse-item" href="proveedores">Proveedores</a>
+                        <a class="collapse-item" href="/compras">Compras</a>
+                        <a class="collapse-item" href="/proveedores">Proveedores</a>
                     </div>
                 </div>
             </li>
@@ -132,9 +132,9 @@
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="empresa">Empresa</a>
-                        <a class="collapse-item" href="usuarios">Usuarios</a>
-                        <a class="collapse-item" href="servicios">Servicios</a>
+                        <a class="collapse-item" href="/empresa">Empresa</a>
+                        <a class="collapse-item" href="/usuarios">Usuarios</a>
+                        <a class="collapse-item" href="/servicios">Servicios</a>
                     </div>
                 </div>
             </li>
