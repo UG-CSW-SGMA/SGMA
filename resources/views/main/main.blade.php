@@ -168,7 +168,8 @@
 
                     <!-- Topbar Search -->
                     <div>
-                        <h4 id="MyEmpresa"></h4>
+                        <h5 class="fw-bold" id="MyEmpresa">
+                        </h5>
                     </div>
 
                     <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -419,8 +420,7 @@
                     if (datos !== '') {
                         let valor = datos[0];
                         let empresa = document.getElementById("MyEmpresa");
-                        empresa.innerText = valor.RazonSocial;
-                        console.log(valor.RazonSocial);
+                        empresa.innerText = valor.NombreComercial + " - " + valor.RazonSocial;
                     }
 
                 }
