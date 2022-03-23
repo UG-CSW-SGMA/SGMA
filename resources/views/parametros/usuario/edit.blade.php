@@ -12,8 +12,39 @@
     @method('PUT')
 
         <div class="doble">
-            <label for="" class="form-label">Tipo de rol</label>
-            <input required=""  class="form-control" type="number" id="TipoRol" name='TipoRol' placeholder="Ingrese el rol de usuario"value="{{$ObjUsuario->TipoRol}}">
+            <label for="" class="form-label">Tipo de rol</label><br>
+            <select required="" id="selector" class="form-label" name="TipoRol">
+            <option class="form-label" value="">Tipo rol</option>
+            
+			<option class="form-label" value="1"
+            
+            <?php if($ObjUsuario->TipoRol == "1"){
+                echo "selected";}
+                
+                ?>
+                >Administrador</option>
+            
+			<option class="form-label" value="2"
+            <?php if($ObjUsuario->TipoRol == "2"){
+                echo "selected";}
+                
+                ?>
+            >Gerente</option>
+
+            <option class="form-label" value="3"
+            <?php if($ObjUsuario->TipoRol == "3"){
+                echo "selected";}
+                
+                ?>
+            >Mecánico</option>
+            <option class="form-label" value="4"
+            <?php if($ObjUsuario->TipoRol == "4"){
+                echo "selected";}
+                
+                ?>
+            >Vendedor</option>
+            
+            </select><br>
             <label for="" class="form-label">Nickname</label>
             <input required=""  class="form-control" type="text" name="NickName" id="NickName" placeholder="Ingrese su nickname o apodo" value="{{$ObjUsuario->NickName}}">
             <label for="" class="form-label">Correo electronico</label>
@@ -28,26 +59,7 @@
             <input required=""  class="form-control" type="password" name="PasswordHASH" id="PasswordHASH" placeholder="Ingrese su contraseña" value="{{$ObjUsuario->PasswordHASH}}">
             </div>
             <br>
-            <label for="" class="form-label">Estado de usuario</label><br>
-            <select required="" id="selector" class="form-label" name="Activo">
-            <option class="form-label" value="">Estado de usuario</option>
             
-			<option class="form-label" value="0"
-            
-            <?php if($ObjUsuario->Activo == "0"){
-                echo "selected";}
-                
-                ?>
-                >0</option>
-            
-			<option class="form-label" value="1"
-            <?php if($ObjUsuario->Activo == "1"){
-                echo "selected";}
-                
-                ?>
-            >1</option>
-            
-            </select>
 
         </div>
         <br>

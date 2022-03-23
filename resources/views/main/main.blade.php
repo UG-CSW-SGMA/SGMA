@@ -11,11 +11,7 @@
 
     <title>SGMA - Dashboard</title>
 
-    @if(!Session::has('usuarioData'))
-    <script type="text/javascript">
-        window.location.href = "{{url('/')}}"
-    </script>
-    @endif
+    
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

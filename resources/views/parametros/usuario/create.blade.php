@@ -11,8 +11,16 @@
     @csrf
 
         <div class="doble">
-            <label for="" class="form-label">Tipo de rol</label>
-            <input required=""  class="form-control" type="number" id="TipoRol" name='TipoRol' placeholder="Ingrese el rol de usuario">
+            <label for="" class="form-label">Tipo de rol</label><br>
+            <select required="" id="selector" class="form-label" name="TipoRol">
+                <option class="form-label" value="">Estado de usuario</option>
+                <option class="form-label" value="1">Administrador</option>
+                <option class="form-label" value="2">Gerente</option>
+                <option class="form-label" value="3">Mecánico</option>
+                <option class="form-label" value="4">Vendedor</option>
+
+            </select><br>
+            {{-- <input required=""  class="form-control" type="number" id="TipoRol" name='TipoRol' placeholder="Ingrese el rol de usuario"> --}}
             <label for="" class="form-label">Nickname</label>
             <input required=""  class="form-control" type="text" name="NickName" id="NickName" placeholder="Ingrese su nickname o apodo">
             <label for="" class="form-label">Correo electronico</label>
@@ -27,12 +35,8 @@
             <input required=""  class="form-control" type="password" name="PasswordHASH" id="PasswordHASH" placeholder="Ingrese su contraseña">
             </div>
             <br>
-            <label for="" class="form-label">Estado de usuario</label><br>
-            <select required="" id="selector" class="form-label" name="Activo">
-            <option class="form-label" value="">Estado de usuario</option>
-			<option class="form-label" value="0">0</option>
-			<option class="form-label" value="1">1</option>
-            </select>
+
+            
 
         </div>
         <br>
