@@ -29,17 +29,6 @@ class UsuarioSeeder extends Seeder
         $usuario->UserCreated = 1;
         $usuario->save();
 
-        $usuario2 = new Usuario();
-        $usuario2->TipoRol = 4;
-        $usuario2->NickName = "vendedor";
-        $usuario2->Email = "vendedor@hotmail.com";
-        $usuario2->NombreCompleto = "vendedor";
-        $usuario2->PasswordSALT = password_hash("vendedor",PASSWORD_DEFAULT,array('cost' => 9));
-        $usuario2->PasswordHASH = password_hash("vendedor",PASSWORD_DEFAULT,array('cost' => 9));;
-        $usuario2->Activo = 1;
-        $usuario2->UsuarioCreacion = 1;
-        $usuario2->UserCreated = 1;
 
-        $usuario2->save();
     }
 }
