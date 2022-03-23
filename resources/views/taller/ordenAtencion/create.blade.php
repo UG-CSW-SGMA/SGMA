@@ -1,70 +1,19 @@
 @extends('main.main')
 
-
-<!-- <h6 class="m-0 font-weight-bold text-primary">Nueva Orden de Atencion</h6> -->
-
-
-
+@section ('css')
+<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
+@endsection
 
 @section('contenido')
-<!-- Page Heading
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-2 text-gray-800"> <b> Nueva Orden de Atencion </b> - Nº 2022ODA-0004</h1>
-</div> -->
 
-<!-- <form action="ordenAtencion" class="row g-3 needs-validation" novalidate method="post">
-    @csrf
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Numero ODA</label>
-        <input id="numero" name="numero" type="number" class="form-control" tabindex="1" required>
-    </div>
-
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Fecha de ingreso</label>
-        <input id="fecha" name="fecha" type="date" class="form-control" tabindex="2" required value="">
-    </div>
-
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Documento</label>
-        <input id="documento" name="documento" type="text" class="form-control" tabindex="3" required>
-    </div>
-
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Cliente</label>
-        <input id="cliente" name="cliente" type="text" class="form-control" tabindex="4">
-    </div>
-
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Teléfono</label>
-        <input id="telefono" name="telefono" type="text" class="form-control" tabindex="5">
-    </div>
-
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Dirección</label>
-        <input id="direccion" name="direccion" type="direccion" class="form-control" tabindex="6">
-    </div>
-
-    <div class="col-md-6 py-2">
-        <label for="" class="form-label">Email</label>
-        <input id="email" name="email" type="email" class="form-control" tabindex="7">
-    </div>
-
-    <div class="modal-footer">
-
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="7">Cerrar</button>
-        <button type="submit" class="btn btn-primary" tabindex="8">Guardar</button>
-    </div>
-
-</form> -->
-
-
-
-<form class="user">
+<form>
     <div class="card shadow mb-4">
         <div class="card-header">
             <div class="row">
                 <div class="col-7">
-                    <h5 class="card-title"> <b> Nueva Orden de Atencion </b> - Nº 2022ODA-0004</h5>
+                    <h4 class="card-title"> <b> Nueva Orden de Atencion </b> </h4>
+                    <h5> Nº 2022ODA-0004</h5>
                 </div>
                 <div class="col-5">
                     <div class="col text-left">
@@ -78,23 +27,9 @@
         </div>
         <div class="card-body">
             <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <div class="form-group">
-                        <h5 class="modal-title">Datos del cliente</h5>
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por nombres o DNI..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <textarea class="form-control" name="datosCliente" id="datosCliente" cols="50" rows="4" placeholder="Datos del cliente..."></textarea>
-                    </div>
-                </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <h5 class="modal-title">Datos del Vehículo</h5>
+                        <h5 class="title">Datos del Vehículo</h5>
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por placa..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -103,7 +38,21 @@
                                 </button>
                             </div>
                         </div>
-                        <textarea class="form-control" name="datosVehiculo" id="datosVehiculo" cols="50" rows="4" placeholder="Datos del vehículo..."></textarea>
+                        <textarea class="form-control" readonly name="datosVehiculo" id="datosVehiculo" cols="50" rows="4" placeholder="Datos del vehículo..."></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="form-group">
+                        <h5 class="title">Datos del cliente</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por nombres o DNI..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="form-control" readonly name="datosCliente" id="datosCliente" cols="50" rows="4" placeholder="Datos del cliente..."></textarea>
                     </div>
                 </div>
             </div>
@@ -111,7 +60,7 @@
             <div class="form-group">
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <h5 class="modal-title">Atención</h5> <br>
+                        <h5 class="title">Atención</h5> <br>
                         <div class="form-group">
                             <div class="text-left" style="margin-left: 20px; align-self:center;">
                                 <label>Estado: </label>
@@ -119,10 +68,10 @@
                             <div class="col-sm-8">
                                 <select class="form-select" name="estado" id="estado">
                                     <option value="0" disabled selected>Seleccione una opcion...</option>
-                                    <option value="En espera">En espera</option>
-                                    <option value="Pendiente">Pendiente</option>
-                                    <option value="En proceso">En proceso</option>
-                                    <option value="Atendido">Atendido</option>
+                                    <option value="1">Activo</option>
+                                    <option value="2">En Atención</option>
+                                    <option value="3">Cerrado</option>
+                                    <option value="4">No Atendido</option>
                                 </select>
                             </div>
                         </div>
@@ -142,7 +91,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <h5 class="modal-title">Tipo de servicio</h5>
+                            <h5 class="title">Tipo de servicio</h5>
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
@@ -151,7 +100,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <textarea class="form-control" name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea>
+                            <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -166,6 +115,74 @@
 </form>
 
 
+
+@endsection
+
+
+
+
+@section ('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar')== 'ok')
+<script>
+    Swal.fire(
+        'Eliminado!',
+        'El registro fue eliminado con éxito.',
+        'success'
+    )
+</script>
+@endif
+
+@if (session('actualizar')== 'ok')
+<script>
+    Swal.fire(
+        'Actualizado!',
+        'El registro fue actualizado con éxito.',
+        'success'
+    )
+</script>
+@endif
+
+@if (session('actualizar')== 'failed')
+<script>
+    Swal.fire(
+        'Error!',
+        'El registro NO fue actualizado con éxito.',
+        'error'
+    )
+</script>
+@endif
+<script>
+    $('.formulario-eliminar').submit(function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Está seguro de eliminar?',
+            text: "El registro se eliminará definitivamente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+    })
+</script>
 
 
 @endsection
