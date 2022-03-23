@@ -115,9 +115,10 @@ class CategoriaController extends Controller
         $categoria_edit->Activo =  1;
         $categoria_edit->UserUpdated = 0;
         if ($categoria_edit->save() == 1) {
-            //$Notificar->setNotificacion("Categoría actualizada!", "blue", "Mostrar");
+            return redirect('/categorias')->with('actualizar', 'ok');
+        } else {
+            return redirect('/categorias')->with('actualizar', 'failed');
         }
-        return redirect('/categorias');
     }
 
     /**

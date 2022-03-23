@@ -52,9 +52,6 @@
                                 @csrf
                                 <button type="submit" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm bg-gradient-danger"><i class="fas fa-times-circle fa-sm text-white-50 bg-gradient-danger"></i></button>
                             </form>
-
-
-
                         </td>
                         @endforeach
                 </tbody>

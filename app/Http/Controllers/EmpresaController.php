@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\Notificacion;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 
@@ -15,7 +16,7 @@ class EmpresaController extends Controller
     }
 
     /**
-     * 
+     * @Rafael1108
      * Muestra la vista de todas las Empresas.
      *
      * @return \Illuminate\Http\Response
@@ -28,6 +29,7 @@ class EmpresaController extends Controller
     }
 
     /**
+     * @Rafael1108
      * Mostrar el formulario para crear una nueva Empresa.
      *
      * @return \Illuminate\Http\Response
@@ -49,7 +51,8 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Devuelve una categoría.
+     * @Rafael1108
+     * Devuelve la empresa .
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -60,6 +63,7 @@ class EmpresaController extends Controller
     }
 
     /**
+     * @Rafael1108
      * Muestra el formulario para editar una Empresa.
      *
      * @param  int  $id
@@ -71,7 +75,8 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Actualiza en Base datos el registro de la tabla categoría.
+     * @Rafael1108
+     * Actualiza en Base datos el registro de la tabla empresa .
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -80,24 +85,26 @@ class EmpresaController extends Controller
     public function update(Request $request, $id)
     {
 
-        $Descripcion = "";
-        if (!is_null($request->get('txtDescripcion'))) {
-            $Descripcion = $request->get('txtDescripcion');
-        }
         $Empresa_edit = $this->EmpresaModel::find($id);
-        $Empresa_edit->TipoServicioId = $request->get('txtTipoServicio');;
-        $Empresa_edit->Nombre = $request->get('txtNombre');
-        $Empresa_edit->Descripcion =  $Descripcion;
-        $Empresa_edit->Activo =  1;
-        $Empresa_edit->UserUpdated = 0;
-        if ($Empresa_edit->save() == 1) {
-            //$Notificar->setNotificacion("Categoría actualizada!", "blue", "Mostrar");
+
+        $Empresa_edit->RazonSocial = $request->get('txtNEmpresa');
+        $Empresa_edit->NombreComercial = $request->get('txtNComercial');
+
+        if (!is_null($request->get('txtDireccion'))) {
+            $Empresa_edit->Direccion = $request->get('txtDireccion');
         }
-        return redirect('/Empresas');
+
+        $emp  = $this->EmpresaModel::all(['id', 'RUC', 'RazonSocial', 'NombreComercial']);
+        if ($Empresa_edit->save() == 1) {
+            return redirect('/empresa')->with('emp', $emp[0])->with('actualizar', 'ok');
+        } else {
+            return redirect('/empresa')->with('emp', $emp[0])->with('actualizar', 'failed');
+        }
     }
 
     /**
-     * Elimina en Base de datos el registro de la tabla categoría.
+     * @Rafael1108
+     * Elimina en Base de datos el registro de la tabla empresa.
      * Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -108,9 +108,10 @@ class ProveedorController extends Controller
 
         return redirect('/proveedores');
         if ($sujeto_edit->save() == 1) {
-            //$Notificar->setNotificacion("Categoría actualizada!", "blue", "Mostrar");
+            return redirect('/proveedores')->with('actualizar', 'ok');
+        } else {
+            return redirect('/proveedores')->with('actualizar', 'failed');
         }
-        return redirect('/proveedores');
     }
 
     /**

@@ -20,20 +20,20 @@
             @method('PUT')
             <div class="col-md-12">
                 <div class="col-sm-6  has-validation" style="padding:0">
-                    <label for="txtDNI" class="form-label">RUC</label>
-                    <input id="txtDNI" name="txtDNI" class="form-control" maxlength="13" type="number" aria-describedby="msjValidacion_Nombre" tabindex="1" value="{{$emp->RUC}}" disabled>
+                    <label for="txtRUC" class="form-label">RUC</label>
+                    <input id="txtRUC" name="txtRUC" class="form-control" maxlength="13" type="number" aria-describedby="msjValidacion_Nombre" tabindex="1" value="{{$emp->RUC}}" disabled>
                 </div>
 
             </div>
 
             <div class="col-md-6 py-2">
-                <label for="txtNombre" class="form-label">Nombre</label>
-                <input id="txtNombre" name="txtNombre" type="text" maxlength="20" class="form-control" tabindex="2" required value=" {{$emp->RazonSocial}}">
+                <label for="txtNEmpresa" class="form-label">Empresa</label>
+                <input id="txtNEmpresa" name="txtNEmpresa" type="text" maxlength="20" class="form-control" tabindex="2" required value=" {{$emp->RazonSocial}}">
             </div>
 
             <div class="col-md-6 py-2">
-                <label for="txtApellido" class="form-label">Nombre Comercial</label>
-                <input id="txtApellido" name="txtApellido" type="text" class="form-control" maxlength="20" tabindex="3" value=" {{$emp->NombreComercial}}">
+                <label for="txtNComercial" class="form-label">Nombre Comercial</label>
+                <input id="txtNComercial" name="txtNComercial" type="text" class="form-control" maxlength="20" tabindex="3" value=" {{$emp->NombreComercial}}">
             </div>
 
             <div class="col-md-12 py-2">
@@ -41,34 +41,34 @@
                 <input id="txtDireccion" name="txtDireccion" type="text" maxlength="125" class="form-control" tabindex="4" required value=" {{$emp->Direccion }}">
             </div>
 
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="submitbutton" tabindex="5">Actualizar</button>
+            <div>
+                <button type="submit" class="btn btn-primary" tabindex="5">Actualizar</button>
             </div>
         </form>
     </div>
 </div>
-</div>
-
-<!-- small modal -->
-<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content" id="smallBody">
-
-        </div>
-    </div>
-</div>
-
-
-<!-- medium modal -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" id="mediumBody">
-
-        </div>
-    </div>
-</div>
 @endsection
+
 @section ('js')
+@if (session('actualizar')== 'ok')
+<script>
+    Swal.fire(
+        'Actualizado!',
+        'El registro fue actualizado con éxito.',
+        'success'
+    )
+</script>
+@endif
+
+@if (session('actualizar')== 'failed')
+<script>
+    Swal.fire(
+        'Error!',
+        'El registro NO fue actualizado con éxito.',
+        'error'
+    )
+</script>
+@endif
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
