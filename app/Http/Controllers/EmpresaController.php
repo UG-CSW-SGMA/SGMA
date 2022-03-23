@@ -52,14 +52,15 @@ class EmpresaController extends Controller
 
     /**
      * @Rafael1108
-     * Devuelve la empresa .
+     * Devuelve la empresa por default.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $emp = $this->EmpresaModel::all(['id', 'RUC', 'RazonSocial', 'NombreComercial']);
+        return  $emp;
     }
 
     /**
