@@ -52,7 +52,7 @@ class UsuarioController extends Controller
             'NombreCompleto'=>'required',
             'PasswordSALT'=>'required',
             'PasswordHASH'=>'required',
-            'Activo'=>'required',
+         
         ]);
 
        
@@ -121,7 +121,7 @@ class UsuarioController extends Controller
             'NombreCompleto'=>'required',
             'PasswordSALT'=>'required',
             'PasswordHASH'=>'required',
-            'Activo'=>'required'
+            
         ]);
 
        

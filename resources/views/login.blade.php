@@ -64,12 +64,12 @@
 
                                     </form> 
                                     @if($errors->any())
-                                        @foreach($errors->all() as $error)
-                                            
-                                        @endforeach
+                                        
+                                        <p class='text-danger' >Porfavor, rellene los campos.</p> 
+                                        
                                     @endif
                                     @if(Session::has('msg'))
-                                              
+                                        <p class="text-danger">{{session('msg')}}</p>         
                                     @endif                           
                                 </div>
                             </div>
