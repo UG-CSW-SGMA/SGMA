@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-tools"></i>
@@ -167,7 +167,10 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <div> </div>
+                    <div>
+                        <h4 id="MyEmpresa"></h4>
+                    </div>
+
                     <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
@@ -401,6 +404,29 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
+
+    <script>
+        $(document).ready(function() {
+            let href = 'empresa/0';
+            $.ajax({
+                url: href,
+                type: "GET",
+                data: JSON,
+                // contentType: false,
+                // processData: false,
+                success: function(datos) {
+
+                    if (datos !== '') {
+                        let valor = datos[0];
+                        let empresa = document.getElementById("MyEmpresa");
+                        empresa.innerText = valor.RazonSocial;
+                        console.log(valor.RazonSocial);
+                    }
+
+                }
+            })
+        });
+    </script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- JavaScript Bundle with Popper -->
@@ -419,8 +445,10 @@
     <script src="{{ asset('js/demo/chart-area-demo.js')}}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- js personalizado-->
     @yield('js')
+
 
 </body>
 
