@@ -5,14 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Sujeto;
-use GrahamCampbell\ResultType\Success;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Session as FacadesSession;
-use PhpParser\Node\Stmt\TryCatch;
 
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
 
 class ClienteController extends Controller
 {
@@ -110,13 +103,13 @@ class ClienteController extends Controller
             $cliente->Telefono =  $request->get('telefono');
         }
         $cliente->Email = $request->get('email');
-        
-        
+
+
         $cliente->Activo = 1;
         $cliente->UserUpdated = 0;
         $cliente->save();
 
-        
+
         if ($cliente->save() == 1) {
             return redirect('/clientes')->with('actualizar', 'ok');
         }

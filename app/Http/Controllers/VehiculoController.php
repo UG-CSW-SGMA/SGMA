@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Vehiculo;
+use App\Models\Sujeto;
 
 
 class VehiculoController extends Controller
@@ -15,8 +15,6 @@ class VehiculoController extends Controller
     {
         $this->VehiculoModel = $vehiculo;
     }
-
-
 
     /**
      * Display a listing of the resource.
@@ -35,8 +33,8 @@ class VehiculoController extends Controller
      */
     public function create()
     {
-        //
-        return view('taller.vehiculos.create');
+        $clientes = new Sujeto();
+        return view('taller.vehiculos.create')->with('clientes', $clientes->getListadoClientes());
     }
 
     /**
@@ -49,7 +47,7 @@ class VehiculoController extends Controller
     {
         $vehiculos = new Vehiculo();
 
-        $vehiculos->SujetoId = "1";
+        $vehiculos->SujetoId = $request->get('cliente');
         $vehiculos->Placa = $request->get('placa');
         $vehiculos->Modelo = $request->get('modelo');
         $vehiculos->Marca  = $request->get('marca');
@@ -114,5 +112,10 @@ class VehiculoController extends Controller
 
         return redirect('/vehiculos')->with('eliminar', 'ok');
 
+    }
+
+    public function getByPlaca($placa)
+    {
+        return $this->VehiculoModel->getVehiculoByPlaca($placa);
     }
 }

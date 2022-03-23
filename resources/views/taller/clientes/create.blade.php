@@ -12,12 +12,10 @@
     @csrf
     <div class="col-md-12">
         <div class="col-sm-6  has-validation" style="padding:0">
-            <div class="mb-3">
-                <label for="dni" class="form-label">DNI</label>
-                <input id="dni" name="dni" type="number" maxlength="13" class="form-control" aria-describedby="msjValidacion_Nombre" tabindex="1" required>
-                <div id="msjValidacion_Nombre" class="invalid-feedback">
-                    ¡El cliente ya se encuentra registrado!
-                </div>
+            <label for="dni" class="form-label">DNI</label>
+            <input id="dni" name="dni" type="number" maxlength="13" class="form-control" aria-describedby="msjValidacion_Nombre" tabindex="1" required>
+            <div id="msjValidacion_Nombre" class="invalid-feedback">
+                ¡El cliente ya se encuentra registrado!
             </div>
         </div>
     </div>

@@ -13,8 +13,23 @@ class Vehiculo extends Model
     public function getListadoVehiculos()
     {
         return DB::table('vehiculos')
-            ->select('*')
-            ->where('Activo', '=', 1)
+            ->join('sujetos', 'vehiculos.SujetoId', '=', 'sujetos.id')
+            ->select('vehiculos.*', 'sujetos.Nombre as Nombre','sujetos.Apellido as Apellido')
+            ->where('vehiculos.Activo', '=', 1)
             ->get();
+    }
+
+    /**
+     * @edgarbasurto
+     * Método de busqueda de vehiculos por placa
+     */
+    public function getVehiculoByPlaca($placa)
+    {
+        return DB::table('vehiculos')
+            ->select('*')
+            ->where([
+                ['Placa', 'like',  $placa],
+            ])
+            ->first();
     }
 }

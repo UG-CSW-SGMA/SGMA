@@ -25,6 +25,7 @@
                 <thead>
                     <tr>
                         <th>Placa</th>
+                        <th>Propietario</th>
                         <th>Marca</th>
                         <th>Modelo</th>
                         <th>Tipo</th>
@@ -40,6 +41,7 @@
                     @foreach($vehiculos as $vehiculo)
                     <tr>
                         <td>{{$vehiculo->Placa}}</td>
+                        <td>{{$vehiculo->Nombre}} {{$vehiculo->Apellido}}</td>
                         <td>{{$vehiculo->Marca}}</td>
                         <td>{{$vehiculo->Modelo}}</td>
                         <td>{{$vehiculo->Tipo}}</td>
@@ -76,7 +78,7 @@
 
 <!-- medium modal -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="mediumBody">
 
         </div>
