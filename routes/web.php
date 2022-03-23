@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UsuarioController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,13 +28,6 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('dashboard', function () {
     return view('dashboard');
 });
-
-
-Route::get('/gestionODA', function () {
-    return view('taller.gestionODA');
-});
-
-
 
 
 /*
@@ -78,6 +71,7 @@ Route::resource('productos', 'App\Http\Controllers\ProductoController');
  */
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
+Route::resource('gestionODA', 'App\Http\Controllers\OrdenAtencionController');
 /**
  * @edgarbasurto
  * Ruta de metodo de busqueda Ajax, por DNI
