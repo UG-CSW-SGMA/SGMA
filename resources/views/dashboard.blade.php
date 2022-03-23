@@ -7,7 +7,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4 tile-container">
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="/productos">
                 <div class="tile-tittle">Productos</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
@@ -21,7 +21,7 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="/categorias">
                 <div class="tile-tittle">Categorías</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
@@ -33,7 +33,7 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="/proveedores">
                 <div class="tile-tittle">Proveedores</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
@@ -46,11 +46,11 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="/gestionODA">
                 <div class="tile-tittle">Gestión ODA</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
-                    <i class="fa fa-cog" aria-hidden="true"></i>
+                        <i class="fa fa-cog" aria-hidden="true"></i>
                     </div>
                 </div>
             </a>
@@ -59,11 +59,11 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="/clientes">
                 <div class="tile-tittle">Clientes</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
-                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                        <i class="fa fa-address-card" aria-hidden="true"></i>
                     </div>
                 </div>
             </a>
@@ -71,7 +71,7 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="/vehiculos">
                 <div class="tile-tittle">Vehículos</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
@@ -83,7 +83,7 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="#">
+            <a class="tile" href="compras">
                 <div class="tile-tittle">Compras</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">

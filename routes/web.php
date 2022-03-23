@@ -15,11 +15,13 @@ use App\Http\Controllers\UsuarioController;
 */
 
 
-
-Route::get('/', [LoginController::class, 'login']); 
+/**
+ * @Andresdavidala
+ * Routeo del controlador LogIn
+ */
+Route::get('/', [LoginController::class, 'login']);
 Route::post('/', [LoginController::class, 'check_login']);
-Route::get('/logout', [LoginController::class, 'logout']); 
-
+Route::get('/logout', [LoginController::class, 'logout']);
 //sistema login ↑
 
 
@@ -47,6 +49,7 @@ Route::get('/gestionODA', function () {
 /*
  * Parametros 
  */
+
 Route::resource('servicios', 'App\Http\Controllers\TipoServicioController');
 Route::resource('usuarios', 'App\Http\Controllers\UsuarioController');
 Route::resource('empresa', 'App\Http\Controllers\EmpresaController');
@@ -62,6 +65,7 @@ Route::resource('empresa', 'App\Http\Controllers\EmpresaController');
 */
 Route::get('categorias/{id}/del', 'App\Http\Controllers\CategoriaController@del');
 Route::resource('categorias', 'App\Http\Controllers\CategoriaController');
+
 /*
 *Se crea ruta personalida que apunta a la funcion del 
 *ProductoController para mostrar modal de eliminar
