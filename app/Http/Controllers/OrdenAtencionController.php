@@ -30,7 +30,7 @@ class OrdenAtencionController extends Controller
      */
     public function create()
     {
-        //
+        return view('taller.ordenAtencion.create');
     }
 
     /**

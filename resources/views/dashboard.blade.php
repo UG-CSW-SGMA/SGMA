@@ -46,7 +46,7 @@
 
         <div class="col-xl-3 col-md-6">
 
-            <a class="tile" href="/gestionODA">
+            <a class="tile" href="/ordenAtencion">
                 <div class="tile-tittle">Gestión ODA</div>
                 <div class="card-body text-center">
                     <div class="tile-icon">
