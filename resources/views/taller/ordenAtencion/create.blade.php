@@ -11,11 +11,11 @@
     <div class="card shadow mb-4">
         <div class="card-header">
             <div class="row">
-                <div class="col-7">
+                <div class="col-8">
                     <h4 class="card-title"> <b> Nueva Orden de Atencion </b> </h4>
                     <h5> Nº 2022ODA-0004</h5>
                 </div>
-                <div class="col-5">
+                <div class="col-4">
                     <div class="col text-left">
                         <label class="label-control">Fecha/hora de ingreso</label>
                     </div>
@@ -41,17 +41,21 @@
                         <textarea class="form-control" readonly name="datosVehiculo" id="datosVehiculo" cols="50" rows="4" placeholder="Datos del vehículo..."></textarea>
                     </div>
                 </div>
+                <div class="col text-left">
+                        <label class="label-control">Kilometraje</label>
+                        <input class="form-control" type="number" max="99999999" maxlength="8">
+                    </div>
+
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="form-group">
                         <h5 class="title">Datos del cliente</h5>
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por nombres o DNI..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por nombres o DNI..." aria-label="Search" aria-describedby="basic-addon2">                            <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                         <textarea class="form-control" readonly name="datosCliente" id="datosCliente" cols="50" rows="4" placeholder="Datos del cliente..."></textarea>
                     </div>
                 </div>
@@ -80,11 +84,12 @@
                                 <label>Mecánico disponible: </label>
                             </div>
                             <div class="col-sm-8">
-                                <select class="form-select" name="estado" id="estado">
+                                <select class="form-select" name="mecanico" id="mecanico">
                                     <option value="0" disabled selected>Seleccione una opcion...</option>
-                                    <option value="Carlos Piguave">Carlos Piguave</option>
-                                    <option value="Marcos Mite">Marcos Mite</option>
-                                    <option value="Juan Cruz">Juan Cruz</option>
+                                    @foreach($mecanicos as $mecanico)
+                                    <option value="{{$mecanico->id}}">{{$mecanico->NombreCompleto}}</option>
+                                    @endforeach
+
                                 </select>
                             </div>
                         </div>

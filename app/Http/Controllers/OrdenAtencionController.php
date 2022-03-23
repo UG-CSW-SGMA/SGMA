@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrdenAtencion;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class OrdenAtencionController extends Controller
@@ -30,7 +31,8 @@ class OrdenAtencionController extends Controller
      */
     public function create()
     {
-        return view('taller.ordenAtencion.create');
+        $mecanicos = new Usuario();
+        return view('taller.ordenAtencion.create')->with('mecanicos',$mecanicos->getListadoPorRol(3));
     }
 
     /**

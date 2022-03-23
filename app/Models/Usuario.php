@@ -17,8 +17,25 @@ class Usuario extends Model
     public function getListadoActivos()
     {
         return DB::table('usuarios')
-            ->select('id','usuarios.TipoRol', 'usuarios.NickName', 'usuarios.NombreCompleto')
+            ->select('id', 'usuarios.TipoRol', 'usuarios.NickName', 'usuarios.NombreCompleto')
             ->where('usuarios.Activo', '=', 1)
+            ->get();
+    }
+
+    /**
+     * @edgarbasurto
+     * Método para obtener el listado de los usuarios por tipo de rol
+     */
+    public function getListadoPorRol($rol)
+    {
+        return DB::table('usuarios')
+            ->select('id', 'TipoRol', 'NickName', 'NombreCompleto')
+            ->where(
+                [
+                    ['Activo', '=', 1],
+                    ['TipoRol', '=', $rol],
+                ]
+            )
             ->get();
     }
 }
