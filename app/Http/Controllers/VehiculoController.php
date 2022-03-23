@@ -97,7 +97,27 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vehiculo = $this->VehiculoModel::find($id);
+
+        $vehiculo->SujetoId = $request->get('cliente');
+        $vehiculo->Placa = $request->get('placa');
+        $vehiculo->Modelo = $request->get('modelo');
+        $vehiculo->Marca  = $request->get('marca');
+        $vehiculo->Descripcion = $request->get('descripcion');
+        $vehiculo->Activo = "1";
+        $vehiculo->UserCreated = "0";
+
+        $vehiculo->Anio = $request->get('anio');
+        $vehiculo->Tipo = $request->get('tipo');
+        $vehiculo->Color = $request->get('color');
+
+        $vehiculo->save();
+
+    
+        if ($vehiculo->save() == 1) {
+            return redirect('/vehiculos')->with('actualizar', 'ok');
+        }
+        return redirect('/vehiculos')->with('actualizar', 'failed');
     }
 
     /**

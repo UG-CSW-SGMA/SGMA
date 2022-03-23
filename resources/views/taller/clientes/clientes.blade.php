@@ -125,7 +125,7 @@
     Swal.fire(
         'Error!',
         'El registro NO fue actualizado con éxito.',
-        'success'
+        'error'
     )
 </script>
 @endif

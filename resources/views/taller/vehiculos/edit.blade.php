@@ -25,7 +25,7 @@
     </div>
     <div class="col-md-6 py-2 has-validation">
         <label for="placa" class="form-label">Placa</label>
-        <input id="placa" name="placa" type="text" class="form-control" aria-describedby="msjValidacion_Nombre" tabindex="1" required value="{{$vehiculo->Placa}}">
+        <input id="placa" name="placa" type="text" class="form-control" readonly aria-describedby="msjValidacion_Nombre" tabindex="1" required value="{{$vehiculo->Placa}}">
         <div id="msjValidacion_Nombre" class="invalid-feedback">
             ¡El vehículo ya se encuentra registrado!
         </div>
