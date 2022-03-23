@@ -35,25 +35,15 @@ class UsuarioController extends Controller
     }
     
     /**
-     * Almacena la categoría recién creada en el almacenamiento.
+     * Almacena la usuario
+     *  recién creada en el almacenamiento.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        // $datosUsuario =request()->all();
-        // $usuarios = new Usuario();
-        // $usuarios->UsuarioCreacion = "0";
-        // $usuarios->UsuarioActualizacion = "0";
         
-        // $datosUsuario = request()->except('_token');
-  
-       
-        // Usuario::insert($datosUsuario);
-     
-        // return response ()->json($datosUsuario);
-    
         
         $request->validate([
             'TipoRol'=>'required',
@@ -65,8 +55,7 @@ class UsuarioController extends Controller
             'Activo'=>'required',
         ]);
 
-        // // $data->UsuarioCreacion = "2022 -03 -19 03: 11: 33";
-        // // $data->UsuarioActualizacion = "2022 -03 -19 03: 11: 33";
+       
         $data=new Usuario;
         $data->id=$request->id;
         $data->TipoRol=$request->TipoRol;
@@ -75,31 +64,21 @@ class UsuarioController extends Controller
         $data->NombreCompleto=$request->NombreCompleto;
         $data->PasswordSALT=password_hash($request->PasswordSALT,PASSWORD_DEFAULT,array('cost' => 9));
         $data->PasswordHASH=password_hash($request->PasswordHASH, PASSWORD_DEFAULT, array('cost' => 9));
-        // $paswordHASH = password_hash( $data->PasswordHASH, PASSWORD_DEFAULT);
+        
         $data->Activo = "1";
         $data->UsuarioCreacion = "1";
         $data->UserCreated = "1";
-        // if($request->PasswordSALT != $request->PasswordHASH){
-        //     echo "contraseñas distintas";
-
-        // }else{
-        //     $data->save();
-        //     return redirect('/usuarios')->with('success','Data has been added.');
-        // }
+      
         $data->save();
-        return redirect('/usuarios')->with('success','Data has been added.');
+        return redirect('/usuarios')->with('Los datos fueron agregados correctamente.');
         
 
         
-        // if($ref=='front'){
-        //     return redirect('register')->with('success','Data has been saved.');
-        // }
-
         
     }
 
     /**
-     * Devuelve una categoría.
+     * Devuelve un usuario.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -110,16 +89,14 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Muestra el formulario para editar una categoria.
+     * Muestra el formulario para editar un usuario
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
-        // $data= Usuario::find($id);
-        // return view('parametros.usuario.edit',['data'=>$data]);
+        
         $ObjUsuario = $this->UsuarioModel::find($id);
         $usuarios = new Usuario();
 
@@ -127,7 +104,8 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Actualiza en Base datos el registro de la tabla categoría.
+     * Actualiza en Base datos el registro de la tabla usuario
+     * .
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -135,11 +113,7 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // $datosUsuario = request()->except(['_token', '_method']);  //Evita que tomemos valores innecesarios (toker y method)
-        // Usuario::wherE('id','=',$id)->update($datosUsuario);//ejecuto la intrucción where buscando el id que fue solicitado y hacemos un update usando la información de datos usuarios
-        // $usuario = Usuario::findOrFail($id);
-        // return redirect('/usuarios');
+        
         $request->validate([
             'TipoRol'=>'required',
             'NickName'=>'required',
@@ -167,11 +141,12 @@ class UsuarioController extends Controller
         $data->UserCreated = "0";
        
         $data->save();
-        return redirect('/usuarios')->with('success','Data has been updated.');
+        return redirect('/usuarios')->with('Datos actualizados correctamente.');
     }
 
     /**
-     * Elimina en Base de datos el registro de la tabla categoría.
+     * Elimina en Base de datos el registro de la tabla usuario
+     * .
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

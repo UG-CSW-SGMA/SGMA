@@ -59,17 +59,17 @@
                                                     </label>
                                             </div>
                                         </div>
-                                        {{-- <input type="submit" class="btn btn-primary btn-user btn-block" value="Acceder"> --}}
+                                       
                                         <input type="submit" class="btn btn-primary btn-user btn-block" value="Ingresar">
 
                                     </form> 
                                     @if($errors->any())
                                         @foreach($errors->all() as $error)
-                                            <p class='text-danger'>{{$error}}</p> 
+                                            
                                         @endforeach
                                     @endif
                                     @if(Session::has('msg'))
-                                        <p class="text-danger">{{session('msg')}}</p>       
+                                              
                                     @endif                           
                                 </div>
                             </div>
