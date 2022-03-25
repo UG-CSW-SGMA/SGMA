@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-8">
                     <h4 class="card-title"> <b> Nueva Orden de Atencion </b> </h4>
-                    <h5> Nº 2022ODA-0004</h5>
+                    <h5> Nº 2022ODA-00{{$numOrden}}</h5>
                 </div>
                 <div class="col-4">
                     <div class="col text-left">
@@ -29,8 +29,8 @@
             <div class="form-group row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <h5 class="title">Datos del Vehículo</h5>
-                        <div class="input-group">
+                        <h5 class="title mb-3">Datos del Vehículo</h5>
+                        <div class="input-group mb-3">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por placa..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -38,27 +38,69 @@
                                 </button>
                             </div>
                         </div>
-                        <textarea class="form-control" readonly name="datosVehiculo" id="datosVehiculo" cols="50" rows="4" placeholder="Datos del vehículo..."></textarea>
+                        <div class="row">
+                            <div class="col-3 mb-2 text-end">
+                                <label class="label-control">Placa</label>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <input class="form-control" readonly type="number" maxlength="10">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 mb-2 text-end">
+                                <label class="label-control">Descripción</label>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <input class="form-control" readonly type="text">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 mb-2 text-end">
+                                <label class="label-control">Kilometraje</label>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <input class="form-control" type="number" max="99999999" maxlength="8">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col text-left">
-                        <label class="label-control">Kilometraje</label>
-                        <input class="form-control" type="number" max="99999999" maxlength="8">
-                    </div>
-
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="form-group">
                         <h5 class="title">Datos del cliente</h5>
-                        <!-- <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por nombres o DNI..." aria-label="Search" aria-describedby="basic-addon2">                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                        <div class="row">
+                            <div class="col-3 mb-2 text-end">
+                                <label class="label-control">DNI</label>
                             </div>
-                        </div> -->
-                        <textarea class="form-control" readonly name="datosCliente" id="datosCliente" cols="50" rows="4" placeholder="Datos del cliente..."></textarea>
+                            <div class="col-9 mb-2">
+                                <input class="form-control" readonly type="number" maxlength="10" name="txtDNI">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 mb-2 text-end">
+                                <label class="label-control">Nombres</label>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <input class="form-control" readonly type="text" name="txtCliente">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-3 mb-2 text-end">
+                                <label class="label-control">Email</label>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <input class="form-control" readonly type="email">
+                            </div>
+                        </div>
+
+                        <textarea class="form-control" name="datosVehiculo" id="datosVehiculo" cols="50" rows="3" placeholder="Observaciones del vehículo..."></textarea>
                     </div>
                 </div>
+
             </div>
             <hr>
             <div class="form-group">

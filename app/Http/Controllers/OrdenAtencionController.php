@@ -21,7 +21,7 @@ class OrdenAtencionController extends Controller
      */
     public function index()
     {
-        return view('taller.ordenAtencion.index');
+        return view('taller.ordenAtencion.index')->with('ordenes',$this->OrdenAtencionModel->getListadoOrdenes());
     }
 
     /**
@@ -31,8 +31,9 @@ class OrdenAtencionController extends Controller
      */
     public function create()
     {
+        $numOrden = $this->OrdenAtencionModel->getLastOrdenID()+1;
         $mecanicos = new Usuario();
-        return view('taller.ordenAtencion.create')->with('mecanicos',$mecanicos->getListadoPorRol(3));
+        return view('taller.ordenAtencion.create')->with('mecanicos',$mecanicos->getListadoPorRol(3))->with('numOrden',$numOrden);
     }
 
     /**
@@ -43,7 +44,22 @@ class OrdenAtencionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dni = $request->get('dni');
+        $oda = new OrdenAtencion();
+        $oda->NumeroTransaccion = $request->get('numeroODA');
+        $oda->
+        $oda->TipoSujeto = "1";
+        $oda->DNI = $dni;
+        $oda->Nombre = $request->get('nombre');
+        $oda->Apellido  = $request->get('apellido');
+        $oda->Direccion = $request->get('direccion');
+        $oda->Telefono = $request->get('telefono');
+        $oda->Email = $request->get('email');
+        $oda->Activo = "1";
+        $oda->UserCreated = "0";
+        $oda->save();
+
+        return redirect('/ordenAtencion')->with('guardar', 'ok');
     }
 
     /**
