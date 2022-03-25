@@ -6,7 +6,7 @@
 
 @section('contenido')
 
-<form action="servicios/1" method="POST">
+<form action="reportes/2/edit" method="POST">
     @csrf
     @method('PUT')
 

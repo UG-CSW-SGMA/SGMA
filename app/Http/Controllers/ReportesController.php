@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Empresa;
 
 class ReportesController extends Controller
 {
@@ -66,7 +67,20 @@ class ReportesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $EmpresaModel = new Empresa();
+        $emp  = $EmpresaModel::all(['id', 'RUC', 'RazonSocial', 'NombreComercial']);
+        $lblrango = "<strong>Desde:</strong> 11/11/2000 <strong>Hasta:</strong> 11/11/2000";
+
+        switch ($id) {
+
+            case 2:
+                /* retorna la vista en funcion del id del reporte que se requiere*/
+                return view('reportes.rptForm.rptNuevosClientes')->with('emp', $emp[0])->with('lblrango', $lblrango);
+                break;
+
+            default:
+                return response()->json(['error' => 'Reporte no encontrado!'], 500);
+        }
     }
 
     /**
