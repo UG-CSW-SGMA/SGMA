@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->enum('TipoSujeto', [1, 2])->comment('Tipo_Sujeto(1=>Cliente, 2=>Proveedor)');
             $table->string('DNI', 20)->comment('DNI/CEDULA/RUC/PASSAPORTE');
-            $table->string('Nombre', 20)->comment('Nombres');
-            $table->string('Apellido', 20)->nullable()->default(null)->comment('Apellidos');
-            $table->string('Direccion', 125)->nullable()->default(null)->comment('Direccion');
+            $table->string('Nombre', 50)->comment('Nombres');
+            $table->string('Apellido', 30)->nullable()->default(null)->comment('Apellidos');
+            $table->string('Direccion', 255)->nullable()->default(null)->comment('Direccion');
             $table->string('Telefono', 25)->nullable()->default(null)->comment('Telefono');
-            $table->string('Email', 25)->nullable()->default(null)->comment('Email');
+            $table->string('Email', 50)->nullable()->default(null)->comment('Email');
             $table->boolean('Activo')->default(1);
 
             //Auditoria
