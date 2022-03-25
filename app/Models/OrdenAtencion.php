@@ -27,4 +27,9 @@ class OrdenAtencion extends Model
 		return DB::getPdo()->lastInsertId();
 	}
 
+    public function generarNumeroOrden(){
+        $num = $this->getLastOrdenID()+1;
+        return date("Y").'ODA-00'.$num;
+    }
+
 }

@@ -13,14 +13,15 @@
             <div class="row">
                 <div class="col-8">
                     <h4 class="card-title"> <b> Nueva Orden de Atencion </b> </h4>
-                    <h5> Nº 2022ODA-00{{$numOrden}}</h5>
+                    <h5> Nº {{$numOrden}}</h5>
+                    <input type="hidden" name="numeroOrden" value="{{$numOrden}}" >
                 </div>
                 <div class="col-4">
                     <div class="col text-left">
                         <label class="label-control">Fecha/hora de ingreso</label>
                     </div>
                     <div class="col">
-                        <input type="datetime-local" class="form-control" id="fecha" placeholder="fecha">
+                        <input type="datetime-local" class="form-control" id="fecha" placeholder="fecha" value="{{Date('Y-m-d\TH:i',time())}}">
                     </div>
                 </div>
             </div>
@@ -108,7 +109,7 @@
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <h5 class="title">Atención</h5> <br>
                         <div class="form-group">
-                            <div class="text-left" style="margin-left: 20px; align-self:center;">
+                            <div class="text-left col" style="margin-left: 20px; align-self:center;">
                                 <label>Estado: </label>
                             </div>
                             <div class="col-sm-8">

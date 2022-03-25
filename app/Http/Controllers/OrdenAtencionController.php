@@ -31,7 +31,7 @@ class OrdenAtencionController extends Controller
      */
     public function create()
     {
-        $numOrden = $this->OrdenAtencionModel->getLastOrdenID()+1;
+        $numOrden = $this->OrdenAtencionModel->generarNumeroOrden();
         $mecanicos = new Usuario();
         return view('taller.ordenAtencion.create')->with('mecanicos',$mecanicos->getListadoPorRol(3))->with('numOrden',$numOrden);
     }
