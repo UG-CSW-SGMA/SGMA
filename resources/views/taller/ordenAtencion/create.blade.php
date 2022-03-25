@@ -21,7 +21,7 @@
                         <label class="label-control">Fecha/hora de ingreso</label>
                     </div>
                     <div class="col">
-                        <input type="datetime-local" class="form-control" id="fecha" placeholder="fecha" value="{{Date('Y-m-d\TH:i',time())}}">
+                        <input type="datetime-local" class="form-control" id="fecha" name="fechaIngreso" placeholder="fecha" value="{{Date('Y-m-d\TH:i',time())}}">
                     </div>
                 </div>
             </div>
@@ -32,9 +32,9 @@
                     <div class="form-group">
                         <h5 class="title mb-3">Datos del Vehículo</h5>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por placa..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" id="buscarPlaca" class="form-control bg-light border-0 small" placeholder="Buscar por placa..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" id="buscarVehiculo" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -44,7 +44,7 @@
                                 <label class="label-control">Placa</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input class="form-control" readonly type="number" maxlength="10">
+                                <input class="form-control" id="placa" name="placa" readonly type="text" maxlength="10">
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@
                                 <label class="label-control">Descripción</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input class="form-control" readonly type="text">
+                                <input class="form-control" id="descripcionV" name="vehiculo" readonly type="text">
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
                                 <label class="label-control">Kilometraje</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input class="form-control" type="number" max="99999999" maxlength="8">
+                                <input class="form-control" type="number" name="kilometraje" max="99999999" maxlength="8">
                             </div>
                         </div>
                     </div>
@@ -70,12 +70,13 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="form-group">
                         <h5 class="title">Datos del cliente</h5>
+                        <input type="hidden" name="clienteId" id="clienteId">
                         <div class="row">
                             <div class="col-3 mb-2 text-end">
                                 <label class="label-control">DNI</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input class="form-control" readonly type="number" maxlength="10" name="txtDNI">
+                                <input class="form-control" readonly type="number" maxlength="10" name="dni" id="dni">
                             </div>
                         </div>
 
@@ -84,7 +85,7 @@
                                 <label class="label-control">Nombres</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input class="form-control" readonly type="text" name="txtCliente">
+                                <input class="form-control" readonly type="text" name="cliente" id="cliente">
                             </div>
                         </div>
 
@@ -94,7 +95,7 @@
                                 <label class="label-control">Email</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input class="form-control" readonly type="email">
+                                <input class="form-control" readonly type="email" id="emailCliente">
                             </div>
                         </div>
 
@@ -229,7 +230,26 @@
                 this.submit();
             }
         })
-    })
+    });
+
+    $(document).on('click', '#buscarVehiculo', function(event) {
+        event.preventDefault();
+        var placa = document.getElementById('buscarPlaca').value;
+        var href = '/vehiculos/' + placa + '/getByPlaca';
+        $.ajax({
+            url: href,
+            type: "GET",
+            data: JSON,
+            success: function(datos) {
+                let placa = document.getElementById("placa");
+                let vehiculo = document.getElementById("descripcionV");
+                placa.value = datos.Placa;
+                vehiculo.value = datos.Marca + ' ' + datos.Modelo + ' ' + datos.Descripcion + ' ' + datos.Anio + ' ' + datos.Tipo; 
+
+                console.log(datos);
+            }
+        })
+    });
 </script>
 
 

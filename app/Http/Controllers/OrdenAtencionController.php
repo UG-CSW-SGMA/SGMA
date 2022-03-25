@@ -44,19 +44,23 @@ class OrdenAtencionController extends Controller
      */
     public function store(Request $request)
     {
-        $dni = $request->get('dni');
         $oda = new OrdenAtencion();
-        $oda->NumeroTransaccion = $request->get('numeroODA');
-        $oda->
-        $oda->TipoSujeto = "1";
-        $oda->DNI = $dni;
-        $oda->Nombre = $request->get('nombre');
-        $oda->Apellido  = $request->get('apellido');
-        $oda->Direccion = $request->get('direccion');
-        $oda->Telefono = $request->get('telefono');
-        $oda->Email = $request->get('email');
-        $oda->Activo = "1";
-        $oda->UserCreated = "0";
+        $oda->NumeroTransaccion = $request->get('numeroOrden');
+        $oda->TipoServicioId = $request->get('tipoServicioId');
+        $oda->MecanicoId = $request->get('mecanicoId');
+        $oda->VendedorId = '1'; // se debe obtener de la session al ingresar con usuario VENDEDOR
+        $oda->SujetoId = $request->get('clienteId');
+        $oda->DNI = $request->get('dni');
+        $oda->Cliente = $request->get('cliente');
+        $oda->FechaHora = $request->get('fechaIngreso');
+        $oda->VehiculoId = $request->get('vehiculoId');
+        $oda->Placa = $request->get('placa');
+        $oda->Vehiculo = $request->get('vehiculo');
+        $oda->DescripcionRecepcionVehiculo = $request->get('observaciones');
+        $oda->EstadoODA = $request->get('estadoODA');
+        $oda->KilometroActualVehiculo = $request->get('kilometraje');
+        $oda->UserCreated = '0';
+                
         $oda->save();
 
         return redirect('/ordenAtencion')->with('guardar', 'ok');

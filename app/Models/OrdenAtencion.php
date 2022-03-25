@@ -10,6 +10,10 @@ class OrdenAtencion extends Model
 {
     use HasFactory;
 
+    /**
+     * @edgarbasurto
+     * Método que devuelve el listado de las ordenes de atención
+     */
     public function getListadoOrdenes()
     {
         return DB::table('ordenes_atencion')
@@ -27,6 +31,11 @@ class OrdenAtencion extends Model
 		return DB::getPdo()->lastInsertId();
 	}
 
+    /**
+     * @edgarbasurto
+     * Método que devuelve el código de la orden de atención según
+     * formato indicado en la documentación '2022ODA-001'
+     */
     public function generarNumeroOrden(){
         $num = $this->getLastOrdenID()+1;
         return date("Y").'ODA-00'.$num;
