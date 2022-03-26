@@ -26,12 +26,14 @@ class LoginController extends Controller
            
             session(['usuarioData'=>$usuarioData]);
             session(['usuarioDataRol'=>$usuarioData[0]->TipoRol]);
-            
-            $DateAndTime = date('Y-m-d h:m:s', time());
+            session(['usuarionickname'=>$usuarioData[0]->NickName]);
+            date_default_timezone_set('America/Bogota');
+            // $DateAndTime = date('Y-m-d h:m:s', time());
+            $DateAndTime = date("Y-m-d h:m:s");
             $ip_add = $_SERVER['REMOTE_ADDR'];
             $dataAccess = new LogAcceso;
             $dataAccess->UsuarioId =$usuarioData[0]->id;
-            $dataAccess->FechaHoraAcceso =$DateAndTime;
+            $dataAccess->FechaHoraAcceso =  $DateAndTime;
             $dataAccess->Nombre_Navegador ="Google Chrome";
             $dataAccess->IP = $ip_add;
             $dataAccess->InfoAdicional = "OK ";

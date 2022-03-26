@@ -47,14 +47,21 @@
 <script>
     $(document).ready(function() {
         var today = new Date();
-        var dd = 1;
-        var mm = today.getMonth();
-        var yyyy = today.getFullYear();
-        fisrt_today = yyyy + '-' + mm + '-' + dd;
 
-        document.getElementById("dtMesAnio").setAttribute("value", fisrt_today);
-        document.getElementById("dtDesde").setAttribute("value", fisrt_today);
-        document.getElementById("dtHasta").setAttribute("value", today);
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        document.getElementById("dtMesAnio").setAttribute("value", yyyy + '-' + mm);
+        document.getElementById("dtDesde").setAttribute("value", yyyy + '-' + mm + '-01');
+        document.getElementById("dtHasta").setAttribute("value", yyyy + '-' + mm + '-' + dd);
     });
 
     $(document).on('change', '#checkRangos', function(event) {

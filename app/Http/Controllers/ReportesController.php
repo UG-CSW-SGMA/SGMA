@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\DB;
 class ReportesController extends Controller
 {
     private $EmpresaModel;
-    public function __construct()
-    {
-        $EmpresaModel = new Empresa();
-    }
+
     /**
      * @Rafael1108
      * Muestra la vista de reportes
@@ -122,32 +119,39 @@ class ReportesController extends Controller
 
     private function rptNuevosClientes(Request $request)
     {
-        $emp  = $this->EmpresaModel::all(['id', 'RUC', 'RazonSocial', 'NombreComercial']);
+        setlocale(LC_ALL, 'es_ES');
+        $EmpresaModel = new Empresa();
+        $emp  = $EmpresaModel::all(['id', 'RUC', 'RazonSocial', 'NombreComercial']);
         $data = null;
         $lblrango = null;
         if (!is_null($request->get('checkRangos'))) {
             $dtDesde = $request->get('dtDesde');
             $dtHasta = $request->get('dtHasta');
 
-            $lblrango = "<strong>Desde:</strong> " . $dtDesde ." <strong>Hasta:</strong> ". $dtHasta;
+            $lblrango = "<strong>Desde:</strong> " . $dtDesde . " <strong>Hasta:</strong> " . $dtHasta;
             $data = DB::table('sujetos')
-                ->join('tipo_servicios', 'categorias.TipoServicioId', '=', 'tipo_servicios.Id')
-                ->select('categorias.*', 'tipo_servicios.Nombre as TipoServicioNombre')
-                ->where('categorias.Activo', '=', 1)
+                ->select("created_at as FechaCrecion", "DNI", "DNI",  "Nombre",  "Apellido", "Telefono", "Email", "Direccion")
+                ->where('Activo', '=', 1)
+                ->where('TipoSujeto', '=', 1)
+                ->whereBetween('created_at', [$dtDesde, $dtHasta])
                 ->get();
         } else {
-            $dtMesAnio = $request->get('dtMesAnio');
+            $dtMesAnio =  str_split($request->get('dtMesAnio'), 4);
+            $mes = str_replace("-", "", $dtMesAnio[1]);
+            $anio = $dtMesAnio[0];
 
-            $lblrango = "<strong>Mes:</strong> " . $dtMesAnio . " <strong>Año:</strong> " . $dtMesAnio;
+            $lblrango = "<strong>Mes:</strong> " . date("F", mktime(0, 0, 0, (int) $mes, 10))  . " <strong>Año:</strong> " . $anio;
+            $data = DB::table('sujetos')
+                ->select("created_at as FechaCrecion", "DNI", "DNI",  "Nombre",  "Apellido", "Telefono", "Email", "Direccion")
+                ->where('Activo', '=', 1)
+                ->where('TipoSujeto', '=', 1)
+                ->whereRaw('month(created_at) =?',  [(int) $mes])
+                ->whereRaw('year(created_at)=?', [(int) $anio])
+                ->get();
         }
 
-
-
-        return view('reportes.rptForm.rptNuevosClientes')->with('emp', $emp[0])->with('lblrango', $lblrango)->with('data', $data);
-        // $view =  view('reportes.rptForm.rptNuevosClientes')->with('emp', $emp[0])->with('lblrango', $lblrango)->render();
-        // $pdf = PDF::loadHTML($view);
-        // return $pdf->download();
-
-
+        $view =  view('reportes.rptForm.rptNuevosClientes')->with('emp', $emp[0])->with('lblrango', $lblrango)->with('data', $data);
+        $pdf = PDF::loadHTML($view);
+        return $pdf->download();
     }
 }

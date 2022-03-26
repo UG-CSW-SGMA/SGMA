@@ -111,5 +111,5 @@ Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
  *@Rafael1108 
  *Ruteo de metodos de busqueda Ajax, para presentar reportes
  */
-Route::get('reportes/{id}/showReport', 'App\Http\Controllers\ReportesController@showReport');
+Route::post('reportes/{id}/showReport', 'App\Http\Controllers\ReportesController@showReport');
 Route::resource('reportes', 'App\Http\Controllers\ReportesController');

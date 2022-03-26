@@ -5,6 +5,7 @@
 <div class="container-fluid px-4">
 
     <div class="row row-cols-1 row-cols-md-2 g-4 tile-container">
+        @if(Session('usuarioDataRol')==3 || Session('usuarioDataRol')==2 )
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/productos">
@@ -16,7 +17,7 @@
                 </div>
             </a>
         </div>
-
+        @endif
 
 
         <div class="col-xl-3 col-md-6">
@@ -43,9 +44,9 @@
             </a>
         </div>
 
-
+        @if(Session('usuarioDataRol')==4 || Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
-
+           
             <a class="tile" href="/ordenAtencion">
                 <div class="tile-tittle">Gestión ODA</div>
                 <div class="card-body text-center">
@@ -55,8 +56,8 @@
                 </div>
             </a>
         </div>
-
-
+        @endif
+        @if(Session('usuarioDataRol')==3)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/clientes">
@@ -68,7 +69,8 @@
                 </div>
             </a>
         </div>
-
+        @endif
+        @if(Session('usuarioDataRol')==3)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/vehiculos">
@@ -80,6 +82,7 @@
                 </div>
             </a>
         </div>
+        @endif
 
         <div class="col-xl-3 col-md-6">
 
