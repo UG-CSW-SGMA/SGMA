@@ -12,12 +12,12 @@ class DocumentoCompraDetalle extends Model
 
     /**
      * @Rafael1108
-     * Método para obtener el listado de las compras activas. 
+     * Método para obtener el listado de las documento_compra_detalles activas. 
      */
     public function getListadoActivos()
     {
-        return DB::table('compras')
-            ->where('compras.Activo', '=', 1)
+        return DB::table('documento_compra_detalles')
+            ->where('documento_compra_detalles.Activo', '=', 1)
             ->get();
     }
 

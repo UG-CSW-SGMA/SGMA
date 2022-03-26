@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($compras as $documento_compra_detalle)
+                    @foreach($documento_compra_detalles as $documento_compra_detalle)
                     <tr>
                         <!-- <td scope="row">{{$documento_compra_detalle->Codigo}}</td> -->
                         <td>{{$documento_compra_detalle->DocumentoCompraId}}</td>

@@ -8,11 +8,11 @@ use App\Models\DocumentoDetalleCompra;
 
 class CompraController extends Controller
 {
-    // protected $DocumentoCompraModel;
-    // public function __construct(DocumentoCompra $documentocompra)
-    // {
-    //     $this->DocumentoCompraModel = $documentocompra;
-    // }
+    protected $DocumentoCompraModel;
+    public function __construct(DocumentoCompra $documentocompra)
+    {
+        $this->DocumentoCompraModel = $documentocompra;
+    }
     
 
     /**
@@ -23,7 +23,7 @@ class CompraController extends Controller
     public function index()
     {
         //
-        return view('compras.compras.index')->with('compras');
+        return view('compras.compras.index')->with('documento_compra_detalles');
     }
 
     /**
