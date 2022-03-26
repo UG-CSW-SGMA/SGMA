@@ -69,7 +69,7 @@
             </div>
 
             <li class="nav-item">
-                @if(Session('usuarioDataRol')==2 )
+                @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1 || Session('usuarioDataRol')==4)
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Inventario</span>
@@ -78,11 +78,12 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/categorias">Categorías</a>
+
                         <a class="collapse-item" href="/productos">Productos</a>
                     </div>
                 </div>
             </li>
-            @if(Session('usuarioDataRol')==3)
+            @if(Session('usuarioDataRol')==3|| Session('usuarioDataRol')==4|| Session('usuarioDataRol')==1)
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-tools"></i>
@@ -90,15 +91,15 @@
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @if(Session('usuarioDataRol')==4 )
-                         {{-- Permite el control de los roles--}}
-                         <a class="collapse-item" href="/ordenAtencion">Orden de atención</a>
+                        @if(Session('usuarioDataRol')==4 || Session('usuarioDataRol')==3|| Session('usuarioDataRol')==1)
+                        {{-- Permite el control de los roles--}}
+                        <a class="collapse-item" href="/ordenAtencion">Orden de atención</a>
                         @endif
-                       
-                        @if(Session('usuarioDataRol')==3)
+
+                        @if(Session('usuarioDataRol')==3|| Session('usuarioDataRol')==1)
                         <a class="collapse-item" href="/clientes">Clientes</a>
                         @endif
-                        @if(Session('usuarioDataRol')==3)
+                        @if(Session('usuarioDataRol')==3|| Session('usuarioDataRol')==4 || Session('usuarioDataRol')==1)
                         <a class="collapse-item" href="/vehiculos">Vehículos</a>
                         @endif
                     </div>
@@ -106,7 +107,7 @@
             </li>
             @endif
             <li class="nav-item">
-                @if(Session('usuarioDataRol')==2)
+                @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                     <i class="fas fa-shopping-bag"></i>
                     <span>Compras</span>
@@ -114,26 +115,26 @@
                 @endif
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        @if(Session('usuarioDataRol')==2|| Session('usuarioDataRol')==1)
                         <a class="collapse-item" href="/compras">Compras</a>
+                        @endif
+                        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1 )
                         <a class="collapse-item" href="/proveedores">Proveedores</a>
+                        @endif
                     </div>
                 </div>
             </li>
-
+            @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
             <li class="nav-item">
                 <a class="nav-link" href="reportes">
                     <i class="fa fa-file" aria-hidden="true"></i>
                     <span>Reportes</span>
                 </a>
-                <!-- <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href=" ">report 1 </a>
-                        <a class="collapse-item" href=" ">report 2 </a>
-                        <a class="collapse-item" href=" ">report 3 </a>
-                    </div>
-                </div> -->
+
             </li>
+            @endif
             <!-- Divider -->
+            @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
@@ -143,16 +144,17 @@
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="empresa">Empresa</a> 
+                        <a class="collapse-item" href="empresa">Empresa</a>
                         @if(Session('usuarioDataRol')==1 || Session('usuarioDataRol')==2) {{-- Permite el control de los roles--}}
                         <a class="collapse-item" href="usuarios">Usuarios</a>
                         @endif
-                        
+                        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
                         <a class="collapse-item" href="servicios">Servicios</a>
+                        @endif
                     </div>
                 </div>
             </li>
-
+            @endif
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

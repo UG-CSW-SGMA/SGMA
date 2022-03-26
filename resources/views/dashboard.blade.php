@@ -5,7 +5,7 @@
 <div class="container-fluid px-4">
 
     <div class="row row-cols-1 row-cols-md-2 g-4 tile-container">
-        @if(Session('usuarioDataRol')==3 || Session('usuarioDataRol')==2 )
+        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/productos">
@@ -19,7 +19,7 @@
         </div>
         @endif
 
-
+        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/categorias">
@@ -31,7 +31,8 @@
                 </div>
             </a>
         </div>
-
+        @endif
+        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/proveedores">
@@ -43,10 +44,11 @@
                 </div>
             </a>
         </div>
+        @endif
 
-        @if(Session('usuarioDataRol')==4 || Session('usuarioDataRol')==1)
+        @if(Session('usuarioDataRol')==3 || Session('usuarioDataRol')==4|| Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
-           
+
             <a class="tile" href="/ordenAtencion">
                 <div class="tile-tittle">Gestión ODA</div>
                 <div class="card-body text-center">
@@ -57,7 +59,7 @@
             </a>
         </div>
         @endif
-        @if(Session('usuarioDataRol')==3)
+        @if(Session('usuarioDataRol')==3 || Session('usuarioDataRol')==4|| Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/clientes">
@@ -70,7 +72,7 @@
             </a>
         </div>
         @endif
-        @if(Session('usuarioDataRol')==3)
+        @if(Session('usuarioDataRol')==3 || Session('usuarioDataRol')==4|| Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="/vehiculos">
@@ -84,6 +86,7 @@
         </div>
         @endif
 
+        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
         <div class="col-xl-3 col-md-6">
 
             <a class="tile" href="compras">
@@ -95,8 +98,20 @@
                 </div>
             </a>
         </div>
+        @endif
+        @if(Session('usuarioDataRol')==2 || Session('usuarioDataRol')==1)
+        <div class="col-xl-3 col-md-6">
 
-
+            <a class="tile" href="reportes">
+                <div class="tile-tittle">Reportes</div>
+                <div class="card-body text-center">
+                    <div class="tile-icon">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        @endif
     </div>
 </div>
 
