@@ -20,20 +20,31 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
     </style>
 </head>
 
 <body>
     <div style="display: inline-flexbox; text-align: center;">
         <br>
-        <h3>{{$emp->RazonSocial}}</h3>
-        <h4>{{$emp->NombreComercial}}</h4>
-        <h4>RUC: {{$emp->RUC}}</h4>
-        <h1>REPORTE DE NUEVOS CLIENTES</h1>
+        <h4 style="padding:0">{{$emp->RazonSocial}}</h4>
+        <h5>{{$emp->NombreComercial}}</h5>
+        <h5>RUC: {{$emp->RUC}}</h5>
+        <br>
+        <h4>REPORTE DE NUEVOS CLIENTES</h4>
         <br>
     </div>
     <div>
-        {{$lblrango}}
+        <?php echo $lblrango ?>
     </div>
     <table>
         <tr>

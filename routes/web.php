@@ -86,7 +86,7 @@ Route::get('vehiculos/{placa}/getByPlaca', 'App\Http\Controllers\VehiculoControl
 /*
  * Compras
  */
-
+Route::resource('compras', 'App\Http\Controllers\CompraController');
 /*
  *@Rafael1108 
  *Ruteo de metodos de busqueda Ajax, busqueda por DNI
@@ -111,5 +111,5 @@ Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
  *@Rafael1108 
  *Ruteo de metodos de busqueda Ajax, para presentar reportes
  */
-Route::get('proveedores/{DNI}/getByDNI', 'App\Http\Controllers\ProveedorController@getByDNI');
+Route::get('reportes/{id}/showReport', 'App\Http\Controllers\ReportesController@showReport');
 Route::resource('reportes', 'App\Http\Controllers\ReportesController');

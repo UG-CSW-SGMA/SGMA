@@ -6,9 +6,8 @@
 
 @section('contenido')
 
-<form action="reportes/2/edit" method="POST">
+<form action="reportes/2/showReport" method="POST">
     @csrf
-    @method('PUT')
 
     <div class="card text-center">
         <div class="card-header ">
