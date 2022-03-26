@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrdenAtencion;
+use App\Models\TipoServicio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class OrdenAtencionController extends Controller
      */
     public function index()
     {
-        return view('taller.ordenAtencion.index')->with('ordenes',$this->OrdenAtencionModel->getListadoOrdenes());
+        return view('taller.ordenAtencion.index')
+        ->with('ordenes',$this->OrdenAtencionModel->getListadoOrdenes());
     }
 
     /**
@@ -33,7 +35,12 @@ class OrdenAtencionController extends Controller
     {
         $numOrden = $this->OrdenAtencionModel->generarNumeroOrden();
         $mecanicos = new Usuario();
-        return view('taller.ordenAtencion.create')->with('mecanicos',$mecanicos->getListadoPorRol(3))->with('numOrden',$numOrden);
+        $tipoServicios = new TipoServicio();
+        return view('taller.ordenAtencion.create')
+        ->with('mecanicos',$mecanicos->getListadoPorRol(3))
+        ->with('numOrden',$numOrden)
+        ->with('tipoServicios', $tipoServicios->getListadoActivos());
+
     }
 
     /**

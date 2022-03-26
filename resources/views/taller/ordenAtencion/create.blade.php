@@ -144,7 +144,8 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <h5 class="title">Tipo de servicio</h5>
-                        <div class="input-group mb-2">
+                        <!-- <div class="input-group mb-2">
+
                             <input type="text" id="buscarServicio" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" id="buscarTipoServicio" type="button">
@@ -152,7 +153,14 @@
                                 </button>
                             </div>
                         </div>
-                        <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea>
+                        <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea> -->
+                        <select class="form-select" name="tipoServicio" id="tipoServicio">
+                                <option value="0" disabled selected>Seleccione una opcion...</option>
+                                @foreach($tipoServicios as $tipo)
+                                <option value="{{$tipo->id}}">{{$tipo->Nombre}}</option>
+                                @endforeach
+
+                            </select>
                     </div>
                 </div>
             </div>
@@ -258,6 +266,9 @@
             }
         })
     });
+
+    //Método javascript que devuelve la fecha actual del sistema local
+
     $(document).ready(function() {
 
         var today = new Date();
