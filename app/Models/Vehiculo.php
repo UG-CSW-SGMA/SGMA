@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 class Vehiculo extends Model
 {
     use HasFactory;
+    /**
+     * @edgarbasurto
+     * Método que consulta los vehiculos con estado Activo en la base de datos
+     * y devuelve los resultados encontrados
+     */
 
     public function getListadoVehiculos()
     {

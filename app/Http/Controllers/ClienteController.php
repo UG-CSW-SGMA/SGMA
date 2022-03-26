@@ -16,7 +16,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * @edgarbasurto
+     * Muestra la vista de listado de clientes con estado ACTIVO
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +27,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @edgarbasurto
+     * Muestra el formulario de creación de nuevos clientes
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,7 +38,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @edgarbasurto
+     * Guarda los datos recibidos en la creacion de clientes nuevos
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -61,18 +64,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * @edgarbasurto
+     * Muestra el formulario de edicion de clientes existentes
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -85,7 +78,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @edgarbasurto
+     * Actualiza el cliente en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -116,7 +110,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @edgarbasurto
+     * Cambia de estado ACTIVO a INACTIVO
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
