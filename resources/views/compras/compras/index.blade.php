@@ -11,7 +11,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-2 text-gray-800">Orden de Compra</h1>
-    <a href="ordenAtencion/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Orden de Compra</a>
+    <a href="compras/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva Orden de Compra</a>
 </div>
 
 <!-- DataTales Example -->
@@ -36,17 +36,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($documento_compra_detalles as $documento_compra_detalle)
+                    @foreach($compras as $compra)
                     <tr>
-                        <!-- <td scope="row">{{$documento_compra_detalle->Codigo}}</td> -->
-                        <td>{{$documento_compra_detalle->DocumentoCompraId}}</td>
-                        <td>{{$documento_compra_detalle->ProductoId}}</td>
-                        <td>{{$documento_compra_detalle->Producto}}</td>
-                        <td>{{$documento_compra_detalle->NumeroSerieParte}}</td>
-                        <td>{{$documento_compra_detalle->Cantidad}}</td>
-                        <td>{{"$ " . number_format( $documento_compra_detalle->CostoUnitario, 2, '.', ',')}}</td>
-                        <td>{{$documento_compra_detalle->Impuestos}}</td>
-                        <td>{{"$ " . number_format( $documento_compra_detalle->Total, 2, '.', ',')}}</td>
+                        <!-- <td scope="row">{{$compra->Codigo}}</td> -->
+                        <td>{{$compra->DocumentoCompraId}}</td>
+                        <td>{{$compra->ProductoId}}</td>
+                        <td>{{$compra->Producto}}</td>
+                        <td>{{$compra->NumeroSerieParte}}</td>
+                        <td>{{$compra->Cantidad}}</td>
+                        <td>{{"$ " . number_format( $compra->CostoUnitario, 2, '.', ',')}}</td>
+                        <td>{{$compra->Impuestos}}</td>
+                        <td>{{"$ " . number_format( $compra->Total, 2, '.', ',')}}</td>
 
                         <td>
                             <a class="d-none d-sm-inline-block btn btn-sm btn-primary" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="productos/{{ $producto->id}}/edit/"><i class="fas fa-edit fa-sm text-white-50"></i></a>
