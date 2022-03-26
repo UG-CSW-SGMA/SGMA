@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Exceptions\Notificacion;
+use Illuminate\Http\Request;
 use App\Models\DocumentoCompra;
 use App\Models\DocumentoDetalleCompra;
-use Illuminate\Http\Request;
-use DB;
 
 class CompraController extends Controller
 {
@@ -20,29 +20,10 @@ class CompraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        if ($request)
-    	{
-    		$query = trim($request->input('buscarTexto'));
-
-    		//DB::raw() permite escribir sentencias SQL en crudo
-    		$ingresos = DB::table('ingreso as i')
-    		->join('persona as p', 'p.id', '=', 'i.id_proveedor')
-    		->join('detalle_ingreso as di', 'di.id_ingreso', '=', 'i.id')
-    		->select('p.nombre', 'i.id', 'i.tipo_comprobante', 
-    			'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado', DB::raw('sum(di.cantidad * di.precio_comrpa) as total'))
-    		->where('i.num_comprobante', 'LIKE', "%$query%")
-    		->orderBy('i.id', 'DESC')
-    		->groupBy('p.nombre', 'i.id', 'i.tipo_comprobante', 
-    			'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado')
-    		->paginate(5);
-
-    		return view('compras.compra.index', [
-    					'ingresos' => $ingresos, 
-    					'buscarTexto' => $query]);
-    	}
+        return view('compras.compras.index')->with('compras');
     }
 
     /**
