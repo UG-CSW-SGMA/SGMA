@@ -26,9 +26,12 @@ class Vehiculo extends Model
     public function getVehiculoByPlaca($placa)
     {
         return DB::table('vehiculos')
-            ->select('*')
+            ->join('sujetos', 'vehiculos.SujetoId', '=', 'sujetos.id')
+            ->select('vehiculos.*', 'sujetos.DNI as DNI','sujetos.Nombre as Nombre', 'sujetos.Apellido as Apellido', 'sujetos.Email as Email')
             ->where([
+                ['vehiculos.Activo', '=', 1],
                 ['Placa', 'like',  $placa],
+                ['vehiculos.Activo', '=', 1],
             ])
             ->first();
     }

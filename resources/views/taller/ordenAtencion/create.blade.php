@@ -14,14 +14,14 @@
                 <div class="col-8">
                     <h4 class="card-title"> <b> Nueva Orden de Atencion </b> </h4>
                     <h5> Nº {{$numOrden}}</h5>
-                    <input type="hidden" name="numeroOrden" value="{{$numOrden}}" >
+                    <input type="hidden" name="numeroOrden" value="{{$numOrden}}">
                 </div>
                 <div class="col-4">
                     <div class="col text-left">
                         <label class="label-control">Fecha/hora de ingreso</label>
                     </div>
                     <div class="col">
-                        <input type="datetime-local" class="form-control" id="fecha" name="fechaIngreso" placeholder="fecha" value="{{Date('Y-m-d\TH:i',time())}}">
+                        <input type="datetime-local" class="form-control" id="fecha" name="fechaIngreso" placeholder="fecha">
                     </div>
                 </div>
             </div>
@@ -41,16 +41,17 @@
                         </div>
                         <div class="row">
                             <div class="col-3 mb-2 text-end">
-                                <label class="label-control">Placa</label>
+                                <label class="col-form-label">Placa</label>
                             </div>
                             <div class="col-9 mb-2">
+                                <input type="hidden" name="idVehiculo" id="idVehiculo">
                                 <input class="form-control" id="placa" name="placa" readonly type="text" maxlength="10">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-3 mb-2 text-end">
-                                <label class="label-control">Descripción</label>
+                                <label class="col-form-label">Descripción</label>
                             </div>
                             <div class="col-9 mb-2">
                                 <input class="form-control" id="descripcionV" name="vehiculo" readonly type="text">
@@ -59,7 +60,7 @@
 
                         <div class="row">
                             <div class="col-3 mb-2 text-end">
-                                <label class="label-control">Kilometraje</label>
+                                <label class="col-form-label">Kilometraje</label>
                             </div>
                             <div class="col-9 mb-2">
                                 <input class="form-control" type="number" name="kilometraje" max="99999999" maxlength="8">
@@ -72,89 +73,90 @@
                         <h5 class="title">Datos del cliente</h5>
                         <input type="hidden" name="clienteId" id="clienteId">
                         <div class="row">
-                            <div class="col-3 mb-2 text-end">
-                                <label class="label-control">DNI</label>
+                            <div class="col-sm-3 mb-2 text-end">
+                                <label class="col-form-label">DNI</label>
                             </div>
-                            <div class="col-9 mb-2">
+                            <div class="col-sm-9 mb-2">
                                 <input class="form-control" readonly type="number" maxlength="10" name="dni" id="dni">
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-3 mb-2 text-end">
-                                <label class="label-control">Nombres</label>
+                            <div class="col-sm-3 mb-2 text-end">
+                                <label class="col-form-label">Nombres</label>
                             </div>
-                            <div class="col-9 mb-2">
+                            <div class="col-sm-9 mb-2">
                                 <input class="form-control" readonly type="text" name="cliente" id="cliente">
                             </div>
                         </div>
 
 
                         <div class="row">
-                            <div class="col-3 mb-2 text-end">
-                                <label class="label-control">Email</label>
+                            <div class="col-sm-3 mb-2 text-end">
+                                <label class="col-form-label">Email</label>
                             </div>
-                            <div class="col-9 mb-2">
+                            <div class="col-sm-9 mb-2">
                                 <input class="form-control" readonly type="email" id="emailCliente">
                             </div>
                         </div>
 
-                        <textarea class="form-control" name="datosVehiculo" id="datosVehiculo" cols="50" rows="3" placeholder="Observaciones del vehículo..."></textarea>
+                        <textarea class="form-control" name="observacines" id="observaciones" cols="50" rows="3" placeholder="Observaciones en la recepción del vehículo..."></textarea>
                     </div>
                 </div>
 
             </div>
             <hr>
-            <div class="form-group">
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <h5 class="title">Atención</h5> <br>
-                        <div class="form-group">
-                            <div class="text-left col" style="margin-left: 20px; align-self:center;">
-                                <label>Estado: </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <select class="form-select" name="estado" id="estado">
-                                    <option value="0" disabled selected>Seleccione una opcion...</option>
-                                    <option value="1">Activo</option>
-                                    <option value="2">En Atención</option>
-                                    <option value="3">Cerrado</option>
-                                    <option value="4">No Atendido</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-left" style="margin-left: 20px; align-self:center;">
-                                <label>Mecánico disponible: </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <select class="form-select" name="mecanico" id="mecanico">
-                                    <option value="0" disabled selected>Seleccione una opcion...</option>
-                                    @foreach($mecanicos as $mecanico)
-                                    <option value="{{$mecanico->id}}">{{$mecanico->NombreCompleto}}</option>
-                                    @endforeach
 
-                                </select>
-                            </div>
+            <div class="row">
+                <div class="col-sm-6 mb-sm-0">
+                    <h5 class="title">Atención</h5> <br>
+                    <div class="row">
+
+                        <div class="col-sm-3 mb-2 text-end">
+                            <label class="col-form-label">Estado: </label>
                         </div>
+                        <div class="col-sm-9 mb-2">
+                            <select class="form-select" name="estado" id="estado">
+                                <option value="0" disabled selected>Seleccione una opcion...</option>
+                                <option value="1">Activo</option>
+                                <option value="2">En Atención</option>
+                                <option value="3">Cerrado</option>
+                                <option value="4">No Atendido</option>
+                            </select>
+                        </div>
+
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <h5 class="title">Tipo de servicio</h5>
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea>
+                    <div class="row">
+                        <div class="col-sm-3 text-end">
+                            <label class="col-form-label">Mecánico disponible: </label>
+                        </div>
+                        <div class="col-sm-9 mb-2">
+                            <select class="form-select" name="mecanico" id="mecanico">
+                                <option value="0" disabled selected>Seleccione una opcion...</option>
+                                @foreach($mecanicos as $mecanico)
+                                <option value="{{$mecanico->id}}">{{$mecanico->NombreCompleto}}</option>
+                                @endforeach
+
+                            </select>
                         </div>
                     </div>
                 </div>
-
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h5 class="title">Tipo de servicio</h5>
+                        <div class="input-group mb-2">
+                            <input type="text" id="buscarServicio" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" id="buscarTipoServicio" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea>
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="card-footer">
             <button class="btn btn-secondary" type="submit" data-dismiss="modal">Cancelar</button>
@@ -214,24 +216,8 @@
 </script>
 @endif
 <script>
-    $('.formulario-eliminar').submit(function(e) {
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Está seguro de eliminar?',
-            text: "El registro se eliminará definitivamente",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, eliminar!',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
-        })
-    });
 
+// ajax de busqueda de vehiculos
     $(document).on('click', '#buscarVehiculo', function(event) {
         event.preventDefault();
         var placa = document.getElementById('buscarPlaca').value;
@@ -241,14 +227,62 @@
             type: "GET",
             data: JSON,
             success: function(datos) {
-                let placa = document.getElementById("placa");
-                let vehiculo = document.getElementById("descripcionV");
-                placa.value = datos.Placa;
-                vehiculo.value = datos.Marca + ' ' + datos.Modelo + ' ' + datos.Descripcion + ' ' + datos.Anio + ' ' + datos.Tipo; 
+                if (datos == '') {
+                    Swal.fire(
+                        'Error!',
+                        'El registro NO existe en la base de datos.',
+                        'error'
+                    )
+                } else {
+                    let idVehiculo = document.getElementById("idVehiculo");
+                    let placa = document.getElementById("placa");
+                    let vehiculo = document.getElementById("descripcionV");
+                    let clienteId = document.getElementById("clienteId");
+                    let cliente = document.getElementById("cliente");
+                    let dni = document.getElementById("dni");
+                    let emailCliente = document.getElementById("emailCliente");
 
-                console.log(datos);
+                    idVehiculo.value = datos.id;
+                    placa.value = datos.Placa;
+                    vehiculo.value = datos.Marca + ' ' + datos.Modelo + ' ' + datos.Descripcion + ' ' + datos.Anio + ' ' + datos.Tipo;
+                    clienteId.value = datos.SujetoId;
+                    cliente.value = datos.Nombre + ' ' + datos.Apellido;
+                    dni.value = datos.DNI;
+                    emailCliente.value = datos.Email;
+                    console.log(datos);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus);
+                alert("Error: " + errorThrown);
             }
         })
+    });
+    $(document).ready(function() {
+
+        var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var m = today.getMinutes();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    if (hh < 10) {
+        hh = '0' + hh
+    }
+
+    if (m < 10) {
+        m = '0' + m
+    }
+
+    today = yyyy   + '-' + mm + '-' + dd+'T'+hh+':'+m;
+    console.log(today);
+        document.getElementById("fecha").setAttribute("value", today);
     });
 </script>
 
