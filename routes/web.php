@@ -86,7 +86,7 @@ Route::get('vehiculos/{placa}/getByPlaca', 'App\Http\Controllers\VehiculoControl
 /*
  * Compras
  */
-
+Route::resource('compras', 'App\Http\Controllers\CompraController');
 /*
  *@Rafael1108 
  *Ruteo de metodos de busqueda Ajax, busqueda por DNI
