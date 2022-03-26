@@ -18,7 +18,8 @@ class OrdenAtencion extends Model
     {
         return DB::table('ordenes_atencion')
             ->join('usuarios', 'ordenes_atencion.MecanicoId', '=', 'usuarios.id')
-            ->select('ordenes_atencion.*', 'usuarios.NombreCompleto as Mecanico')
+            ->join('tipo_servicios', 'ordenes_atencion.TipoServicioId', '=', 'tipo_servicios.id')
+            ->select('ordenes_atencion.*', 'usuarios.NombreCompleto as Mecanico','tipo_servicios.Nombre as TipoServicio')
             ->get();
     }
 
