@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrdenAtencion;
+use App\Models\OrdenesAtencion;
 use App\Models\TipoServicio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
-class OrdenAtencionController extends Controller
+class OrdenesAtencionController extends Controller
 {
     protected $OrdenAtencionModel;
 
-    public function __construct(OrdenAtencion $ordenAtencion)
+    public function __construct(OrdenesAtencion $ordenAtencion)
     {
         $this->OrdenAtencionModel = $ordenAtencion;
     }
@@ -23,7 +23,7 @@ class OrdenAtencionController extends Controller
     public function index()
     {
         return view('taller.ordenAtencion.index')
-        ->with('ordenes',$this->OrdenAtencionModel->getListadoOrdenes());
+            ->with('ordenes', $this->OrdenAtencionModel->getListadoOrdenes());
     }
 
     /**
@@ -37,10 +37,9 @@ class OrdenAtencionController extends Controller
         $mecanicos = new Usuario();
         $tipoServicios = new TipoServicio();
         return view('taller.ordenAtencion.create')
-        ->with('mecanicos',$mecanicos->getListadoPorRol(3))
-        ->with('numOrden',$numOrden)
-        ->with('tipoServicios', $tipoServicios->getListadoActivos());
-
+            ->with('mecanicos', $mecanicos->getListadoPorRol(3))
+            ->with('numOrden', $numOrden)
+            ->with('tipoServicios', $tipoServicios->getListadoActivos());
     }
 
     /**
@@ -51,7 +50,7 @@ class OrdenAtencionController extends Controller
      */
     public function store(Request $request)
     {
-        $oda = new OrdenAtencion();
+        $oda = new OrdenesAtencion();
         $oda->NumeroTransaccion = $request->get('numeroOrden');
         $oda->TipoServicioId = $request->get('tipoServicioId');
         $oda->MecanicoId = $request->get('mecanicoId');
@@ -67,7 +66,7 @@ class OrdenAtencionController extends Controller
         $oda->EstadoODA = $request->get('estadoODA');
         $oda->KilometroActualVehiculo = $request->get('kilometraje');
         $oda->UserCreated = '0';
-                
+
         $oda->save();
 
         return redirect('/ordenAtencion')->with('guardar', 'ok');

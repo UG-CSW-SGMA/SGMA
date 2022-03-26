@@ -8,7 +8,7 @@
 @section('contenido')
 
 <form action="/ordenAtencion" class="row g-3 needs-validation" novalidate method="post">
-@csrf
+    @csrf
     <div class="card shadow mb-4">
         <div class="card-header">
             <div class="row">
@@ -156,12 +156,12 @@
                         </div>
                         <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea> -->
                         <select class="form-select" name="tipoServicioId" id="tipoServicio">
-                                <option value="0" disabled selected>Seleccione una opcion...</option>
-                                @foreach($tipoServicios as $tipo)
-                                <option value="{{$tipo->id}}">{{$tipo->Nombre}}</option>
-                                @endforeach
+                            <option value="0" disabled selected>Seleccione una opcion...</option>
+                            @foreach($tipoServicios as $tipo)
+                            <option value="{{$tipo->id}}">{{$tipo->Nombre}}</option>
+                            @endforeach
 
-                            </select>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -225,8 +225,7 @@
 </script>
 @endif
 <script>
-
-// ajax de busqueda de vehiculos
+    // ajax de busqueda de vehiculos
     $(document).on('click', '#buscarVehiculo', function(event) {
         event.preventDefault();
         var placa = document.getElementById('buscarPlaca').value;
@@ -273,27 +272,27 @@
     $(document).ready(function() {
 
         var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-    var hh = today.getHours();
-    var m = today.getMinutes();
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    if (hh < 10) {
-        hh = '0' + hh
-    }
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+        var hh = today.getHours();
+        var m = today.getMinutes();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+        if (hh < 10) {
+            hh = '0' + hh
+        }
 
-    if (m < 10) {
-        m = '0' + m
-    }
+        if (m < 10) {
+            m = '0' + m
+        }
 
-    today = yyyy   + '-' + mm + '-' + dd+'T'+hh+':'+m;
-    console.log(today);
+        today = yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + m;
+        console.log(today);
         document.getElementById("fecha").setAttribute("value", today);
     });
 </script>
