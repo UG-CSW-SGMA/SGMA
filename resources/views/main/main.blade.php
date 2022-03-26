@@ -69,10 +69,12 @@
             </div>
 
             <li class="nav-item">
+                @if(Session('usuarioDataRol')==2 )
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Inventario</span>
                 </a>
+                @endif
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/categorias">Categorías</a>
@@ -80,7 +82,7 @@
                     </div>
                 </div>
             </li>
-
+            @if(Session('usuarioDataRol')==3)
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-tools"></i>
@@ -88,18 +90,28 @@
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/ordenAtencion">Orden de atención</a>
+                        @if(Session('usuarioDataRol')==4 )
+                         {{-- Permite el control de los roles--}}
+                         <a class="collapse-item" href="/ordenAtencion">Orden de atención</a>
+                        @endif
+                       
+                        @if(Session('usuarioDataRol')==3)
                         <a class="collapse-item" href="/clientes">Clientes</a>
+                        @endif
+                        @if(Session('usuarioDataRol')==3)
                         <a class="collapse-item" href="/vehiculos">Vehículos</a>
+                        @endif
                     </div>
                 </div>
             </li>
-
+            @endif
             <li class="nav-item">
+                @if(Session('usuarioDataRol')==2)
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                     <i class="fas fa-shopping-bag"></i>
                     <span>Compras</span>
                 </a>
+                @endif
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/compras">Compras</a>
@@ -132,7 +144,7 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="empresa">Empresa</a> 
-                        @if(Session('usuarioDataRol')==1) {{-- Permite el control de los roles--}}
+                        @if(Session('usuarioDataRol')==1 || Session('usuarioDataRol')==2) {{-- Permite el control de los roles--}}
                         <a class="collapse-item" href="usuarios">Usuarios</a>
                         @endif
                         
@@ -323,7 +335,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session('usuarionickname')}}</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
