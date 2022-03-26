@@ -31,7 +31,7 @@ class TipoServicioController extends Controller
      */
     public function create()
     {
-        //  
+        return view('parametros.tipoServicio.create');
     }
 
     /**
@@ -42,7 +42,13 @@ class TipoServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $servicio_new = new TipoServicio();
+
+        $servicio_new->Nombre = $request->get('txtNombre');
+        $servicio_new->Descripcion = $request->get('txtDescripcion');
+        $servicio_new->UserCreated = "0";
+        $servicio_new->save();
+        return redirect('/servicios');
     }
 
     /**
@@ -77,7 +83,18 @@ class TipoServicioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $servicio_edit = $this->TipoServicioModel::find($id);
+        $servicio_edit->Nombre = $request->get('txtNombre');
+        $servicio_edit->Descripcion = $request->get('txtDescripcion');
+        $servicio_edit->save();
+
+        return redirect('/servicios');
+        if ($servicio_edit->save() == 1) {
+            return redirect('/servicios')->with('actualizar', 'ok');
+        } else {
+            return redirect('/servicios')->with('actualizar', 'failed');
+        }
+
     }
 
     /**

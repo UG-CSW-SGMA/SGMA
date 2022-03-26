@@ -7,11 +7,13 @@
 
 @section('contenido')
 
+
 <!-- DataTable Show -->
 <div class=" card shadow mb-4">
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h6 class="m-0 font-weight-bold text-primary">Servicios del Taller</h6>
+            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="servicios/create" title="Crear Nuevo Servicio"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nuevo Servicio</a>
 
         </div>
     </div>
