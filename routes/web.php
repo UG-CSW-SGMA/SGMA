@@ -71,7 +71,7 @@ Route::resource('productos', 'App\Http\Controllers\ProductoController');
  */
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
-Route::resource('ordenAtencion', 'App\Http\Controllers\OrdenAtencionController');
+Route::resource('ordenAtencion', 'App\Http\Controllers\OrdenesAtencionController');
 /**
  * @edgarbasurto
  * Ruta de metodo de busqueda Ajax, por DNI
