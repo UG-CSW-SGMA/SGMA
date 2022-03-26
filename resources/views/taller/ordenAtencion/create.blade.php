@@ -7,7 +7,8 @@
 
 @section('contenido')
 
-<form>
+<form action="/ordenAtencion" class="row g-3 needs-validation" novalidate method="post">
+@csrf
     <div class="card shadow mb-4">
         <div class="card-header">
             <div class="row">
@@ -44,7 +45,7 @@
                                 <label class="col-form-label">Placa</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input type="hidden" name="idVehiculo" id="idVehiculo">
+                                <input type="hidden" name="vehiculoId   " id="idVehiculo">
                                 <input class="form-control" id="placa" name="placa" readonly type="text" maxlength="10">
                             </div>
                         </div>
@@ -116,7 +117,7 @@
                             <label class="col-form-label">Estado: </label>
                         </div>
                         <div class="col-sm-9 mb-2">
-                            <select class="form-select" name="estado" id="estado">
+                            <select class="form-select" name="estadoODA" id="estado">
                                 <option value="0" disabled selected>Seleccione una opcion...</option>
                                 <option value="1">Activo</option>
                                 <option value="2">En Atención</option>
@@ -131,7 +132,7 @@
                             <label class="col-form-label">Mecánico disponible: </label>
                         </div>
                         <div class="col-sm-9 mb-2">
-                            <select class="form-select" name="mecanico" id="mecanico">
+                            <select class="form-select" name="mecanicoId" id="mecanico">
                                 <option value="0" disabled selected>Seleccione una opcion...</option>
                                 @foreach($mecanicos as $mecanico)
                                 <option value="{{$mecanico->id}}">{{$mecanico->NombreCompleto}}</option>
@@ -154,7 +155,7 @@
                             </div>
                         </div>
                         <textarea class="form-control" readonly name="tipoServicio" id="tipoServicio" cols="50" rows="4" placeholder="Detalles del tipo de servicio solicitado..."></textarea> -->
-                        <select class="form-select" name="tipoServicio" id="tipoServicio">
+                        <select class="form-select" name="tipoServicioId" id="tipoServicio">
                                 <option value="0" disabled selected>Seleccione una opcion...</option>
                                 @foreach($tipoServicios as $tipo)
                                 <option value="{{$tipo->id}}">{{$tipo->Nombre}}</option>
