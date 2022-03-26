@@ -16,7 +16,6 @@
         window.location.href = "{{url('/')}}"
     </script>
     @endif
-
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -44,7 +43,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon">
                     <i class="fa fa-taxi"></i>
                 </div>
@@ -56,7 +55,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="dashboard">
+                <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -76,8 +75,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="categorias">Categorías</a>
-                        <a class="collapse-item" href="productos">Productos</a>
+                        <a class="collapse-item" href="/categorias">Categorías</a>
+                        <a class="collapse-item" href="/productos">Productos</a>
                     </div>
                 </div>
             </li>
@@ -89,9 +88,9 @@
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="ordenAtencion">Orden de atención</a>
-                        <a class="collapse-item" href="clientes">Clientes</a>
-                        <a class="collapse-item" href="vehiculos">Vehículos</a>
+                        <a class="collapse-item" href="/ordenAtencion">Orden de atención</a>
+                        <a class="collapse-item" href="/clientes">Clientes</a>
+                        <a class="collapse-item" href="/vehiculos">Vehículos</a>
                     </div>
                 </div>
             </li>
@@ -103,24 +102,24 @@
                 </a>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="compras">Compras</a>
-                        <a class="collapse-item" href="proveedores">Proveedores</a>
+                        <a class="collapse-item" href="/compras">Compras</a>
+                        <a class="collapse-item" href="/proveedores">Proveedores</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                <a class="nav-link" href="reportes">
                     <i class="fa fa-file" aria-hidden="true"></i>
                     <span>Reportes</span>
                 </a>
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                <!-- <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href=" ">report 1 </a>
                         <a class="collapse-item" href=" ">report 2 </a>
                         <a class="collapse-item" href=" ">report 3 </a>
                     </div>
-                </div>
+                </div> -->
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -171,7 +170,8 @@
 
                     <!-- Topbar Search -->
                     <div>
-                        <h4 id="MyEmpresa"></h4>
+                        <h5 class="fw-bold" id="MyEmpresa">
+                        </h5>
                     </div>
 
                     <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -407,10 +407,10 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
-
+    @php $path =Request::root(); @endphp
     <script>
         $(document).ready(function() {
-            let href = 'empresa/0';
+            let href = '{{$path}}/empresa/0';
             $.ajax({
                 url: href,
                 type: "GET",
@@ -422,8 +422,7 @@
                     if (datos !== '') {
                         let valor = datos[0];
                         let empresa = document.getElementById("MyEmpresa");
-                        empresa.innerText = valor.RazonSocial;
-                        console.log(valor.RazonSocial);
+                        empresa.innerText = valor.NombreComercial + " - " + valor.RazonSocial;
                     }
 
                 }

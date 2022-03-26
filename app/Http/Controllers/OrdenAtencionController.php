@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrdenAtencion;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class OrdenAtencionController extends Controller
@@ -20,7 +21,7 @@ class OrdenAtencionController extends Controller
      */
     public function index()
     {
-        return view('taller.ordenAtencion.index');
+        return view('taller.ordenAtencion.index')->with('ordenes',$this->OrdenAtencionModel->getListadoOrdenes());
     }
 
     /**
@@ -30,7 +31,9 @@ class OrdenAtencionController extends Controller
      */
     public function create()
     {
-        return view('taller.ordenAtencion.create');
+        $numOrden = $this->OrdenAtencionModel->generarNumeroOrden();
+        $mecanicos = new Usuario();
+        return view('taller.ordenAtencion.create')->with('mecanicos',$mecanicos->getListadoPorRol(3))->with('numOrden',$numOrden);
     }
 
     /**
@@ -41,7 +44,26 @@ class OrdenAtencionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $oda = new OrdenAtencion();
+        $oda->NumeroTransaccion = $request->get('numeroOrden');
+        $oda->TipoServicioId = $request->get('tipoServicioId');
+        $oda->MecanicoId = $request->get('mecanicoId');
+        $oda->VendedorId = '1'; // se debe obtener de la session al ingresar con usuario VENDEDOR
+        $oda->SujetoId = $request->get('clienteId');
+        $oda->DNI = $request->get('dni');
+        $oda->Cliente = $request->get('cliente');
+        $oda->FechaHora = $request->get('fechaIngreso');
+        $oda->VehiculoId = $request->get('vehiculoId');
+        $oda->Placa = $request->get('placa');
+        $oda->Vehiculo = $request->get('vehiculo');
+        $oda->DescripcionRecepcionVehiculo = $request->get('observaciones');
+        $oda->EstadoODA = $request->get('estadoODA');
+        $oda->KilometroActualVehiculo = $request->get('kilometraje');
+        $oda->UserCreated = '0';
+                
+        $oda->save();
+
+        return redirect('/ordenAtencion')->with('guardar', 'ok');
     }
 
     /**

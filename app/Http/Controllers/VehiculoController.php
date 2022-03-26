@@ -140,4 +140,5 @@ class VehiculoController extends Controller
     {
         return $this->VehiculoModel->getVehiculoByPlaca($placa);
     }
+
 }

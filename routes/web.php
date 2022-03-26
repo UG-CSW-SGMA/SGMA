@@ -101,3 +101,15 @@ Route::get('proveedores/{DNI}/getByDNI', 'App\Http\Controllers\ProveedorControll
 Route::get('proveedores/{id}/del', 'App\Http\Controllers\ProveedorController@del');
 
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
+
+
+/*
+ * Reportes
+ */
+
+/*
+ *@Rafael1108 
+ *Ruteo de metodos de busqueda Ajax, para presentar reportes
+ */
+Route::get('proveedores/{DNI}/getByDNI', 'App\Http\Controllers\ProveedorController@getByDNI');
+Route::resource('reportes', 'App\Http\Controllers\ReportesController');
