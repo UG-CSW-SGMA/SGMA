@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\LogAcceso;
 use Session;
 class LoginController extends Controller
 {
@@ -20,8 +21,23 @@ class LoginController extends Controller
         $consulta = Usuario::where('NickName',$request->NickName)->get(); //permite comprobar si existe el usuario
         $cuantos = count ($consulta);//cuenta cuantos registros hay
         if($cuantos >0 and Hash::check($request->PasswordHASH, $consulta[0]->PasswordHASH)){
+            session_start();
             $usuarioData = Usuario::where(['NickName'=>$request->NickName])->get();
+           
             session(['usuarioData'=>$usuarioData]);
+            session(['usuarioDataRol'=>$usuarioData[0]->TipoRol]);
+            
+            $DateAndTime = date('Y-m-d h:m:s', time());
+            $ip_add = $_SERVER['REMOTE_ADDR'];
+            $dataAccess = new LogAcceso;
+            $dataAccess->UsuarioId =$usuarioData[0]->id;
+            $dataAccess->FechaHoraAcceso =$DateAndTime;
+            $dataAccess->Nombre_Navegador ="Google Chrome";
+            $dataAccess->IP = $ip_add;
+            $dataAccess->InfoAdicional = "OK ";
+            $dataAccess->save();
+            // session(['UsuarioId'=>$dataAccess->id]);
+    
             return redirect("/dashboard");
         }
         else{
