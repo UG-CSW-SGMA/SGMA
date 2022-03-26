@@ -131,9 +131,12 @@
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/empresa">Empresa</a>
-                        <a class="collapse-item" href="/usuarios">Usuarios</a>
-                        <a class="collapse-item" href="/servicios">Servicios</a>
+                        <a class="collapse-item" href="empresa">Empresa</a> 
+                        @if(Session('usuarioDataRol')==1) {{-- Permite el control de los roles--}}
+                        <a class="collapse-item" href="usuarios">Usuarios</a>
+                        @endif
+                        
+                        <a class="collapse-item" href="servicios">Servicios</a>
                     </div>
                 </div>
             </li>
