@@ -153,7 +153,12 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        Usuario::destroy($id);
+
+        $data = $this->UsuarioModel::find($id);
+        $data->Activo =  0;
+        $data->save();
+
+        
         return redirect('usuarios');
     }
    

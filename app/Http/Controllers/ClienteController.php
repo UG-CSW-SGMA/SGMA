@@ -16,8 +16,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * @Rafael1108
-     * Muestra la vista de todos los clientes
+     * @edgarbasurto
+     * Muestra la vista de listado de clientes con estado ACTIVO
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,8 +27,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * @Rafael1108
-     *  Mostrar el formulario para crear un nuevo cliente
+     * @edgarbasurto
+     * Muestra el formulario de creación de nuevos clientes
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,8 +38,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * @Rafael1108
-     * Almacena el nuevo cliente en el almacenamiento.
+     * @edgarbasurto
+     * Guarda los datos recibidos en la creacion de clientes nuevos
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -64,19 +64,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * @Rafael1108
-     * Muestra el formulario para editar el cliente.
+     * @edgarbasurto
+     * Muestra el formulario de edicion de clientes existentes
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -89,9 +78,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * 
-     * @Rafael1108
-     * Actualiza en Base datos el registro del cliente.
+     * @edgarbasurto
+     * Actualiza el cliente en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -122,10 +110,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * 
-     * @Rafael1108
-     * Elimina en Base de datos el registro de la tabla categoría.
-     * Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
+     * @edgarbasurto
+     * Cambia de estado ACTIVO a INACTIVO
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -17,7 +17,8 @@ class VehiculoController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * @edgarbasurto
+     * Método que devuelve la vista del listado de vehiculos con Estado ACTIVO
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +28,8 @@ class VehiculoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @edgarbasurto
+     * Método que devuelve el formulario de creacion de nuevos vehiculos
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +40,8 @@ class VehiculoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @edgarbasurto
+     * Método que recibe los datos ingresados y los guarda en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -65,18 +68,8 @@ class VehiculoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * @edgarbasurto
+     * Método que muestra el formulario de edición de registros existentes
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -89,7 +82,8 @@ class VehiculoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @edgarbasurto
+     * Método que actualiza los datos de los registros en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -121,7 +115,8 @@ class VehiculoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @edgarbasurto
+     * Método que cambia el estado de Activo a inactivo
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
