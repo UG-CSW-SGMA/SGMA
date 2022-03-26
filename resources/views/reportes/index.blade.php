@@ -39,7 +39,7 @@
                     </div>
                 </a>
             </div>
-
+            @if(Session('usuarioDataRol')==2|| Session('usuarioDataRol')==1 || Session('usuarioDataRol')==3)
             <div class="col-xl-3 col-md-6">
 
                 <a class="tile" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="reportes/3">
@@ -51,8 +51,9 @@
                     </div>
                 </a>
             </div>
+            @endif
             <div class="col-xl-3 col-md-6">
-
+                @if(Session('usuarioDataRol')==3)
                 <a class="tile" data-toggle="modal" id="mediumButton" data-target="#mediumModal" data-attr="reportes/4">
                     <div class="tile-tittle">Catálogo de Productos</div>
                     <div class="card-body text-center">
@@ -61,6 +62,7 @@
                         </div>
                     </div>
                 </a>
+                @endif
             </div>
         </div>
     </div>
