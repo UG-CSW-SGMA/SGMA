@@ -45,7 +45,7 @@
                                 <label class="col-form-label">Placa</label>
                             </div>
                             <div class="col-9 mb-2">
-                                <input type="hidden" name="vehiculoId   " id="idVehiculo">
+                                <input type="hidden" name="vehiculoId" id="idVehiculo">
                                 <input class="form-control" id="placa" name="placa" readonly type="text" maxlength="10">
                             </div>
                         </div>
