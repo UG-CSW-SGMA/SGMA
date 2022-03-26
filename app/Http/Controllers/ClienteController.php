@@ -16,7 +16,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * @Rafael1108
+     * Muestra la vista de todos los clientes
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +27,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @Rafael1108
+     *  Mostrar el formulario para crear un nuevo cliente
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,7 +38,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @Rafael1108
+     * Almacena el nuevo cliente en el almacenamiento.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -72,7 +75,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @Rafael1108
+     * Muestra el formulario para editar el cliente.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -85,7 +89,9 @@ class ClienteController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 
+     * @Rafael1108
+     * Actualiza en Base datos el registro del cliente.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -116,7 +122,10 @@ class ClienteController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 
+     * @Rafael1108
+     * Elimina en Base de datos el registro de la tabla categoría.
+     * Tener presente que el método sólo cambia de estado ya que no se permite eliminar registros
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -131,6 +140,14 @@ class ClienteController extends Controller
         return redirect('/clientes')->with('eliminar', 'ok');
     }
 
+    /**
+     * 
+     * @Rafael1108
+     * Busca la entidad clinete y retorna su coincidencia.
+     *
+     * @param  string  $DNI
+     * @return App\Models\Sujeto
+     */
     public function getByDNI($DNI)
     {
         return $this->ClienteModel->getClienteByDNI($DNI);

@@ -44,7 +44,9 @@ class ReportesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 
+     * @Rafael1108
+     * Muestra formulario modales de parámetros. 
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -64,6 +66,7 @@ class ReportesController extends Controller
     }
 
     /**
+     * 
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -74,6 +77,7 @@ class ReportesController extends Controller
     }
 
     /**
+     * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -99,6 +103,8 @@ class ReportesController extends Controller
 
 
     /**
+     * 
+     * @Rafael1108
      * Método POST para obtener los reportes renderizados y exportables.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -117,6 +123,15 @@ class ReportesController extends Controller
         }
     }
 
+    /**
+     * 
+     * @Rafael1108
+     * Método para Generar reporte de Nuevos clientes
+     * la funcion requeire el request del POST.
+     *
+     * @param  \Illuminate\Http\Request  $request 
+     * @return Barryvdh\DomPDF\Facade\Pdf
+     */
     private function rptNuevosClientes(Request $request)
     {
         setlocale(LC_ALL, 'es_ES');

@@ -12,13 +12,14 @@ class CategoriaController extends Controller
 {
     protected $CategoriaModel;
 
+
     public function __construct(Categoria $categoria)
     {
         $this->CategoriaModel = $categoria;
     }
 
     /**
-     * 
+     * @Rafael1108
      * Muestra la vista de todas las categorias.
      *
      * @return \Illuminate\Http\Response
@@ -29,6 +30,7 @@ class CategoriaController extends Controller
     }
 
     /**
+     * @Rafael1108
      * Mostrar el formulario para crear una nueva categoria.
      *
      * @return \Illuminate\Http\Response
@@ -40,6 +42,7 @@ class CategoriaController extends Controller
     }
 
     /**
+     * @Rafael1108
      * Almacena la categoría recién creada en el almacenamiento.
      *
      * @param  \Illuminate\Http\Request  $request
